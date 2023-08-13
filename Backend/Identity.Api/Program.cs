@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.WithOrigins("exp://192.168.0.104:19000").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-    });
-});
+    options.AddPolicy("MyPolicy",
+        builder => {
+            builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        }
+    )
+);
 
 // Add services to the container.
 
@@ -18,6 +18,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+
 
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
@@ -28,7 +31,7 @@ builder.Services.AddMediatR(c => c.RegisterServicesFromAssemblyContaining<Progra
 builder.Services.AddScoped<IIdentityRepository, IdentityRepository>();
 
 var app = builder.Build();
-app.UseCors();
+app.UseCors("MyPolicy");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -36,7 +39,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

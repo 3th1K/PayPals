@@ -56,7 +56,7 @@ namespace Identity.Api.Repositories
 
         private string GenerateJwtToken(User user)
         {
-            var role = (bool)user.IsAdmin! ? "Admin" : "";
+            var role = (bool)user.IsAdmin! ? "Admin" : "User";
             var jwtTokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(TokenSecret);
             var claims = new List<Claim>();

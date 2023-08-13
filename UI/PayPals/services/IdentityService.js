@@ -1,32 +1,30 @@
 import axios from "axios";
+import { CreateLogger } from '../Logger'
+const log = CreateLogger("IdentityService");
 
-const API_BASE_URL = 'https://localhost:7230';
+const API_URL = 'http://192.168.0.107:5082';
 
-export const getToken = async (requestData) => {
-  try {
-    //const token = await axios.post(`${API_BASE_URL}/login`, requestData);
-    console.log(requestData)
-    var response = await axios(
-        {
-            url: 'http://192.168.0.104:5082/healthcheck',
-            method: 'get',
-            validateStatus: false
-        });
-    console.log("all ok "+response);
-  } catch (error) {
-    console.error('Error fetching token:', error);
-    throw error;
-  }
 
-// fetch('http://192.168.0.104:5082/healthcheck')
-// .then(response => {
-//   if (response.ok) {
-//     console.log('API is accessible');
-//   } else {
-//     console.log('API is not accessible');
-//   }
-// })
-// .catch(error => {
-//   console.log(error);
-// });
+export const HealthCheck = async () => {
+    await axios.get(API_URL+'/healthcheck', {
+        timeout: 10000
+    })
+    .then(response => {
+        log.success("Server Is Alive : "+response.status);
+    })
+    .catch(error => {
+        if (error.code === 'ECONNABORTED') {
+            log.warning('Request timed out');
+        } else {
+            console.log(error.message);
+        }
+    });
+};
+
+
+export const GetToken = async (requestData) => {
+    log.info("Credentials : ",requestData);
+    const response = await axios.post(API_URL+'/login', requestData, {timeout: 10000});
+    log.success("Response Recieved From Server");
+    return response;
 };

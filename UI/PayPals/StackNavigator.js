@@ -8,7 +8,11 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import { CheckToken, GetToken } from './TokenHandler';
+import React, { useEffect, useState } from 'react';
+import { CreateLogger } from "./Logger";
 
+const log = CreateLogger("StackNavigator");
 const Tab = createBottomTabNavigator();
 
 function BottomTabs() {
@@ -33,12 +37,32 @@ function BottomTabs() {
 const Stack = createNativeStackNavigator();
 
 function Navigation(){
+  const [token, setToken] = useState(null);
+  useEffect(() => {
+    async function x(){
+      log.info("Checking if user already logged in");
+      const tokenPresent = await CheckToken();
+      if(tokenPresent){
+        log.success("User is already logged in");
+        setToken(await GetToken());
+      }
+    }
+    x();
+  }, []);
     return(
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="Login" component={LoginScreen} options={{headerShown:false}}/>
-                <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown:false}}/>
-                <Stack.Screen name="Main" component={BottomTabs} options={{headerShown:false}}/>
+            {token ? (
+          <>
+            <Stack.Screen name="Main" component={BottomTabs} options={{ headerShown: false }} />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="Main" component={BottomTabs} options={{ headerShown: false }} />
+          </>
+        )}
             </Stack.Navigator>
         </NavigationContainer>
     )

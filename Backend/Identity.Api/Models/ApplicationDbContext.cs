@@ -24,11 +24,7 @@ public partial class ApplicationDbContext : DbContext
     {
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4C843F0772");
-
-            entity.Property(e => e.Email).HasMaxLength(100);
-            entity.Property(e => e.Password).HasMaxLength(50);
-            entity.Property(e => e.Username).HasMaxLength(50);
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4C195933AB");
         });
 
         OnModelCreatingPartial(modelBuilder);
