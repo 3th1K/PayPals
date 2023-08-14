@@ -28,7 +28,7 @@ namespace UserService.Api.Controllers
         }
         [HttpGet]
         [Route("allusers/details")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllDetails()
         {
             var users = await _mediator.Send(new GetAllUsersDetailsQuery());
@@ -75,6 +75,16 @@ namespace UserService.Api.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var data = await _mediator.Send(new DeleteUserQuery(id));
+            return data.Match<IActionResult>(
+                result => result == null ? NotFound() : Ok(result),
+                error => BadRequest(error)
+            );
+        }
+        [HttpPut]
+        [Route("update")]
+        public async Task<IActionResult> Update([FromBody] UserUpdateRequest request) 
+        {
+            var data = await _mediator.Send(request);
             return data.Match<IActionResult>(
                 result => result == null ? NotFound() : Ok(result),
                 error => BadRequest(error)

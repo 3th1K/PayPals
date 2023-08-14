@@ -6,19 +6,18 @@ using UserService.Api.Models;
 
 namespace UserService.Api.Handlers
 {
-    public class UserRequestHandlers : IRequestHandler<UserRequest, Result<UserResponse>>
+    public class UserUpdateRequestHandler : IRequestHandler<UserUpdateRequest, Result<UserResponse>>
     {
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
-        public UserRequestHandlers(IMapper mapper, IUserRepository userRepository)
+        public UserUpdateRequestHandler(IMapper mapper, IUserRepository userRepository)
         {
             _mapper = mapper;
             _userRepository = userRepository;
         }
-        public async Task<Result<UserResponse>> Handle(UserRequest request, CancellationToken cancellationToken)
+        public async Task<Result<UserResponse>> Handle(UserUpdateRequest request, CancellationToken cancellationToken)
         {
-            User user = _mapper.Map<User>(request);
-            var addedUser = await _userRepository.CreateUser(user);
+            var addedUser = await _userRepository.UpdateUser(request);
             return addedUser;
         }
     }

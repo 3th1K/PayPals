@@ -54,6 +54,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Sc
 builder.Services.AddMediatR(c => 
     c.RegisterServicesFromAssemblyContaining<Program>()
     .AddBehavior<IPipelineBehavior<UserRequest, Result<UserResponse>>, ValidationBehavior<UserRequest, UserResponse>>()
+    .AddBehavior<IPipelineBehavior<UserUpdateRequest, Result<UserResponse>>, ValidationBehavior<UserUpdateRequest, UserResponse>>()
     .AddBehavior<IPipelineBehavior<GetUserByIdQuery, Result<UserResponse>>, ValidationBehavior<GetUserByIdQuery, UserResponse>>()
     .AddBehavior<IPipelineBehavior<GetUserDetailsByIdQuery, Result<User>>, ValidationBehavior<GetUserDetailsByIdQuery, User>>()
     .AddBehavior<IPipelineBehavior<DeleteUserQuery, Result<User>>, ValidationBehavior<DeleteUserQuery, User>>()
