@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayPals", "PayPals.csproj", "{0714C70E-772A-4668-B4F4-45EE2FEE5D0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayPals", "PayPals.csproj", "{0714C70E-772A-4668-B4F4-45EE2FEE5D0D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Api", "..\Identity.Api\Identity.Api.csproj", "{2EB43605-6AED-401E-A0D6-C709BD20AD38}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.Api", "..\User.Api\UserService.Api.csproj", "{8DA42806-8801-4C15-9623-98F7713F89D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2EB43605-6AED-401E-A0D6-C709BD20AD38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EB43605-6AED-401E-A0D6-C709BD20AD38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EB43605-6AED-401E-A0D6-C709BD20AD38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DA42806-8801-4C15-9623-98F7713F89D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DA42806-8801-4C15-9623-98F7713F89D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DA42806-8801-4C15-9623-98F7713F89D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DA42806-8801-4C15-9623-98F7713F89D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

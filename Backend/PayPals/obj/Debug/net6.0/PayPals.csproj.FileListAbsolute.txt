@@ -62,3 +62,12 @@ D:\MyProjects\PayPals\Backend\PayPals\obj\Debug\net6.0\refint\PayPals.dll
 D:\MyProjects\PayPals\Backend\PayPals\obj\Debug\net6.0\PayPals.pdb
 D:\MyProjects\PayPals\Backend\PayPals\obj\Debug\net6.0\PayPals.genruntimeconfig.cache
 D:\MyProjects\PayPals\Backend\PayPals\obj\Debug\net6.0\ref\PayPals.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\ocelot.json
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\FluentValidation.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Microsoft.Extensions.DiagnosticAdapter.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Ocelot.dll

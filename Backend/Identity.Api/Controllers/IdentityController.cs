@@ -20,7 +20,7 @@ namespace Identity.Api.Controllers
         }
 
         [HttpPost]
-        [Route("/login")]
+        [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestCommand request)
         {
             if (!ModelState.IsValid)
@@ -45,7 +45,7 @@ namespace Identity.Api.Controllers
             }
         }
         [HttpGet]
-        [Route("/healthcheck")]
+        [Route("healthcheck")]
         public IActionResult HealthCheck() {
             _logger.LogInformation("someone tried to ping");
             return Ok();
