@@ -92,6 +92,19 @@
       ]
     },
     {
+      //Update user
+      "UpstreamPathTemplate": "/users/update",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamPathTemplate": "/api/Users/update",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5025
+        }
+      ]
+    },
+    {
       //Delete user
       "UpstreamPathTemplate": "/users/delete/{id}",
       "UpstreamHttpMethod": [ "Delete" ],
@@ -106,6 +119,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5000"
+    "BaseUrl": "http://192.168.0.108:5000"
   }
 }
