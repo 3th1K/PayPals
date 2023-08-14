@@ -9,6 +9,7 @@ namespace UserService.Api.Profiles
         {
             CreateMap<User, UserResponse>();
             CreateMap<UserRequest,User>();
+            CreateMap<UserUpdateRequest, User>();
             CreateMap<User, UserRequest>();
         }
     }

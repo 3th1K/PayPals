@@ -27,6 +27,19 @@ namespace UserService.Api.Repositories
             return _mapper.Map<UserResponse>(addedUser);
         }
 
+        public async Task<UserResponse> UpdateUser(UserUpdateRequest user)
+        {
+            var userInDb = await _context.Users.SingleOrDefaultAsync(u => u.UserId == user.UserId);
+            if (userInDb != null) 
+            {
+                _mapper.Map(user, userInDb);
+                await _context.SaveChangesAsync();
+                var updatedUserInDb = await _context.Users.SingleOrDefaultAsync(u => u.UserId == user.UserId);
+                return _mapper.Map<UserResponse>(updatedUserInDb);
+            }
+            return _mapper.Map<UserResponse>(userInDb); ;
+        }
+
         public async Task<User> DeleteUser(int id)
         {
             var user = await _context.Users.SingleOrDefaultAsync(x => x.UserId == id);
