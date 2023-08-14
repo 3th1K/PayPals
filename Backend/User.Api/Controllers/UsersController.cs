@@ -36,7 +36,7 @@ namespace UserService.Api.Controllers
         }
 
         [HttpGet]
-        [Route("user/{id=}")]
+        [Route("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var data = await _mediator.Send(new GetUserByIdQuery(id));
@@ -48,7 +48,7 @@ namespace UserService.Api.Controllers
         }
 
         [HttpGet]
-        [Route("user/details/{id=}")]
+        [Route("details/{id}")]
         public async Task<IActionResult> GetDetailsById(int id)
         {
             var data = await _mediator.Send(new GetUserDetailsByIdQuery(id));
@@ -60,7 +60,7 @@ namespace UserService.Api.Controllers
         }
 
         [HttpPost]
-        [Route("user/create")]
+        [Route("create")]
         public async Task<IActionResult> Create([FromBody] UserRequest request)
         {
             var data = await _mediator.Send(request);
@@ -71,7 +71,7 @@ namespace UserService.Api.Controllers
         }
 
         [HttpDelete]
-        [Route("user/delete/id/{id}")]
+        [Route("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var data = await _mediator.Send(new DeleteUserQuery(id));
