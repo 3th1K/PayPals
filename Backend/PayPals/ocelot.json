@@ -1,6 +1,7 @@
 {
   "Routes": [
     {
+      //Healthcheck
       "UpstreamPathTemplate": "/healthcheck",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/Identity/healthcheck",
@@ -13,6 +14,7 @@
       ]
     },
     {
+      //Login
       "UpstreamPathTemplate": "/login",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/Identity/login",
@@ -25,9 +27,75 @@
       ]
     },
     {
+      //Get all users
       "UpstreamPathTemplate": "/users",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/Users/allusers",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5025
+        }
+      ]
+    },
+    {
+      //Get all user details
+      "UpstreamPathTemplate": "/users/details",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Users/allusers/details",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5025
+        }
+      ]
+    },
+    {
+      //Get single user
+      "UpstreamPathTemplate": "/users/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Users/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5025
+        }
+      ]
+    },
+    {
+      //Get single user details
+      "UpstreamPathTemplate": "/users/details/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Users/details/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5025
+        }
+      ]
+    },
+    {
+      //Create user
+      "UpstreamPathTemplate": "/users/create",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/Users/create",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5025
+        }
+      ]
+    },
+    {
+      //Delete user
+      "UpstreamPathTemplate": "/users/delete/{id}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamPathTemplate": "/api/Users/delete/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
