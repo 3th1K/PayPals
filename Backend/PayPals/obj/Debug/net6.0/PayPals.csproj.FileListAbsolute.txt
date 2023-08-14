@@ -71,3 +71,10 @@ D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Microsoft.Extensions.Diag
 D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Newtonsoft.Json.dll
 D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Ocelot.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\MyProjects\PayPals\Backend\PayPals\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

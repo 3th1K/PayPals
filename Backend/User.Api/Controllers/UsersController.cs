@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UserService.Api.Models;
@@ -10,7 +9,7 @@ namespace UserService.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -21,6 +20,7 @@ namespace UserService.Api.Controllers
 
         [HttpGet]
         [Route("allusers")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAll()
         {
             var users =  await _mediator.Send(new GetAllUsersQuery());
@@ -28,7 +28,7 @@ namespace UserService.Api.Controllers
         }
         [HttpGet]
         [Route("allusers/details")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllDetails()
         {
             var users = await _mediator.Send(new GetAllUsersDetailsQuery());
@@ -44,7 +44,6 @@ namespace UserService.Api.Controllers
                 result => result == null ? NotFound() : Ok(result),
                 error => BadRequest(error)
             );
-                
         }
 
         [HttpGet]
@@ -72,6 +71,7 @@ namespace UserService.Api.Controllers
 
         [HttpDelete]
         [Route("delete/{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var data = await _mediator.Send(new DeleteUserQuery(id));
