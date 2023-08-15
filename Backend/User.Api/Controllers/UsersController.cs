@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using UserService.Api.Models;
 using UserService.Api.Queries;
 
@@ -39,6 +40,12 @@ namespace UserService.Api.Controllers
         [Route("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
+            var authenticatedUserId = User.FindFirst("userId")?.Value;
+            var authenticatedUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            if (authenticatedUserRole!="Admin" && authenticatedUserId != id.ToString())
+            {
+                return Forbid(); // Return 403 Forbidden if unauthorized
+            }
             var data = await _mediator.Send(new GetUserByIdQuery(id));
             return data.Match<IActionResult>(
                 result => result == null ? NotFound() : Ok(result),
@@ -48,6 +55,7 @@ namespace UserService.Api.Controllers
 
         [HttpGet]
         [Route("details/{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetDetailsById(int id)
         {
             var data = await _mediator.Send(new GetUserDetailsByIdQuery(id));
@@ -84,6 +92,12 @@ namespace UserService.Api.Controllers
         [Route("update")]
         public async Task<IActionResult> Update([FromBody] UserUpdateRequest request) 
         {
+            var authenticatedUserId = User.FindFirst("userId")?.Value;
+            var authenticatedUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            if (authenticatedUserRole != "Admin" && authenticatedUserId != request.UserId.ToString())
+            {
+                return Forbid(); // Return 403 Forbidden if unauthorized
+            }
             var data = await _mediator.Send(request);
             return data.Match<IActionResult>(
                 result => result == null ? NotFound() : Ok(result),

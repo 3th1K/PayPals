@@ -3,12 +3,14 @@ import jwtDecode from 'jwt-decode';
 import { CreateLogger } from './Logger';
 
 const log = CreateLogger("TokenHandler");
-// Assuming 'token' is the stored JWT token
-export const SetUser = async (token) =>{
+
+export const SetUser = async () =>{
     log.info("setting user");
     try{
+        const token = await GetToken();
         const decodedToken = jwtDecode(token);
-        log.info(decodedToken);
+        log.info("User has been set - UserId : "+decodedToken.userId);
+        return decodedToken.userId;
     }
     catch(error){
         log.error(error);
