@@ -39,7 +39,7 @@ const Stack = createNativeStackNavigator();
 function Navigation(){
   const [token, setToken] = useState(null);
   useEffect(() => {
-    async function x(){
+    async function checkToken(){
       log.info("Checking if user already logged in");
       const tokenPresent = await CheckToken();
       if(tokenPresent){
@@ -47,15 +47,13 @@ function Navigation(){
         setToken(await GetToken());
       }
     }
-    x();
+    checkToken();
   }, []);
     return(
         <NavigationContainer>
             <Stack.Navigator>
             {token ? (
-          <>
             <Stack.Screen name="Main" component={BottomTabs} options={{ headerShown: false }} />
-          </>
         ) : (
           <>
             <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
