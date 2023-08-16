@@ -1,9 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Navigation from './StackNavigator';
+import { UserProvider } from './helpers/UserContext';
 
 export default function App() {
   return (
-    <Navigation/>
+    <UserProvider>
+      <Navigation/>
+    </UserProvider>
   );
 }
 

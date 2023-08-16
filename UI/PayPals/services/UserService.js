@@ -1,8 +1,6 @@
 import axiosInstance from '../helpers/Interceptor';
 import { CreateLogger } from '../Logger'
-import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { GetToken, SetUser } from '../TokenHandler';
+
 const log = CreateLogger("UserService");
 
 const API_URL = 'http://192.168.0.108:5000';
@@ -34,10 +32,9 @@ export const GetUsersDetails = async () => {
     }
 };
 
-export const GetUser = async () => {
+export const GetUser = async (id) => {
     log.info("Retrieving User");
     try{
-        const id = await SetUser();
         const response = await axiosInstance.get(`/users/${id}`);
         log.success("User Retrieved Successsfully From Server");
         log.debug(response.data);
