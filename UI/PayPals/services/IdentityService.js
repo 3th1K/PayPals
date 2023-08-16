@@ -22,7 +22,7 @@ export const HealthCheck = async () => {
 };
 
 
-export const GetToken = async (requestData) => {
+export const RecieveToken = async (requestData) => {
     log.info("Credentials : ",requestData);
     const response = await axios.post(API_URL+'/login', requestData, {timeout: 10000});
     log.success("Response Recieved From Server");

@@ -4,23 +4,17 @@ import { CreateLogger } from './Logger';
 
 const log = CreateLogger("TokenHandler");
 
-export const SetUser = async () =>{
-    log.info("setting user");
-    try{
-        const token = await GetToken();
-        const decodedToken = jwtDecode(token);
-        log.info("User has been set - UserId : "+decodedToken.userId);
-        return decodedToken.userId;
-    }
-    catch(error){
-        log.error(error);
-    }
-}
 export const SetToken = async (token) =>{
+    //const { setUserId } = useUser();
     log.info("Setting Token");
     try{
         await AsyncStorage.setItem('token', token);
         log.info("Token Set Successfull");
+        // var token = await GetToken();
+        // const decodedToken = jwtDecode(token);
+        // if (decodedToken && decodedToken.userId) {
+        //     setUserId(decodedToken.userId);
+        // }
     }
     catch(error){
         log.error("Token was not set : ",error);
@@ -32,7 +26,9 @@ export const GetToken = async () =>{
 }
 
 export const RemoveToken = async () => {
+    log.info("Removing Token");
     await AsyncStorage.removeItem('token');
+    log.info("Removed Token");
 };
 
 export const CheckToken = async () => {

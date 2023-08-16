@@ -2,21 +2,36 @@ import { View, Text, SafeAreaView, TouchableOpacity, StatusBar, TextInput, Style
 import { useState, useEffect } from 'react'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { GetToken, HealthCheck } from '../services/IdentityService'
+import { RecieveToken, HealthCheck } from '../services/IdentityService'
 import { CreateLogger } from '../Logger'
-import { SetToken } from '../TokenHandler'
+import { SetToken, CheckToken, GetToken } from '../TokenHandler'
 const log = CreateLogger("LoginScreen");
 
 const LoginScreen = () => {
     const navigation = useNavigation();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [token] = useState(null);
+    useEffect(() => {
+        async function checkToken(){
+            log.info("Checking if user already logged in");
+            const tokenPresent = await CheckToken();
+            if(tokenPresent){
+                log.success("User is already logged in");
+                //await setToken(await GetToken());
+                log.info("Navigating to Main");
+                navigation.navigate("Main");
+            }
+        }
+        checkToken();
+    }, []);
     const doLogin = async (data) => {
         try{
             log.info("Requesting Token")
-            const token = await GetToken(data);
-            log.success(`Recieved Token [${token.data}]`);
+            const token = await RecieveToken(data);
+            log.success(`Recieved Token`);
             await SetToken(token.data);
+            log.info("Navigating to Main");
             navigation.navigate("Main");
         }
         catch(error){
