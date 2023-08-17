@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useUser } from '../helpers/UserContext';
 import { GetUser } from '../services/UserService';
+import { useNavigation } from '@react-navigation/native'
 import { CreateLogger } from '../Logger';
+import { RemoveToken } from '../TokenHandler';
 const log = CreateLogger("HomeScreen");
 
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
   const { userId } = useUser();
   log.info("userid : "+userId);
   const [userData, setUserData] = useState(null);
@@ -14,7 +17,12 @@ const HomeScreen = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const user = await GetUser(userId);
+        log.info("Fetching User");
+        const user = await GetUser(userId).catch(error => {
+          log.error("Cannot verify user, Please log in again");
+          navigation.navigate("Login");
+          RemoveToken();
+        });
         setUserData(user);
       } 
       catch (error) {

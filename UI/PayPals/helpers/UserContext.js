@@ -41,7 +41,7 @@ export const UserProvider = ({ children }) => {
     };
     log.info("User provider useeffect running");
     loadUserId();
-  }, []);
+  });
 
   // Provide the user ID and setUserId to the components
   return (
