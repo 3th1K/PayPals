@@ -34,13 +34,9 @@ export const GetUsersDetails = async () => {
 
 export const GetUser = async (id) => {
     log.info("Retrieving User");
-    try{
-        const response = await axiosInstance.get(`/users/${id}`);
-        log.success("User Retrieved Successsfully From Server");
-        log.debug(response.data);
-        return response.data;
-    }
-    catch(error){
-        log.error(error.response);
-    }
+    const response = await axiosInstance.get(`/users/${id}`);
+    
+    log.success("User Retrieved Successsfully From Server");
+    log.debug(response.data);
+    return response.data;
 };
