@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Navigation from './StackNavigator';
 import { UserProvider } from './helpers/UserContext';
+import { Provider } from 'react-redux';
+import { Store } from './redux/Store';
 
 export default function App() {
   return (
-    <UserProvider>
+    <Provider store={Store}>
       <Navigation/>
-    </UserProvider>
+    </Provider>
   );
 }
 
