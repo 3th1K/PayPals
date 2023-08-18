@@ -5,9 +5,12 @@ import { useNavigation } from '@react-navigation/native'
 import { RecieveToken, HealthCheck } from '../services/IdentityService'
 import { CreateLogger } from '../Logger'
 import { SetToken, CheckToken, GetToken } from '../TokenHandler'
+import { useDispatch } from 'react-redux';
+import { SetUser } from '../redux/UserAction'
 const log = CreateLogger("LoginScreen");
 
 const LoginScreen = () => {
+    const dispatch = useDispatch();
     const navigation = useNavigation();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -31,6 +34,7 @@ const LoginScreen = () => {
             const token = await RecieveToken(data);
             log.success(`Recieved Token`);
             await SetToken(token.data);
+            dispatch(SetUser())
             log.info("Navigating to Main");
             navigation.navigate("Main");
         }
