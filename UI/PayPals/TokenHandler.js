@@ -21,6 +21,17 @@ export const SetToken = async (token) =>{
     }
 }
 
+export const GetIdFromToken = async (token) => {
+    log.info("Extracting UserId From Token ...");
+    const decodedToken = jwtDecode(token);
+    if (decodedToken && decodedToken.userId) {
+        log.success("Extracted UserId From Token");
+        return (decodedToken.userId);
+    }
+    log.error("Cannot Extract UserId From Token");
+    return null;
+}
+
 export const GetToken = async () =>{
     return await AsyncStorage.getItem('token');
 }
