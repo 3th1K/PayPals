@@ -1,21 +1,24 @@
-import { takeEvery } from 'redux-saga/effects';
-import { SET_USER } from './Constants';
-import { GetUser } from '../services/UserService';
-import { GetToken } from '../TokenHandler';
-import { useState } from 'react';
-function* SetUser(){
-    const [userId, setUserId] = useState(null);
-    const token = GetToken;
-    if (token) {
-        const decodedToken = jwtDecode(token);
-        if (decodedToken && decodedToken.userId) {
-            setUserId(decodedToken.userId);
-        }
+import { SET_USER_SUCCESS, SET_USER, SET_USER_FAILURE } from "./Constants";
+import { takeEvery, call, put } from 'redux-saga/effects'
+import { CreateLogger } from "../Logger";
+import { GetUser } from "../services/UserService";
+const log = CreateLogger("UserSaga");
+
+function* SetUser(action){
+    const userId = action.payload;
+    log.warn(`Set User is Called with userId: ${userId}`);
+    log.info("Setting User");
+    try{
+        const userData = yield call(GetUser, userId);
+        yield put({type:SET_USER_SUCCESS, payload: userData});
     }
-    const data = GetUser(userId);
-    console.log("data in saga "+data);
+    catch(error){
+        yield put({ type: SET_USER_FAILURE, error: error.message });
+    }
+    
 }
-function* UserSagaData(){
-    yield takeEvery(SET_USER, SetUser)
+
+function* SagaData(){
+    yield takeEvery(SET_USER, SetUser);
 }
-export default UserSagaData;
+export default SagaData;

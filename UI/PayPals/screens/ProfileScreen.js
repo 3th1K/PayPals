@@ -1,38 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
-import { useUser } from '../helpers/UserContext';
-import { GetUser } from '../services/UserService';
 import { useNavigation } from '@react-navigation/native';
 import { CreateLogger } from '../Logger';
 import { RemoveToken } from '../TokenHandler';
+import { useSelector } from 'react-redux';
 const log = CreateLogger("ProfileScreen");
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
-  const { userId, setUserId } = useUser();
   const [userData, setUserData] = useState(null);
+  const userState = useSelector((state) => state.user);
+
+
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const user = await GetUser(userId);
-        setUserData(user);
-      } 
-      catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
-
-    if (userId) {
-      fetchUserData();
-    }
-  }, [userId]);
-
+    const user = userState.user;
+    log.warn(user);
+    setUserData(user);
+    log.success(userData);
+  })
   const handleLogout = async () => {
     try {
-      // Clear the token and user ID from AsyncStorage
       await RemoveToken();
-      
       navigation.navigate("Login");
     } catch (error) {
       log.error('Error logging out:', error);
@@ -47,9 +36,14 @@ const ProfileScreen = () => {
           <Text>Email: {userData.email}</Text>
           {/* Display other user details */}
           <Button title="Logout" onPress={handleLogout} />
+
         </>
       ) : (
-        <Text>Loading ...</Text>
+        <>
+          <Text>Loading ...</Text>
+          <Button title="Logout" onPress={handleLogout} />
+        </>
+
       )}
     </View>
   );
