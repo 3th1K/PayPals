@@ -69,6 +69,11 @@ namespace UserService.Api.Repositories
             var userResponse = _mapper.Map<UserResponse>(user);
             return userResponse;
         }
+        public async Task<User> GetUserByUsernameOrEmail(string username, string email)
+        {
+            User? user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username || u.Email == email);
+            return user!;
+        }
 
         public async Task<User> GetUserDetailsById(int id)
         {

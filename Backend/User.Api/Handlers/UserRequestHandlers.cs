@@ -18,6 +18,13 @@ namespace UserService.Api.Handlers
         public async Task<Result<UserResponse>> Handle(UserRequest request, CancellationToken cancellationToken)
         {
             User user = _mapper.Map<User>(request);
+
+            var existingUser = await _userRepository.GetUserByUsernameOrEmail(user.Username, user.Email);
+            if (existingUser != null)
+            {
+                throw new UserAlreadyExistsException();
+            }
+
             var addedUser = await _userRepository.CreateUser(user);
             return addedUser;
         }

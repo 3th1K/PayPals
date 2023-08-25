@@ -68,13 +68,21 @@ namespace UserService.Api.Controllers
 
         [HttpPost]
         [Route("create")]
+        [AllowAnonymous]
         public async Task<IActionResult> Create([FromBody] UserRequest request)
         {
-            var data = await _mediator.Send(request);
-            return data.Match<IActionResult>(
-                result => Ok(result) ,
-                error => BadRequest(error)
-            );
+            try
+            {
+                var data = await _mediator.Send(request);
+                return data.Match<IActionResult>(
+                    result => Ok(result),
+                    error => BadRequest(error)
+                );
+            }
+            catch (UserAlreadyExistsException ex) {
+                return BadRequest(ex.Message);
+            }
+            
         }
 
         [HttpDelete]

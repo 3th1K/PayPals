@@ -12,10 +12,6 @@ const initialState = {
 export const UserReducer = (state = initialState, action) =>{
     log.warn("Triggered Reducer");
     switch(action.type){
-        case SET_USER:
-            return { 
-                ...state
-            };
         case SET_USER_SUCCESS:
             return { 
                 ...state, 

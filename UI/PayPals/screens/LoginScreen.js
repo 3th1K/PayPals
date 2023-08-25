@@ -34,7 +34,7 @@ const LoginScreen = () => {
     useEffect(() => {
         async function checkToken(){
             setIsLoading(true);
-            log.info("Checking if user already logged in");
+            //log.info("Checking if user already logged in");
             const tokenPresent = await CheckToken();
             if(tokenPresent){
                 log.success("User is already logged in");
@@ -44,7 +44,10 @@ const LoginScreen = () => {
                 log.info("Navigating to Main");
                 navigation.navigate("Main");
             }
-            log.info("User is not logged int, please log in");
+            else{
+                //log.warn("User is not logged in, please log in");
+            }
+            
             setIsLoading(false);
         }
         
@@ -120,7 +123,7 @@ const LoginScreen = () => {
                 <TouchableOpacity style={styles.button} onPress={() => doLogin({ username, password })}>
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+                <TouchableOpacity onPress={() => {log.info("Navigating to Register Screen");navigation.navigate("Register")}}>
                     <Text style={styles.signUpText}>Sign Up</Text>
                 </TouchableOpacity>
             </View>

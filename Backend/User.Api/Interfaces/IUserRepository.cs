@@ -8,6 +8,7 @@ namespace UserService.Api.Interfaces
         public Task<IEnumerable<User>> GetAllUsersDetails();
         public Task<UserResponse> GetUserById(int id);
         public Task<User> GetUserDetailsById(int id);
+        public Task<User> GetUserByUsernameOrEmail(string username, string email);
         public Task<UserResponse> CreateUser(User user);
         public Task<UserResponse> UpdateUser(UserUpdateRequest user);
         public Task<User> DeleteUser(int id);
