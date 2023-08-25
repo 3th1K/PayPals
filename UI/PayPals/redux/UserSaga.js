@@ -11,11 +11,12 @@ function* SetUser(action){
     try{
         const userData = yield call(GetUser, userId);
         yield put({type:SET_USER_SUCCESS, payload: userData});
+        log.success("User has been set");
     }
     catch(error){
+        log.error("User was not set");
         yield put({ type: SET_USER_FAILURE, error: error.message });
     }
-    
 }
 
 function* SagaData(){

@@ -9,12 +9,7 @@ export const SetToken = async (token) =>{
     log.info("Setting Token");
     try{
         await AsyncStorage.setItem('token', token);
-        log.info("Token Set Successfull");
-        // var token = await GetToken();
-        // const decodedToken = jwtDecode(token);
-        // if (decodedToken && decodedToken.userId) {
-        //     setUserId(decodedToken.userId);
-        // }
+        log.success("Token Set Successfull");
     }
     catch(error){
         log.error("Token was not set : ",error);
@@ -39,11 +34,31 @@ export const GetToken = async () =>{
 export const RemoveToken = async () => {
     log.info("Removing Token");
     await AsyncStorage.removeItem('token');
-    log.info("Removed Token");
+    log.success("Removed Token");
 };
 
 export const CheckToken = async () => {
-    const isToken = await AsyncStorage.getItem('token');
-    return isToken !== null;
+    const token = await AsyncStorage.getItem('token');
+    if(token){
+        try {
+            const decodedToken = jwtDecode(token);
+            const currentTime = Date.now() / 1000; // Convert current time to seconds
+            if (decodedToken.exp && decodedToken.exp < currentTime) {
+              log.error("Token has expired");
+              return false
+            }
+            else{
+                return true;
+            }
+        } 
+        catch (error) {
+            log.error("Failed to decode token", error);
+            return false;
+        }
+    }
+    else{
+        return false;
+    }
+    
 }
   

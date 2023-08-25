@@ -20,9 +20,11 @@ const ProfileScreen = () => {
     log.success(userData);
   })
   const handleLogout = async () => {
+    log.info("Logging out");
     try {
       await RemoveToken();
       navigation.navigate("Login");
+      log.success("Logged out");
     } catch (error) {
       log.error('Error logging out:', error);
     }
