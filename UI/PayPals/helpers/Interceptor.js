@@ -12,12 +12,16 @@ axiosInstance.interceptors.request.use(async (config) => {
   if(! await CheckToken()){
     log.error("Token missing, please login again");
   }
-  const token = await GetToken();
-  if (token) {
-    log.info("Token is present, adding it to header");
-    config.headers['Authorization'] = `Bearer ${token}`;
-    log.success("Token added to header");
+  else{
+    const token = await GetToken();
+    log.info("token -> "+token);
+    if (token) {
+      log.info("Token is present, adding it to header");
+      config.headers['Authorization'] = `Bearer ${token}`;
+      log.success("Token added to header");
+    }
   }
+  
   return config;
 });
 

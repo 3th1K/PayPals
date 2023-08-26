@@ -1,4 +1,5 @@
 import axiosInstance from '../helpers/Interceptor';
+import axios from 'axios';
 import { CreateLogger } from '../Logger'
 
 const log = CreateLogger("UserService");
@@ -40,3 +41,11 @@ export const GetUser = async (id) => {
     log.debug(response.data);
     return response.data;
 };
+
+export const CreateUser = async (data) => {
+    log.info("Creating User");
+    const response = await axiosInstance.post(`/users/create`, data)
+    log.success("User Created Successsfully");
+    log.debug(response.data);
+    return response.data;
+}
