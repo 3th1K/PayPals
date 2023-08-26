@@ -14,9 +14,11 @@ namespace UserService.Api.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public UsersController(IMediator mediator)
+        private readonly ILogger<UsersController> _logger;
+        public UsersController(IMediator mediator, ILogger<UsersController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -71,6 +73,7 @@ namespace UserService.Api.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Create([FromBody] UserRequest request)
         {
+            _logger.LogInformation("hello");
             try
             {
                 var data = await _mediator.Send(request);
