@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "R5FH5T4TyVF69j8McZYgGtASk48F7e7O2K8H3prcdE8=",
+  "Source": "GroupService.Api",
+  "BasePath": "_content/GroupService.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
