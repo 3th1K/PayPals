@@ -1,4 +1,8 @@
-﻿namespace UserService.Api.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
+
+namespace UserService.Api.Models;
 
 public partial class User
 {
@@ -13,4 +17,11 @@ public partial class User
     public int TotalExpenses { get; set; }
 
     public bool IsAdmin { get; set; }
+    
+    [JsonIgnore]
+
+    public virtual ICollection<Group> Groups { get; set; } = new List<Group>();
+
+    [JsonIgnore]
+    public virtual ICollection<Group> GroupsNavigation { get; set; } = new List<Group>();
 }

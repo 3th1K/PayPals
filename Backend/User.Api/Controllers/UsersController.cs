@@ -1,6 +1,8 @@
-﻿using MediatR;
+﻿using LanguageExt.Common;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Claims;
 using UserService.Api.Models;
 using UserService.Api.Queries;
@@ -53,6 +55,31 @@ namespace UserService.Api.Controllers
                 result => result == null ? NotFound() : Ok(result),
                 error => BadRequest(error)
             );
+        }
+
+        
+        [HttpGet]
+        [Route("{id}/groups")]
+        public async Task<IActionResult> GetUserGroups(int id)
+        {
+            var authenticatedUserId = User.FindFirst("userId")?.Value;
+            var authenticatedUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            if (authenticatedUserRole != "Admin" && authenticatedUserId != id.ToString())
+            {
+                return Forbid(); // Return 403 Forbidden if unauthorized
+            }
+            try {
+                var data = await _mediator.Send(new GetUserGroupsQuery(id));
+                return Ok(data);
+            }
+            catch (UserNotFoundException ex) { 
+                return BadRequest(new ErrorResponse
+                {
+                    ErrorCode = ex.ErrorCode,
+                    ErrorMessage = ex.ErrorMessage
+                });
+            }
+            
         }
 
         [HttpGet]
@@ -114,6 +141,12 @@ namespace UserService.Api.Controllers
                 result => result == null ? NotFound() : Ok(result),
                 error => BadRequest(error)
             );
+        }
+
+        public class ErrorResponse
+        {
+            public string ErrorCode { get; set; }
+            public string ErrorMessage { get; set; }
         }
     }
 }

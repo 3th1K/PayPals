@@ -66,6 +66,19 @@
       ]
     },
     {
+      //Get single user
+      "UpstreamPathTemplate": "/users/{id}/groups",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Users/{id}/groups",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5025
+        }
+      ]
+    },
+    {
       //Get single user details
       "UpstreamPathTemplate": "/users/details/{id}",
       "UpstreamHttpMethod": [ "Get" ],

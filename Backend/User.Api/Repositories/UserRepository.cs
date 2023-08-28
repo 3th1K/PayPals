@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using LanguageExt;
 using LanguageExt.Common;
 using Microsoft.EntityFrameworkCore;
@@ -73,6 +74,27 @@ namespace UserService.Api.Repositories
         {
             User? user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username || u.Email == email);
             return user!;
+        }
+
+        public async Task<List<Group>> GetUserGroups(int id)
+        {
+            var userGroups = await _context.Groups
+                                   .Where(g => g.Users.Any(u => u.UserId == id))
+                                   .Select(group => new Group
+                                   {
+                                       GroupId = group.GroupId,
+                                       GroupName = group.GroupName,
+                                       CreatorId = group.CreatorId,
+                                       TotalExpenses = group.TotalExpenses,
+                                       Creator = new User
+                                       {
+                                           UserId = group.Creator.UserId,
+                                           Username = group.Creator.Username
+                                       },
+                                       // Other properties as needed
+                                   })
+                                   .ToListAsync();
+            return userGroups ?? new List<Group>() { };
         }
 
         public async Task<User> GetUserDetailsById(int id)
