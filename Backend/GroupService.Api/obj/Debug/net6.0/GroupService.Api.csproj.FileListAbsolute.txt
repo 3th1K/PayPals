@@ -30,3 +30,5 @@ D:\MyProjects\PayPals\Backend\GroupService.Api\obj\Debug\net6.0\refint\GroupServ
 D:\MyProjects\PayPals\Backend\GroupService.Api\obj\Debug\net6.0\GroupService.Api.pdb
 D:\MyProjects\PayPals\Backend\GroupService.Api\obj\Debug\net6.0\GroupService.Api.genruntimeconfig.cache
 D:\MyProjects\PayPals\Backend\GroupService.Api\obj\Debug\net6.0\ref\GroupService.Api.dll
+D:\MyProjects\PayPals\Backend\GroupService.Api\bin\Debug\net6.0\MediatR.dll
+D:\MyProjects\PayPals\Backend\GroupService.Api\bin\Debug\net6.0\MediatR.Contracts.dll

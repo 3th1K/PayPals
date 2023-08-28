@@ -56,6 +56,7 @@ builder.Services.AddMediatR(c =>
     .AddBehavior<IPipelineBehavior<UserRequest, Result<UserResponse>>, ValidationBehavior<UserRequest, UserResponse>>()
     .AddBehavior<IPipelineBehavior<UserUpdateRequest, Result<UserResponse>>, ValidationBehavior<UserUpdateRequest, UserResponse>>()
     .AddBehavior<IPipelineBehavior<GetUserByIdQuery, Result<UserResponse>>, ValidationBehavior<GetUserByIdQuery, UserResponse>>()
+    //.AddBehavior<IPipelineBehavior<GetUserGroupsQuery, List<Group>>, ValidationBehavior<GetUserGroupsQuery, List<Group>>>()
     .AddBehavior<IPipelineBehavior<GetUserDetailsByIdQuery, Result<User>>, ValidationBehavior<GetUserDetailsByIdQuery, User>>()
     .AddBehavior<IPipelineBehavior<DeleteUserQuery, Result<User>>, ValidationBehavior<DeleteUserQuery, User>>()
 );
