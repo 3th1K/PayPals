@@ -1,5 +1,6 @@
-import { 
-    SET_USER, SET_USER_SUCCESS, SET_USER_FAILURE
+import {
+    SET_USER_SUCCESS, 
+    SET_USER_FAILURE, 
 } from "./Constants";
 import { CreateLogger } from '../Logger';
 const log = CreateLogger("UserReducer");
@@ -21,6 +22,7 @@ export const UserReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 user: null,
+                userGroups: null,
                 error: action.error
             };
         default:

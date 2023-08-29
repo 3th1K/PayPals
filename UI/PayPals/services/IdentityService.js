@@ -2,7 +2,7 @@ import axios from "axios";
 import { CreateLogger } from '../Logger'
 const log = CreateLogger("IdentityService");
 
-const API_URL = 'http://192.168.0.108:5000';
+const API_URL = 'http://192.168.0.105:5000';
 
 
 export const HealthCheck = async () => {
