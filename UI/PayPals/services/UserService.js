@@ -4,7 +4,7 @@ import { CreateLogger } from '../Logger'
 
 const log = CreateLogger("UserService");
 
-const API_URL = 'http://192.168.0.108:5000';
+const API_URL = 'http://192.168.0.105:5000';
 
 
 export const GetUsers = async () => {
@@ -46,6 +46,15 @@ export const CreateUser = async (data) => {
     log.info("Creating User");
     const response = await axiosInstance.post(`/users/create`, data)
     log.success("User Created Successsfully");
+    log.debug(response.data);
+    return response.data;
+}
+
+export const GetUserGroups = async (id) => {
+    log.info("Retrieving user groups");
+    const response = await axiosInstance.get(`/users/${id}/groups`);
+    
+    log.success("User Groups Retrieved Successsfully From Server");
     log.debug(response.data);
     return response.data;
 }

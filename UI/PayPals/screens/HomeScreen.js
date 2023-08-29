@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { useSelector } from 'react-redux';
 import { CreateLogger } from '../Logger';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -14,15 +14,37 @@ const HomeScreen = () => {
   const userState = useSelector((state) => state.user);
   
   useEffect(() => {
-    if(useState.error){
-
+    if(userState.error){
+      log.error(userState)
     }
     const user = userState.user;
-    log.warn(user);
     setUserData(user);
-    log.success(userData);
     setIsLoading(!userData);
   })
+
+  const handleGroupPress = (group) =>{
+    log.info(`${group.groupName} is pressed`);
+  }
+
+  const renderGroupItem = ({ item }) => {
+    return (
+      <TouchableOpacity onPress={() => handleGroupPress(item)}>
+        <View style={styles.groupContainer}>
+          <View style={styles.groupHeaderContainer}>
+            <Text style={styles.groupHeader}>{item.groupName}</Text>
+          </View>
+          <View style={styles.groupDetails}>
+            <Text style={styles.groupDetailText}>
+              Created by: {item.creator.username}
+            </Text>
+            <Text style={styles.groupDetailText}>
+              Total Expenses: {item.totalExpenses}
+            </Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    ); // Adjust this based on your group object structure
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -32,11 +54,16 @@ const HomeScreen = () => {
         )}
       </View>
       <View style={styles.contentContainer}>
-        {/* Replace the following with your actual list content */}
-        <Text>List of Something</Text>
-        {/* Other list content */}
+        {isLoading ? (
+          <Text>Loading...</Text>
+        ) : (
+          <FlatList
+            data={userData.groups}
+            renderItem={renderGroupItem}
+            keyExtractor={(item) => item.groupId.toString()} // Assuming each group has a unique id
+          />
+        )}
       </View>
-      <LoadingOverlay isVisible={isLoading} />
     </SafeAreaView>
     
   );
@@ -48,25 +75,60 @@ export default HomeScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    //alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f0f0f0', // Change this to your desired background color
-    borderRadius: 20, // Add rounded corners
-    margin: 10, // Add margin to make it a little smaller than the screen
+    padding: 20,
+    backgroundColor: 'black', // Change this to your desired background color
+    //borderRadius: 20, // Add rounded corners
+    //margin: 10, // Add margin to make it a little smaller than the screen
     overflow: 'hidden', // Hide overflow content
+    width: '100%'
   },
   headerContainer: {
-    alignItems: 'flex-end', // Align to the top-right corner
-    padding: 10,
+    alignItems: 'flex-start',
+    paddingVertical: 20,
+    paddingHorizontal: 30,
   },
   welcome: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
+    color: 'white',
   },
   contentContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
+    paddingTop: 20,
+    paddingHorizontal: 20,
+  },
+  groupContainer: {
+    backgroundColor: '#f9f9f9',
+    borderRadius: 10,
+    marginBottom: 15,
+    padding: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  groupHeaderContainer: {
+    backgroundColor: '#333',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+  },
+  groupHeader: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  groupDetails: {
+    marginTop: 10,
+  },
+  groupDetailText: {
+    fontSize: 14,
+    color: '#666',
   },
 });

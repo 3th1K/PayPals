@@ -34,7 +34,7 @@ const LoginScreen = () => {
     useEffect(() => {
         async function checkToken(){
             setIsLoading(true);
-            //log.info("Checking if user already logged in");
+            log.info("Checking if user already logged in");
             const tokenPresent = await CheckToken();
             if(tokenPresent){
                 log.success("User is already logged in");
@@ -45,7 +45,7 @@ const LoginScreen = () => {
                 navigation.navigate("Main");
             }
             else{
-                //log.warn("User is not logged in, please log in");
+                log.warn("User is not logged in, please log in");
             }
             
             setIsLoading(false);
