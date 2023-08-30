@@ -11,6 +11,7 @@ import RegisterScreen from "./screens/RegisterScreen";
 import { CheckToken, GetToken } from './TokenHandler';
 import React, { useEffect, useState } from 'react';
 import { CreateLogger } from "./Logger";
+import GroupScreen from "./screens/GroupScreen";
 
 const log = CreateLogger("StackNavigator");
 const Tab = createBottomTabNavigator();
@@ -43,6 +44,7 @@ function Navigation(){
                 <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="Main" component={BottomTabs} options={{ headerShown: false }} />
+                <Stack.Screen name="Group" component={GroupScreen} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

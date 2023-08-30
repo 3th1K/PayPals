@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native
 import { useSelector } from 'react-redux';
 import { CreateLogger } from '../Logger';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 import LoadingOverlay from '../helpers/LoadingOverlay';
 
 const log = CreateLogger("HomeScreen");
@@ -12,6 +13,7 @@ const HomeScreen = () => {
   const [userData, setUserData] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const userState = useSelector((state) => state.user);
+  const navigation = useNavigation();
   
   useEffect(() => {
     if(userState.error){
@@ -22,13 +24,14 @@ const HomeScreen = () => {
     setIsLoading(!userData);
   })
 
-  const handleGroupPress = (group) =>{
-    log.info(`${group.groupName} is pressed`);
-  }
+  // const handleGroupPress = (group) =>{
+  //   log.info(`${group.groupName} is pressed`);
+  //   navigation.navigate("Group");
+  // }
 
   const renderGroupItem = ({ item }) => {
     return (
-      <TouchableOpacity onPress={() => handleGroupPress(item)}>
+      <TouchableOpacity onPress={() => navigation.navigate("Group", {groupId: item.groupId})}>
         <View style={styles.groupContainer}>
           <View style={styles.groupHeaderContainer}>
             <Text style={styles.groupHeader}>{item.groupName}</Text>
@@ -55,7 +58,7 @@ const HomeScreen = () => {
       </View>
       <View style={styles.contentContainer}>
         {isLoading ? (
-          <Text>Loading...</Text>
+          <LoadingOverlay isVisible={isLoading} />
         ) : (
           <FlatList
             data={userData.groups}

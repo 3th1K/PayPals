@@ -129,6 +129,19 @@
           "Port": 5025
         }
       ]
+    },
+    {
+      //Get single group
+      "UpstreamPathTemplate": "/groups/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Groups/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5180
+        }
+      ]
     }
   ],
   "GlobalConfiguration": {
