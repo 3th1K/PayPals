@@ -1,9 +1,8 @@
-﻿using MediatR;
+﻿using GroupService.Api.Exceptions;
+using GroupService.Api.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
-using System.Security.Claims;
 
 namespace GroupService.Api.Controllers
 {
@@ -20,14 +19,40 @@ namespace GroupService.Api.Controllers
         }
 
         [HttpGet]
-        [Route("allgroups")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> GetAll()
+        [Route("{id}")]
+        [Authorize]
+        public async Task<IActionResult> GetById(int id)
         {
-            //var users = await _mediator.Send(new GetAllUsersQuery());
-            return Ok();
+            try
+            {
+                var data = await _mediator.Send(new GetGroupByIdQuery(id));
+                return Ok(data);
+            }
+            catch (UserNotAuthorizedException ex)
+            {
+                return BadRequest(new ErrorResponse
+                {
+                    ErrorCode = ex.ErrorCode,
+                    ErrorMessage = ex.ErrorMessage
+                });
+            }
+            catch (GroupNotFoundException ex)
+            {
+                return BadRequest(new ErrorResponse
+                {
+                    ErrorCode = ex.ErrorCode,
+                    ErrorMessage = ex.ErrorMessage
+                });
+            }
+
         }
 
-        
+        public class ErrorResponse
+        {
+            public string ErrorCode { get; set; }
+            public string ErrorMessage { get; set; }
+        }
+
+
     }
 }

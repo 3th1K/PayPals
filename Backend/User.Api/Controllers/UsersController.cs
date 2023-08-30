@@ -1,8 +1,6 @@
-﻿using LanguageExt.Common;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata.Ecma335;
 using System.Security.Claims;
 using UserService.Api.Models;
 using UserService.Api.Queries;

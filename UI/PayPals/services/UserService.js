@@ -4,8 +4,6 @@ import { CreateLogger } from '../Logger'
 
 const log = CreateLogger("UserService");
 
-const API_URL = 'http://192.168.0.105:5000';
-
 
 export const GetUsers = async () => {
     log.info("Retrieving All Users");

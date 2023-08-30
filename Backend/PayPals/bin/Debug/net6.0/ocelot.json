@@ -3,7 +3,7 @@
     {
       //Healthcheck
       "UpstreamPathTemplate": "/healthcheck",
-      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/Identity/healthcheck",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -127,6 +127,19 @@
         {
           "Host": "localhost",
           "Port": 5025
+        }
+      ]
+    },
+    {
+      //Get single group
+      "UpstreamPathTemplate": "/groups/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Groups/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5180
         }
       ]
     }

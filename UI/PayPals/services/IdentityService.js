@@ -1,12 +1,10 @@
-import axios from "axios";
+import axiosInstance from '../helpers/Interceptor';
 import { CreateLogger } from '../Logger'
 const log = CreateLogger("IdentityService");
 
-const API_URL = 'http://192.168.0.105:5000';
-
 
 export const HealthCheck = async () => {
-    await axios.get(API_URL+'/healthcheck', {
+    await axiosInstance.get(API_URL+'/healthcheck', {
         timeout: 10000
     })
     .then(response => {
@@ -24,7 +22,7 @@ export const HealthCheck = async () => {
 
 export const RecieveToken = async (requestData) => {
     log.info("Credentials : ",requestData);
-    const response = await axios.post(API_URL+'/login', requestData, {timeout: 10000});
+    const response = await axiosInstance.post('/login', requestData);
     log.success("Response Recieved From Server");
     return response;
 };
