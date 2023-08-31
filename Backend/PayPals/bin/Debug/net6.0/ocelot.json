@@ -142,6 +142,19 @@
           "Port": 5180
         }
       ]
+    },
+    {
+      //Create expense
+      "UpstreamPathTemplate": "/expenses/create",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/Expenses/create",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5111
+        }
+      ]
     }
   ],
   "GlobalConfiguration": {
