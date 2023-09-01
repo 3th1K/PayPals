@@ -1,7 +1,9 @@
 using ExpenseService.Api.Interfaces;
 using ExpenseService.Api.Models;
 using ExpenseService.Api.Repositories;
+using ExpenseService.Api.Validations;
 using FluentValidation;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -46,7 +48,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Sc
 
 builder.Services.AddMediatR(c =>
     c.RegisterServicesFromAssemblyContaining<Program>()
-//.AddBehavior<IPipelineBehavior<UserRequest, Result<UserResponse>>, ValidationBehavior<UserRequest, UserResponse>>()
+    .AddBehavior<IPipelineBehavior<ExpenseRequest, ExpenseResponse>, ValidationBehavior<ExpenseRequest, ExpenseResponse>>()
 );
 
 

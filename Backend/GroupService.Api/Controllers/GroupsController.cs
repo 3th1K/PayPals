@@ -30,7 +30,7 @@ namespace GroupService.Api.Controllers
             }
             catch (UserNotAuthorizedException ex)
             {
-                return BadRequest(new ErrorResponse
+                return Unauthorized(new ErrorResponse
                 {
                     ErrorCode = ex.ErrorCode,
                     ErrorMessage = ex.ErrorMessage
@@ -38,7 +38,7 @@ namespace GroupService.Api.Controllers
             }
             catch (GroupNotFoundException ex)
             {
-                return BadRequest(new ErrorResponse
+                return NotFound(new ErrorResponse
                 {
                     ErrorCode = ex.ErrorCode,
                     ErrorMessage = ex.ErrorMessage
@@ -49,8 +49,8 @@ namespace GroupService.Api.Controllers
 
         public class ErrorResponse
         {
-            public string ErrorCode { get; set; }
-            public string ErrorMessage { get; set; }
+            public string ErrorCode { get; set; } = null!;
+            public string ErrorMessage { get; set; } = null!;
         }
 
 

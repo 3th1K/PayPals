@@ -1,6 +1,8 @@
-﻿using ExpenseService.Api.Models;
+﻿using ExpenseService.Api.Exceptions;
+using ExpenseService.Api.Models;
+using FluentValidation;
 using MediatR;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExpenseService.Api.Controllers
@@ -19,18 +21,38 @@ namespace ExpenseService.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        public async Task<IActionResult> Create([FromBody] ExpenseRequest expenseRequest) 
+        [Authorize]
+        public async Task<IActionResult> Create([FromBody] ExpenseRequest expenseRequest)
         {
             try
             {
                 var data = await _mediator.Send(expenseRequest);
                 return Ok(data);
             }
-            catch (Exception ex) 
+            catch (ValidationException ex)
+            {
+                var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
+                return BadRequest(new { Errors = validationErrors });
+            }
+            catch (UserNotAuthorizedException ex)
+            {
+                return Unauthorized(new ErrorResponse
+                {
+                    ErrorCode = ex.ErrorCode,
+                    ErrorMessage = ex.ErrorMessage,
+                });
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex);
             }
-        
+
+        }
+
+        public class ErrorResponse
+        {
+            public string ErrorCode { get; set; } = null!;
+            public string ErrorMessage { get; set; } = null!;
         }
     }
 }
