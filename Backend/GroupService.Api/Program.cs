@@ -1,7 +1,9 @@
 using FluentValidation;
 using GroupService.Api.Interfaces;
 using GroupService.Api.Models;
+using GroupService.Api.Queries;
 using GroupService.Api.Repositories;
+using GroupService.Api.Validations;
 using LanguageExt.Common;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -47,7 +49,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Sc
 
 builder.Services.AddMediatR(c =>
     c.RegisterServicesFromAssemblyContaining<Program>()
-    //.AddBehavior<IPipelineBehavior<UserRequest, Result<UserResponse>>, ValidationBehavior<UserRequest, UserResponse>>()
+    .AddBehavior<IPipelineBehavior<GetGroupByIdQuery, GroupResponse>, ValidationBehavior<GetGroupByIdQuery, GroupResponse>>()
 );
 
 builder.Services.AddHttpContextAccessor();

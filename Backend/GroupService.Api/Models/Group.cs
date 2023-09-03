@@ -15,5 +15,7 @@ public partial class Group
 
     public virtual User Creator { get; set; } = null!;
 
+    public virtual ICollection<Expense> Expenses { get; set; } = new List<Expense>();
+
     public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

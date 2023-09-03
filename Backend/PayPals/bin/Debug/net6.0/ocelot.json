@@ -66,7 +66,7 @@
       ]
     },
     {
-      //Get single user
+      //Get user groups
       "UpstreamPathTemplate": "/users/{id}/groups",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/Users/{id}/groups",
@@ -144,6 +144,19 @@
       ]
     },
     {
+      //Get group expenses
+      "UpstreamPathTemplate": "/groups/{id}/expenses",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Groups/{id}/expenses",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5180
+        }
+      ]
+    },
+    {
       //Create expense
       "UpstreamPathTemplate": "/expenses/create",
       "UpstreamHttpMethod": [ "Post" ],
@@ -158,6 +171,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://192.168.0.104:5000"
+    "BaseUrl": "http://192.168.0.105:5000"
   }
 }
