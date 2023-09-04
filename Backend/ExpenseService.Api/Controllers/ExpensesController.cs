@@ -1,5 +1,6 @@
 ﻿using ExpenseService.Api.Exceptions;
 using ExpenseService.Api.Models;
+using ExpenseService.Api.Queries;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -27,6 +28,33 @@ namespace ExpenseService.Api.Controllers
             try
             {
                 var data = await _mediator.Send(expenseRequest);
+                return Ok(data);
+            }
+            catch (ValidationException ex)
+            {
+                var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
+                return BadRequest(new { Errors = validationErrors });
+            }
+            catch (UserNotAuthorizedException ex)
+            {
+                return Unauthorized(new ErrorResponse
+                {
+                    ErrorCode = ex.ErrorCode,
+                    ErrorMessage = ex.ErrorMessage,
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+
+        }
+
+        public async Task<IActionResult> GetDetails(int id) 
+        {
+            try
+            {
+                var data = await _mediator.Send(new GetExpenseDetailsByIdQuery(id));
                 return Ok(data);
             }
             catch (ValidationException ex)

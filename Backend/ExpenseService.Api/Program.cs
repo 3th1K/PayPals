@@ -1,5 +1,6 @@
 using ExpenseService.Api.Interfaces;
 using ExpenseService.Api.Models;
+using ExpenseService.Api.Queries;
 using ExpenseService.Api.Repositories;
 using ExpenseService.Api.Validations;
 using FluentValidation;
@@ -49,6 +50,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Sc
 builder.Services.AddMediatR(c =>
     c.RegisterServicesFromAssemblyContaining<Program>()
     .AddBehavior<IPipelineBehavior<ExpenseRequest, ExpenseResponse>, ValidationBehavior<ExpenseRequest, ExpenseResponse>>()
+    .AddBehavior<IPipelineBehavior<GetExpenseDetailsByIdQuery, Expense>, ValidationBehavior<GetExpenseDetailsByIdQuery, Expense>>()
 );
 
 
