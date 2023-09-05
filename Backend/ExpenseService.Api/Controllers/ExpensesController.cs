@@ -5,6 +5,8 @@ using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http.Headers;
+using System.Net.Http;
 
 namespace ExpenseService.Api.Controllers
 {
@@ -22,9 +24,23 @@ namespace ExpenseService.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        [Authorize]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] ExpenseRequest expenseRequest)
         {
+            var headers = Request.Headers;
+            var headersDictionary = new Dictionary<string, string>();
+
+            // Iterate through the headers and add them to the dictionary
+            foreach (var header in headers)
+            {
+                // header.Key contains the header name
+                // header.Value is an IEnumerable<string> containing the header values
+                string headerName = header.Key;
+                string headerValue = string.Join(",", header.Value);
+
+                // Add the header to the dictionary
+                headersDictionary.Add(headerName, headerValue);
+            }
             try
             {
                 var data = await _mediator.Send(expenseRequest);
@@ -50,6 +66,9 @@ namespace ExpenseService.Api.Controllers
 
         }
 
+        [HttpGet]
+        [Route("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetDetails(int id) 
         {
             try
@@ -61,6 +80,14 @@ namespace ExpenseService.Api.Controllers
             {
                 var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
                 return BadRequest(new { Errors = validationErrors });
+            }
+            catch (ExpenseNotFoundException ex)
+            {
+                return Unauthorized(new ErrorResponse
+                {
+                    ErrorCode = ex.ErrorCode,
+                    ErrorMessage = ex.ErrorMessage,
+                });
             }
             catch (UserNotAuthorizedException ex)
             {
