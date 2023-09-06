@@ -8,7 +8,7 @@
         {
 
             ErrorCode = "USER_NOT_AUTHORIZED";
-            ErrorMessage = "User not authorized to access group";
+            ErrorMessage = "User not authorized";
 
         }
     }

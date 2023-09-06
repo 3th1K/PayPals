@@ -43,10 +43,13 @@ namespace ExpenseService.Api.Repositories
             return _mapper.Map<ExpenseResponse>(addedExpense);
         }
 
-        public async Task<Expense> GetExpenseDetails(int id) 
+        public async Task<ExpenseResponse> GetExpenseDetails(int id) 
         {
-            var expense = await _context.Expenses.SingleOrDefaultAsync(e => e.ExpenseId == id);
-            return expense;
+            var expense = await _context.Expenses
+                .Include(e => e.Users)
+                .Include(e => e.Group.Creator)
+                .SingleOrDefaultAsync(e => e.ExpenseId == id);
+            return _mapper.Map<ExpenseResponse>(expense);
         }
     }
 }

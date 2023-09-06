@@ -157,6 +157,19 @@
       ]
     },
     {
+      //get expense by id
+      "UpstreamPathTemplate": "/expenses/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Expenses/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5111
+        }
+      ]
+    },
+    {
       //Create expense
       "UpstreamPathTemplate": "/expenses/create",
       "UpstreamHttpMethod": [ "Post" ],

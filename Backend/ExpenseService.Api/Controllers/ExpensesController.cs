@@ -24,7 +24,7 @@ namespace ExpenseService.Api.Controllers
 
         [HttpPost]
         [Route("create")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize]
         public async Task<IActionResult> Create([FromBody] ExpenseRequest expenseRequest)
         {
             var headers = Request.Headers;
