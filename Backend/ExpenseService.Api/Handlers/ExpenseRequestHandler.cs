@@ -3,7 +3,6 @@ using ExpenseService.Api.Exceptions;
 using ExpenseService.Api.Interfaces;
 using ExpenseService.Api.Models;
 using MediatR;
-using Microsoft.AspNetCore.Server.IIS.Core;
 using System.Security.Claims;
 
 namespace ExpenseService.Api.Handlers
