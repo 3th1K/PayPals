@@ -7,7 +7,7 @@
         public GroupNotFoundException() : base()
         {
 
-            ErrorCode = "GROUP_NOT_FOUND";
+            ErrorCode = "ERR_GROUP_NOT_FOUND";
             ErrorMessage = "Group not found";
         }
     }

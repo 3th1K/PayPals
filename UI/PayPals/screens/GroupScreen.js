@@ -4,6 +4,7 @@ import { GetGroup } from '../services/GroupService';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import { CreateLogger } from '../Logger';
+import { GetError } from '../helpers/ErrorHandler';
 const log = CreateLogger("GroupScreen");
 const GroupScreen = ({ route }) => {
     const [group, setGroup] = useState(null);
@@ -19,7 +20,9 @@ const GroupScreen = ({ route }) => {
                 setIsLoading(false);
             }
             catch (error) {
-                log.error(error.response);
+                log.warn(error.code);
+                const errordata = GetError(error);
+                log.error(JSON.stringify(errordata));
             }
         }
         getGroup();

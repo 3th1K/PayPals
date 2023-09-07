@@ -9,6 +9,7 @@ import {
 import { takeEvery, call, put } from 'redux-saga/effects'
 import { CreateLogger } from "../Logger";
 import { GetUser, GetUserGroups } from "../services/UserService";
+import { GetError } from "../helpers/ErrorHandler";
 const log = CreateLogger("UserSaga");
 
 function* SetUser(action){
@@ -20,7 +21,8 @@ function* SetUser(action){
         yield put({type:SET_USER_SUCCESS, payload: userData});
     }
     catch(error){
-        yield put({ type: SET_USER_FAILURE, error: error.message });
+        var errorData = GetError(error);
+        yield put({ type: SET_USER_FAILURE, error: errorData.ErrorMessage });
     }
 }
 
