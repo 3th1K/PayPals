@@ -24,20 +24,7 @@ namespace GroupService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> GetById(int id)
         {
-            var headers = Request.Headers;
-            var headersDictionary = new Dictionary<string, string>();
-
-            // Iterate through the headers and add them to the dictionary
-            foreach (var header in headers)
-            {
-                // header.Key contains the header name
-                // header.Value is an IEnumerable<string> containing the header values
-                string headerName = header.Key;
-                string headerValue = string.Join(",", header.Value);
-
-                // Add the header to the dictionary
-                headersDictionary.Add(headerName, headerValue);
-            }
+            
             try
             {
                 var data = await _mediator.Send(new GetGroupByIdQuery(id));

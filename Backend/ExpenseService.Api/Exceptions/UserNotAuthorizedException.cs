@@ -7,7 +7,7 @@
         public UserNotAuthorizedException() : base()
         {
 
-            ErrorCode = "USER_NOT_AUTHORIZED";
+            ErrorCode = "ERR_USER_NOT_AUTHORIZED";
             ErrorMessage = "User not authorized";
 
         }

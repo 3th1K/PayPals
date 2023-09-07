@@ -6,7 +6,7 @@
         public readonly string ErrorMessage;
         public ExpenseNotFoundException() : base()
         {
-            ErrorCode = "EXPENSE_NOT_FOUND";
+            ErrorCode = "ERR_EXPENSE_NOT_FOUND";
             ErrorMessage = "Expense not found";
         }
     }
