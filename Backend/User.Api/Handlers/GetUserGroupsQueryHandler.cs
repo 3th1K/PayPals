@@ -1,4 +1,6 @@
-﻿using LanguageExt.Common;
+﻿using Common.Exceptions;
+using Data.Models;
+using LanguageExt.Common;
 using MediatR;
 using UserService.Api.Interfaces;
 using UserService.Api.Models;
@@ -15,7 +17,7 @@ namespace UserService.Api.Handlers
         }
         public async Task<List<Group>> Handle(GetUserGroupsQuery request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetUserById(request.Id!) ?? throw new UserNotFoundException();
+            var user = await _userRepository.GetUserById(request.Id!) ?? throw new UserNotFoundException("This User is not a valid User");
             var groups = await _userRepository.GetUserGroups(user.UserId);
             return groups;
         }

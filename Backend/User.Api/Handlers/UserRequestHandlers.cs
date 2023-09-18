@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Data.Models;
 using LanguageExt.Common;
 using MediatR;
 using UserService.Api.Interfaces;

@@ -1,4 +1,4 @@
-﻿using GroupService.Api.Exceptions;
+﻿using Common.Exceptions;
 using GroupService.Api.Interfaces;
 using GroupService.Api.Models;
 using GroupService.Api.Queries;

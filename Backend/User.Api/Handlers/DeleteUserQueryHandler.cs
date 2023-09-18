@@ -1,4 +1,5 @@
-﻿using LanguageExt.Common;
+﻿using Data.Models;
+using LanguageExt.Common;
 using MediatR;
 using UserService.Api.Interfaces;
 using UserService.Api.Models;

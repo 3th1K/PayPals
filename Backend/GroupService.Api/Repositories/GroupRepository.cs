@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
 using GroupService.Api.Interfaces;
 using GroupService.Api.Models;
-using LanguageExt.TypeClasses;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
-using GroupService.Api.Exceptions;
+using Common.Exceptions;
+using Data.Models;
 
 namespace GroupService.Api.Repositories
 {

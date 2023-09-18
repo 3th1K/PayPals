@@ -1,4 +1,4 @@
-﻿using Identity.Api.Models;
+﻿using Data.Models;
 
 namespace Identity.Api.Interfaces
 {
