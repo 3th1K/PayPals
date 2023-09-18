@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Data.Models;
 using UserService.Api.Models;
 
 namespace UserService.Api.Profiles

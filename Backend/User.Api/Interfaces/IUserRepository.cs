@@ -1,4 +1,5 @@
-﻿using UserService.Api.Models;
+﻿using Data.Models;
+using UserService.Api.Models;
 
 namespace UserService.Api.Interfaces
 {

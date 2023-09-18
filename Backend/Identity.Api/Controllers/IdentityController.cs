@@ -1,5 +1,8 @@
-﻿using Identity.Api.Commands;
-using Identity.Api.Exceptions;
+﻿using Common.Exceptions;
+using Common.Interfaces;
+using Common.Utilities;
+using FluentValidation;
+using Identity.Api.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,36 +15,42 @@ namespace Identity.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly ILogger<IdentityController> _logger;
-        public IdentityController(IMediator mediator, ILogger<IdentityController> logger)
+        private IErrorBuilder _errorBuilder;
+        public IdentityController(IMediator mediator, ILogger<IdentityController> logger, IErrorBuilder errorBuilder)
         {
             _mediator = mediator;
             _logger = logger;  
-
+            _errorBuilder = errorBuilder;
         }
 
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestCommand request)
         {
-            if (!ModelState.IsValid)
-            {
-                _logger.LogError("request data is not valid");
-                return BadRequest(ModelState);
-            }
-            try 
+            try
             {
                 var token = await _mediator.Send(request);
                 return Ok(token);
             }
-            catch (UserNotFoundException)
+            catch (ValidationException ex)
             {
-                // do something
-                return NotFound();
+                var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
+                var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
+                return BadRequest(error);
             }
-            catch (UserNotAuthorizedException)
+            catch (UserNotFoundException ex)
             {
-                // do something
-                return Unauthorized();
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return NotFound(error);
+            }
+            catch (UserNotAuthorizedException ex)
+            {
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return Unauthorized(error);
+            }
+            catch (Exception ex) {
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return new ObjectResult(error) { StatusCode = 500 };
             }
         }
         [HttpGet]

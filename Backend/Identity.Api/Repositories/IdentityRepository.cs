@@ -1,6 +1,7 @@
-﻿using Identity.Api.Exceptions;
+﻿using Common.Exceptions;
+using Data;
+using Data.Models;
 using Identity.Api.Interfaces;
-using Identity.Api.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -28,12 +29,12 @@ namespace Identity.Api.Repositories
             if (user == null)
             {
                 _logger.LogError($"{username} is not an regestred user");
-                throw new UserNotFoundException(username);
+                throw new UserNotFoundException($"{username} is not an regestered user");
             }
             if (user.Password != password)
             {
                 _logger.LogError($"Login attemted with invalid credentials {username} : {password}");
-                throw new UserNotAuthorizedException(password);
+                throw new UserNotAuthorizedException("Incorrect Password");
             }
             return user;
         }

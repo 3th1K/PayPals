@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "aEmmtPLHudjRzkmbQgBxm4dJa4cp431iSZNqItmklbI=",
+  "Hash": "FGLDsb50tei70Aq+aZUk0sIqAdIsNpUpzhC1SVNgS4U=",
   "Source": "UserService.Api",
   "BasePath": "_content/UserService.Api",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "D:\\MyProjects\\PayPals\\Backend\\Data\\Data.csproj",
+      "Version": 2,
+      "Source": "Data",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
   "DiscoveryPatterns": [],
   "Assets": []
 }

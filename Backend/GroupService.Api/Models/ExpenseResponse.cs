@@ -1,4 +1,6 @@
-﻿namespace GroupService.Api.Models
+﻿using Data.Models;
+
+namespace GroupService.Api.Models
 {
     public class ExpenseResponse
     {

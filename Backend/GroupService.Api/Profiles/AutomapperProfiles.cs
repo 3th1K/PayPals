@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Data.Models;
 using GroupService.Api.Models;
 
 namespace GroupService.Api.Profiles

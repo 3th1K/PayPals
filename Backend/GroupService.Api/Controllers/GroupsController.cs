@@ -1,5 +1,6 @@
-﻿using FluentValidation;
-using GroupService.Api.Exceptions;
+﻿using Common.Exceptions;
+using Common.Interfaces;
+using FluentValidation;
 using GroupService.Api.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -13,10 +14,15 @@ namespace GroupService.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly ILogger<GroupsController> _logger;
-        public GroupsController(IMediator mediator, ILogger<GroupsController> logger)
+        private IErrorBuilder _errorBuilder;
+        public GroupsController(
+            IMediator mediator, 
+            ILogger<GroupsController> logger, 
+            IErrorBuilder errorBuilder)
         {
             _mediator = mediator;
             _logger = logger;
+            _errorBuilder = errorBuilder;
         }
 
         [HttpGet]
@@ -33,23 +39,18 @@ namespace GroupService.Api.Controllers
             catch (ValidationException ex)
             {
                 var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
-                return BadRequest(new { Errors = validationErrors });
+                var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
+                return BadRequest(error);
             }
             catch (UserNotAuthorizedException ex)
             {
-                return Unauthorized(new ErrorResponse
-                {
-                    ErrorCode = ex.ErrorCode,
-                    ErrorMessage = ex.ErrorMessage
-                });
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return Unauthorized(error);
             }
             catch (GroupNotFoundException ex)
             {
-                return NotFound(new ErrorResponse
-                {
-                    ErrorCode = ex.ErrorCode,
-                    ErrorMessage = ex.ErrorMessage
-                });
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return NotFound(error);
             }
 
         }
@@ -67,31 +68,20 @@ namespace GroupService.Api.Controllers
             catch (ValidationException ex)
             {
                 var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
-                return BadRequest(new { Errors = validationErrors });
+                var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
+                return BadRequest(error);
             }
             catch (UserNotAuthorizedException ex)
             {
-                return Unauthorized(new ErrorResponse
-                {
-                    ErrorCode = ex.ErrorCode,
-                    ErrorMessage = ex.ErrorMessage
-                });
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return Unauthorized(error);
             }
             catch (GroupNotFoundException ex)
             {
-                return NotFound(new ErrorResponse
-                {
-                    ErrorCode = ex.ErrorCode,
-                    ErrorMessage = ex.ErrorMessage
-                });
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return NotFound(error);
             }
 
-        }
-
-        public class ErrorResponse
-        {
-            public string ErrorCode { get; set; } = null!;
-            public string ErrorMessage { get; set; } = null!;
         }
 
 

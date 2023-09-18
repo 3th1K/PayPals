@@ -1,6 +1,12 @@
+using Common.Interfaces;
+using Common.Utilities;
+using Data.Models;
+using FluentValidation;
+using Identity.Api.Commands;
 using Identity.Api.Interfaces;
-using Identity.Api.Models;
 using Identity.Api.Repositories;
+using Identity.Api.Validations;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,16 +25,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
-
-
-
-builder.Services.AddDbContext<ApplicationDbContext>(options => 
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-builder.Services.AddMediatR(c => c.RegisterServicesFromAssemblyContaining<Program>());
+
+builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Scoped);
+
+builder.Services.AddMediatR(c =>
+    c.RegisterServicesFromAssemblyContaining<Program>()
+    .AddBehavior<IPipelineBehavior<LoginRequestCommand, string>, ValidationBehavior<LoginRequestCommand, string>>()
+);
+
 builder.Services.AddScoped<IIdentityRepository, IdentityRepository>();
+builder.Services.AddScoped<IErrorBuilder, ErrorBuilder>();
 
 var app = builder.Build();
 app.UseCors("MyPolicy");

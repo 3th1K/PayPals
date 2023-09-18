@@ -1,4 +1,7 @@
-﻿using MediatR;
+﻿using Common.Exceptions;
+using Common.Interfaces;
+using Common.Utilities;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -15,10 +18,12 @@ namespace UserService.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly ILogger<UsersController> _logger;
-        public UsersController(IMediator mediator, ILogger<UsersController> logger)
+        private IErrorBuilder _errorBuilder;
+        public UsersController(IMediator mediator, ILogger<UsersController> logger, IErrorBuilder errorBuilder)
         {
             _mediator = mediator;
             _logger = logger;
+            _errorBuilder = errorBuilder;
         }
 
         [HttpGet]
@@ -26,6 +31,7 @@ namespace UserService.Api.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAll()
         {
+            
             var users =  await _mediator.Send(new GetAllUsersQuery());
             return Ok(users);
         }
@@ -71,11 +77,8 @@ namespace UserService.Api.Controllers
                 return Ok(data);
             }
             catch (UserNotFoundException ex) { 
-                return BadRequest(new ErrorResponse
-                {
-                    ErrorCode = ex.ErrorCode,
-                    ErrorMessage = ex.ErrorMessage
-                });
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return BadRequest(error);
             }
             
         }
@@ -139,12 +142,6 @@ namespace UserService.Api.Controllers
                 result => result == null ? NotFound() : Ok(result),
                 error => BadRequest(error)
             );
-        }
-
-        public class ErrorResponse
-        {
-            public string ErrorCode { get; set; }
-            public string ErrorMessage { get; set; }
         }
     }
 }
