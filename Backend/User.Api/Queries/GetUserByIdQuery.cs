@@ -4,7 +4,7 @@ using UserService.Api.Models;
 
 namespace UserService.Api.Queries
 {
-    public class GetUserByIdQuery : IRequest<Result<UserResponse>>
+    public class GetUserByIdQuery : IRequest<UserResponse>
     {
         public readonly int Id;
         public GetUserByIdQuery(int id)

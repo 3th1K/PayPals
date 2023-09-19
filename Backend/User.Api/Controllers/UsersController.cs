@@ -1,6 +1,7 @@
 ﻿using Common.Exceptions;
 using Common.Interfaces;
 using Common.Utilities;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,10 +32,10 @@ namespace UserService.Api.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAll()
         {
-            
             var users =  await _mediator.Send(new GetAllUsersQuery());
             return Ok(users);
         }
+
         [HttpGet]
         [Route("allusers/details")]
         [Authorize(Roles = "Admin")]
@@ -46,19 +47,38 @@ namespace UserService.Api.Controllers
 
         [HttpGet]
         [Route("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetById(int id)
         {
             var authenticatedUserId = User.FindFirst("userId")?.Value;
             var authenticatedUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
             if (authenticatedUserRole!="Admin" && authenticatedUserId != id.ToString())
             {
-                return Forbid(); // Return 403 Forbidden if unauthorized
+                var error = _errorBuilder.BuildError(Errors.ERR_USER_FORBIDDEN);
+                return new ObjectResult(error) { StatusCode = 403 };
             }
-            var data = await _mediator.Send(new GetUserByIdQuery(id));
-            return data.Match<IActionResult>(
-                result => result == null ? NotFound() : Ok(result),
-                error => BadRequest(error)
-            );
+            
+            try 
+            {
+                var data = await _mediator.Send(new GetUserByIdQuery(id));
+                return Ok(data);
+            }
+            catch (ValidationException ex)
+            {
+                var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
+                var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
+                return BadRequest(error);
+            }
+            catch (UserNotFoundException ex)
+            {
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return NotFound(error);
+            }
+            catch (Exception ex)
+            {
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return new ObjectResult(error) { StatusCode = 500 };
+            }
         }
 
         
@@ -70,17 +90,29 @@ namespace UserService.Api.Controllers
             var authenticatedUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
             if (authenticatedUserRole != "Admin" && authenticatedUserId != id.ToString())
             {
-                return Forbid(); // Return 403 Forbidden if unauthorized
+                var error = _errorBuilder.BuildError(Errors.ERR_USER_FORBIDDEN);
+                return new ObjectResult(error) { StatusCode = 403 };
             }
             try {
                 var data = await _mediator.Send(new GetUserGroupsQuery(id));
                 return Ok(data);
             }
-            catch (UserNotFoundException ex) { 
-                var error = _errorBuilder.BuildError(ex, ex.Message);
+            catch (ValidationException ex)
+            {
+                var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
+                var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
                 return BadRequest(error);
             }
-            
+            catch (UserNotFoundException ex) { 
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return NotFound(error);
+            }
+            catch (Exception ex)
+            {
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return new ObjectResult(error) { StatusCode = 500 };
+            }
+
         }
 
         [HttpGet]
@@ -88,11 +120,27 @@ namespace UserService.Api.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetDetailsById(int id)
         {
-            var data = await _mediator.Send(new GetUserDetailsByIdQuery(id));
-            return data.Match<IActionResult>(
-                result => result == null ? NotFound() : Ok(result),
-                error => BadRequest(error)
-            );
+            try
+            {
+                var data = await _mediator.Send(new GetUserDetailsByIdQuery(id));
+                return Ok(data);
+            }
+            catch (ValidationException ex)
+            {
+                var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
+                var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
+                return BadRequest(error);
+            }
+            catch (UserNotFoundException ex)
+            {
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return NotFound(error);
+            }
+            catch (Exception ex)
+            {
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return new ObjectResult(error) { StatusCode = 500 };
+            }
 
         }
 
@@ -101,19 +149,28 @@ namespace UserService.Api.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Create([FromBody] UserRequest request)
         {
-            _logger.LogInformation("hello");
-            try
+            try 
             {
                 var data = await _mediator.Send(request);
-                return data.Match<IActionResult>(
-                    result => Ok(result),
-                    error => BadRequest(error)
-                );
+                return Ok(data);
             }
-            catch (UserAlreadyExistsException ex) {
-                return BadRequest(ex.Message);
+            catch (ValidationException ex)
+            {
+                var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
+                var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
+                return BadRequest(error);
             }
-            
+            catch (UserAlreadyExistsException ex)
+            {
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return Conflict(error);
+            }
+            catch (Exception ex)
+            {
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return new ObjectResult(error) { StatusCode = 500 };
+            }
+
         }
 
         [HttpDelete]
@@ -121,11 +178,27 @@ namespace UserService.Api.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
-            var data = await _mediator.Send(new DeleteUserQuery(id));
-            return data.Match<IActionResult>(
-                result => result == null ? NotFound() : Ok(result),
-                error => BadRequest(error)
-            );
+            try
+            {
+                var data = await _mediator.Send(new DeleteUserQuery(id));
+                return Ok(data);
+            }
+            catch (ValidationException ex)
+            {
+                var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
+                var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
+                return BadRequest(error);
+            }
+            catch (UserNotFoundException ex)
+            {
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return NotFound(error);
+            }
+            catch (Exception ex)
+            {
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return new ObjectResult(error) { StatusCode = 500 };
+            }
         }
         [HttpPut]
         [Route("update")]
@@ -135,13 +208,31 @@ namespace UserService.Api.Controllers
             var authenticatedUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
             if (authenticatedUserRole != "Admin" && authenticatedUserId != request.UserId.ToString())
             {
-                return Forbid(); // Return 403 Forbidden if unauthorized
+                var error = _errorBuilder.BuildError(Errors.ERR_USER_FORBIDDEN);
+                return new ObjectResult(error) { StatusCode = 403 };
             }
-            var data = await _mediator.Send(request);
-            return data.Match<IActionResult>(
-                result => result == null ? NotFound() : Ok(result),
-                error => BadRequest(error)
-            );
+            
+            try
+            {
+                var data = await _mediator.Send(request);
+                return Ok(data);
+            }
+            catch (ValidationException ex)
+            {
+                var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
+                var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
+                return BadRequest(error);
+            }
+            catch (UserNotFoundException ex)
+            {
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return NotFound(error);
+            }
+            catch (Exception ex)
+            {
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return new ObjectResult(error) { StatusCode = 500 };
+            }
         }
     }
 }

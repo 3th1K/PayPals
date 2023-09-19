@@ -129,6 +129,12 @@
   <data name="10002_SOLUTION" xml:space="preserve">
     <value>Please Login With Existing User or Regester A New User</value>
   </data>
+  <data name="10003_DESCRIPTION" xml:space="preserve">
+    <value>User is Not Allowed To Access The Content</value>
+  </data>
+  <data name="10003_SOLUTION" xml:space="preserve">
+    <value>Please Try Again With User With Appropiate Permissions</value>
+  </data>
   <data name="100_DESCRIPTION" xml:space="preserve">
     <value>Some Unknown Error Occured</value>
   </data>
@@ -141,8 +147,29 @@
   <data name="101_SOLUTION" xml:space="preserve">
     <value>Please Verify The Request And Try Again With Proper Inputs</value>
   </data>
+  <data name="20001_DESCRIPTION" xml:space="preserve">
+    <value>Group Is Not Found Or Group Is Not Yet Created</value>
+  </data>
+  <data name="20001_SOLUTION" xml:space="preserve">
+    <value>Please Create A New Group Or Enter An Existing Group</value>
+  </data>
+  <data name="30001_DESCRIPTION" xml:space="preserve">
+    <value>Expense is not found or expense is not yet created</value>
+  </data>
+  <data name="30001_SOLUTION" xml:space="preserve">
+    <value>Please create a new expense or enter an existing expense</value>
+  </data>
+  <data name="ERR_EXPENSE_NOT_FOUND" xml:space="preserve">
+    <value>30001:Not Found</value>
+  </data>
+  <data name="ERR_GROUP_NOT_FOUND" xml:space="preserve">
+    <value>20001:Not Found</value>
+  </data>
   <data name="ERR_UNKNOWN" xml:space="preserve">
     <value>100:Unknown Error</value>
+  </data>
+  <data name="ERR_USER_FORBIDDEN" xml:space="preserve">
+    <value>10003:User Forbidden</value>
   </data>
   <data name="ERR_USER_NOT_AUTHORIZED" xml:space="preserve">
     <value>10001:Authentication Error</value>

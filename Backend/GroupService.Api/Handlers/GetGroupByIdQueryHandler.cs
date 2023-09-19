@@ -19,7 +19,7 @@ namespace GroupService.Api.Handlers
         public async Task<GroupResponse> Handle(GetGroupByIdQuery request, CancellationToken cancellationToken)
         {
             var authenticatedUserId = _httpContextAccessor.HttpContext?.User.FindFirstValue("userId");
-            var authenticatedUserRole = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Role);
+            var authenticatedUserRole =_httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Role);
             var group = await _groupRepository.GetGroupById(request.Id) ?? throw new GroupNotFoundException();
             if (
                 authenticatedUserRole != "Admin" && 

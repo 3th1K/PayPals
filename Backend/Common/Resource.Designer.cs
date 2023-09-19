@@ -115,6 +115,24 @@ namespace Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User is Not Allowed To Access The Content.
+        /// </summary>
+        internal static string _10003_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("10003_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Try Again With User With Appropiate Permissions.
+        /// </summary>
+        internal static string _10003_SOLUTION {
+            get {
+                return ResourceManager.GetString("10003_SOLUTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot Validate Request.
         /// </summary>
         internal static string _101_DESCRIPTION {
@@ -133,11 +151,74 @@ namespace Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Group Is Not Found Or Group Is Not Yet Created.
+        /// </summary>
+        internal static string _20001_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("20001_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Create A New Group Or Enter An Existing Group.
+        /// </summary>
+        internal static string _20001_SOLUTION {
+            get {
+                return ResourceManager.GetString("20001_SOLUTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expense is not found or expense is not yet created.
+        /// </summary>
+        internal static string _30001_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("30001_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please create a new expense or enter an existing expense.
+        /// </summary>
+        internal static string _30001_SOLUTION {
+            get {
+                return ResourceManager.GetString("30001_SOLUTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 30001:Not Found.
+        /// </summary>
+        internal static string ERR_EXPENSE_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("ERR_EXPENSE_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 20001:Not Found.
+        /// </summary>
+        internal static string ERR_GROUP_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("ERR_GROUP_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 100:Unknown Error.
         /// </summary>
         internal static string ERR_UNKNOWN {
             get {
                 return ResourceManager.GetString("ERR_UNKNOWN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 10003:User Forbidden.
+        /// </summary>
+        internal static string ERR_USER_FORBIDDEN {
+            get {
+                return ResourceManager.GetString("ERR_USER_FORBIDDEN", resourceCulture);
             }
         }
         

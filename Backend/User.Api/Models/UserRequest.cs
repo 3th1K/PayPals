@@ -3,7 +3,7 @@ using LanguageExt.Common;
 
 namespace UserService.Api.Models
 {
-    public class UserRequest : IRequest<Result<UserResponse>>
+    public class UserRequest : IRequest<UserResponse>
     {
         public string Username { get; set; } = null!;
 

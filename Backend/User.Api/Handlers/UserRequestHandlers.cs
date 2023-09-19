@@ -7,7 +7,7 @@ using UserService.Api.Models;
 
 namespace UserService.Api.Handlers
 {
-    public class UserRequestHandlers : IRequestHandler<UserRequest, Result<UserResponse>>
+    public class UserRequestHandlers : IRequestHandler<UserRequest, UserResponse>
     {
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
@@ -16,7 +16,7 @@ namespace UserService.Api.Handlers
             _mapper = mapper;
             _userRepository = userRepository;
         }
-        public async Task<Result<UserResponse>> Handle(UserRequest request, CancellationToken cancellationToken)
+        public async Task<UserResponse> Handle(UserRequest request, CancellationToken cancellationToken)
         {
             User user = _mapper.Map<User>(request);
 

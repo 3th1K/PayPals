@@ -8,7 +8,8 @@ namespace UserService.Api.Validations
     {
         public GetUserGroupsQueryValidator()
         {
-            RuleFor(x => x.Id).NotEmpty().WithMessage("User Id can't be empty");
+            //RuleFor(x => x.Id).NotEmpty().WithMessage("User Id can't be empty");
+            RuleFor(x => x.Id).GreaterThan(0).WithMessage("Invalid User Id");
             //RuleFor(x => x.Id).Must(ValidateGuid).WithMessage("Not A Valid User Id");
         }
         //private bool ValidateGuid(string? id)

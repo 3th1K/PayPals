@@ -1,4 +1,5 @@
-﻿using LanguageExt.Common;
+﻿using Common.Exceptions;
+using LanguageExt.Common;
 using MediatR;
 using UserService.Api.Interfaces;
 using UserService.Api.Models;
@@ -6,16 +7,16 @@ using UserService.Api.Queries;
 
 namespace UserService.Api.Handlers
 {
-    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, Result<UserResponse>>
+    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserResponse>
     {
         private readonly IUserRepository _userRepository;
         public GetUserByIdQueryHandler(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
-        public async Task<Result<UserResponse>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+        public async Task<UserResponse> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetUserById(request.Id!);
+            var user = await _userRepository.GetUserById(request.Id!) ?? throw new UserNotFoundException("User Is Not Present In Database");
             return user;
         }
     }

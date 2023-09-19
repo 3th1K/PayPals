@@ -1,3 +1,5 @@
+using Common.Interfaces;
+using Common.Utilities;
 using ExpenseService.Api.Interfaces;
 using ExpenseService.Api.Models;
 using ExpenseService.Api.Queries;
@@ -15,24 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var config = builder.Configuration;
 
-builder.Services.AddAuthentication(x =>
-{
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(x =>
-{
-    x.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidIssuer = config["JwtSettings:issuer"],
-        ValidAudience = config["JwtSettings:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JwtSettings:Key"])),
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true
-    };
-});
+builder.Services.AddJwtAuthentication(config);
 
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
@@ -42,7 +27,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
 });
 
 builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Scoped);
@@ -59,6 +44,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
+builder.Services.AddScoped<IErrorBuilder, ErrorBuilder>();
 
 var app = builder.Build();
 
