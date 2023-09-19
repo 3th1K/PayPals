@@ -256,7 +256,9 @@ D:\MyProjects\PayPals\Backend\Identity.Api\bin\Debug\net6.0\runtimes\win\lib\net
 D:\MyProjects\PayPals\Backend\Identity.Api\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\MyProjects\PayPals\Backend\Identity.Api\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 D:\MyProjects\PayPals\Backend\Identity.Api\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\MyProjects\PayPals\Backend\Identity.Api\bin\Debug\net6.0\Common.dll
 D:\MyProjects\PayPals\Backend\Identity.Api\bin\Debug\net6.0\Data.dll
+D:\MyProjects\PayPals\Backend\Identity.Api\bin\Debug\net6.0\Common.pdb
 D:\MyProjects\PayPals\Backend\Identity.Api\bin\Debug\net6.0\Data.pdb
 D:\MyProjects\PayPals\Backend\Identity.Api\obj\Debug\net6.0\Identity.Api.csproj.AssemblyReference.cache
 D:\MyProjects\PayPals\Backend\Identity.Api\obj\Debug\net6.0\Identity.Api.Properties.Resources.resources
@@ -281,5 +283,3 @@ D:\MyProjects\PayPals\Backend\Identity.Api\obj\Debug\net6.0\refint\Identity.Api.
 D:\MyProjects\PayPals\Backend\Identity.Api\obj\Debug\net6.0\Identity.Api.pdb
 D:\MyProjects\PayPals\Backend\Identity.Api\obj\Debug\net6.0\Identity.Api.genruntimeconfig.cache
 D:\MyProjects\PayPals\Backend\Identity.Api\obj\Debug\net6.0\ref\Identity.Api.dll
-D:\MyProjects\PayPals\Backend\Identity.Api\bin\Debug\net6.0\Common.dll
-D:\MyProjects\PayPals\Backend\Identity.Api\bin\Debug\net6.0\Common.pdb

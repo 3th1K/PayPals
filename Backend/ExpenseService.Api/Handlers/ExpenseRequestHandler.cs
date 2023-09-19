@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ExpenseService.Api.Exceptions;
+using Common.Exceptions;
 using ExpenseService.Api.Interfaces;
 using ExpenseService.Api.Models;
 using MediatR;
@@ -29,7 +29,7 @@ namespace ExpenseService.Api.Handlers
                 request.PayerId.ToString() != authenticatedUserId
             )
             {
-                throw new UserNotAuthorizedException();
+                throw new UserForbiddenException("User Is Not Authorised To Access This Content");
             }
             var expenseResponse = await _expenseRepository.CreateExpense(request);
             return expenseResponse;

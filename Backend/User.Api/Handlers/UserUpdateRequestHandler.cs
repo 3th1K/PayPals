@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using LanguageExt.Common;
+using Common.Exceptions;
 using MediatR;
 using UserService.Api.Interfaces;
 using UserService.Api.Models;
 
 namespace UserService.Api.Handlers
 {
-    public class UserUpdateRequestHandler : IRequestHandler<UserUpdateRequest, Result<UserResponse>>
+    public class UserUpdateRequestHandler : IRequestHandler<UserUpdateRequest, UserResponse>
     {
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
@@ -15,9 +15,9 @@ namespace UserService.Api.Handlers
             _mapper = mapper;
             _userRepository = userRepository;
         }
-        public async Task<Result<UserResponse>> Handle(UserUpdateRequest request, CancellationToken cancellationToken)
+        public async Task<UserResponse> Handle(UserUpdateRequest request, CancellationToken cancellationToken)
         {
-            var addedUser = await _userRepository.UpdateUser(request);
+            var addedUser = await _userRepository.UpdateUser(request) ?? throw new UserNotFoundException("Cannot Update The User, User Not Present In Db");
             return addedUser;
         }
     }

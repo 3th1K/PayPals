@@ -6,10 +6,20 @@ namespace Common.Utilities
 {
     public enum Errors
     {
-        ERR_USER_NOT_FOUND,
-        ERR_UNKNOWN,
-        ERR_VALIDATION_FAILED,
-        ERR_USER_NOT_AUTHORIZED
+        //general
+        ERR_UNKNOWN = 100,
+        ERR_VALIDATION_FAILED = 101,
+
+        //user
+        ERR_USER_NOT_AUTHORIZED = 10001,
+        ERR_USER_FORBIDDEN = 10003,
+        ERR_USER_NOT_FOUND = 10002,
+
+        //group
+        ERR_GROUP_NOT_FOUND = 20001,
+
+        //expense
+        ERR_EXPENSE_NOT_FOUND = 30001,
     }
     public class ErrorBuilder : IErrorBuilder
     {
@@ -23,12 +33,26 @@ namespace Common.Utilities
 
             switch (exception.GetType().Name)
             {
-                case "UserNotFoundException":
-                    return Errors.ERR_USER_NOT_FOUND;
+                //general
                 case "ValidationException":
                     return Errors.ERR_VALIDATION_FAILED;
+
+                //user
+                case "UserNotFoundException":
+                    return Errors.ERR_USER_NOT_FOUND;
                 case "UserNotAuthorizedException":
                     return Errors.ERR_USER_NOT_AUTHORIZED;
+                case "UserForbiddenException":
+                    return Errors.ERR_USER_FORBIDDEN;
+
+                //expense
+                case "ExpenseNotFoundException":
+                    return Errors.ERR_EXPENSE_NOT_FOUND;
+
+                //group
+                case "GroupNotFoundException":
+                    return Errors.ERR_GROUP_NOT_FOUND;
+
                 default:
                     return Errors.ERR_UNKNOWN;
             }

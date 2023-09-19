@@ -1,4 +1,4 @@
-﻿using ExpenseService.Api.Exceptions;
+﻿using Common.Exceptions;
 using ExpenseService.Api.Interfaces;
 using ExpenseService.Api.Models;
 using ExpenseService.Api.Queries;
@@ -18,7 +18,7 @@ namespace ExpenseService.Api.Handlers
         }
         public async Task<ExpenseResponse> Handle(GetExpenseDetailsByIdQuery request, CancellationToken cancellationToken)
         {
-            var expense = await _expenseRepository.GetExpenseDetails(request.Id)?? throw new ExpenseNotFoundException();
+            var expense = await _expenseRepository.GetExpenseDetails(request.Id)?? throw new ExpenseNotFoundException("Expense Was Not Found");
             var authenticatedUserId = _httpContextAccessor.HttpContext?.User.FindFirstValue("userId");
             var authenticatedUserRole = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Role);
             if (
@@ -27,7 +27,7 @@ namespace ExpenseService.Api.Handlers
                 expense.Users.SingleOrDefault(u => u.UserId.ToString().Equals(authenticatedUserId)) == null
             )
             {
-                throw new UserNotAuthorizedException();
+                throw new UserForbiddenException("User is not Authorized To Access This Content");
             }
             return expense;
         }

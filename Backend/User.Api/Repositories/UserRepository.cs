@@ -40,7 +40,7 @@ namespace UserService.Api.Repositories
                 var updatedUserInDb = await _context.Users.SingleOrDefaultAsync(u => u.UserId == user.UserId);
                 return _mapper.Map<UserResponse>(updatedUserInDb);
             }
-            return _mapper.Map<UserResponse>(userInDb); ;
+            return _mapper.Map<UserResponse>(userInDb);
         }
 
         public async Task<User> DeleteUser(int id)
@@ -51,7 +51,7 @@ namespace UserService.Api.Repositories
                 _context.Users.Remove(user);
                 await _context.SaveChangesAsync();
             }
-            return user!;
+            return user;
         }
 
         public async Task<IEnumerable<UserResponse>> GetAllUsers()

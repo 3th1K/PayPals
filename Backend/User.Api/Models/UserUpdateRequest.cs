@@ -3,7 +3,7 @@ using MediatR;
 
 namespace UserService.Api.Models
 {
-    public class UserUpdateRequest : IRequest<Result<UserResponse>>
+    public class UserUpdateRequest : IRequest<UserResponse>
     {
         public int UserId { get; set; }
 
