@@ -135,6 +135,12 @@
   <data name="10003_SOLUTION" xml:space="preserve">
     <value>Please Try Again With User With Appropiate Permissions</value>
   </data>
+  <data name="10004_DESCRIPTION" xml:space="preserve">
+    <value>User already exists with this username or email</value>
+  </data>
+  <data name="10004_SOLUTION" xml:space="preserve">
+    <value>Please provide an username or email that is not registered yet</value>
+  </data>
   <data name="100_DESCRIPTION" xml:space="preserve">
     <value>Some Unknown Error Occured</value>
   </data>
@@ -153,6 +159,12 @@
   <data name="20001_SOLUTION" xml:space="preserve">
     <value>Please Create A New Group Or Enter An Existing Group</value>
   </data>
+  <data name="20002_DESCRIPTION" xml:space="preserve">
+    <value>Group already exists with this name</value>
+  </data>
+  <data name="20002_SOLUTION" xml:space="preserve">
+    <value>Please provide an group name that is not yet taken</value>
+  </data>
   <data name="30001_DESCRIPTION" xml:space="preserve">
     <value>Expense is not found or expense is not yet created</value>
   </data>
@@ -162,11 +174,17 @@
   <data name="ERR_EXPENSE_NOT_FOUND" xml:space="preserve">
     <value>30001:Not Found</value>
   </data>
+  <data name="ERR_GROUP_ALREADY_EXISTS" xml:space="preserve">
+    <value>20002:Already Exists</value>
+  </data>
   <data name="ERR_GROUP_NOT_FOUND" xml:space="preserve">
     <value>20001:Not Found</value>
   </data>
   <data name="ERR_UNKNOWN" xml:space="preserve">
     <value>100:Unknown Error</value>
+  </data>
+  <data name="ERR_USER_ALREADY_EXISTS" xml:space="preserve">
+    <value>10004:Already Exists</value>
   </data>
   <data name="ERR_USER_FORBIDDEN" xml:space="preserve">
     <value>10003:User Forbidden</value>

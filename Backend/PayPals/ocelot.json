@@ -144,6 +144,19 @@
       ]
     },
     {
+      //Create group
+      "UpstreamPathTemplate": "/groups/create",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/Groups/create",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5180
+        }
+      ]
+    },
+    {
       //Get group expenses
       "UpstreamPathTemplate": "/groups/{id}/expenses",
       "UpstreamHttpMethod": [ "Get" ],

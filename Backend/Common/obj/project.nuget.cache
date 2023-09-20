@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "qOj/i1Kd53uVvODexy3X/2iSVXfSrfNyNCQAD/fVO+pASzIVnbTrSviqQtrZ+e8q4Mp+zrBfL4LXuQuYXBj5zg==",
+  "dgSpecHash": "AAzkYkA+4ntIR9CRAw/tS3qLEl4Q+UlYw4iDEHNUiQukwNOrMado7rrG4dQ1k2IGGkyLGUyu9Rb9MIeVZ6uciw==",
   "success": true,
   "projectFilePath": "D:\\MyProjects\\PayPals\\Backend\\Common\\Common.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\fluentvalidation\\11.7.1\\fluentvalidation.11.7.1.nupkg.sha512",
+    "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
+    "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

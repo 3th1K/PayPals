@@ -1,6 +1,7 @@
 ﻿using Common.Exceptions;
 using Common.Interfaces;
 using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Common.Utilities
 {
@@ -12,11 +13,14 @@ namespace Common.Utilities
 
         //user
         ERR_USER_NOT_AUTHORIZED = 10001,
-        ERR_USER_FORBIDDEN = 10003,
         ERR_USER_NOT_FOUND = 10002,
+        ERR_USER_FORBIDDEN = 10003,
+        ERR_USER_ALREADY_EXISTS = 10004,
+        
 
         //group
         ERR_GROUP_NOT_FOUND = 20001,
+        ERR_GROUP_ALREADY_EXISTS = 20002,
 
         //expense
         ERR_EXPENSE_NOT_FOUND = 30001,
@@ -44,6 +48,8 @@ namespace Common.Utilities
                     return Errors.ERR_USER_NOT_AUTHORIZED;
                 case "UserForbiddenException":
                     return Errors.ERR_USER_FORBIDDEN;
+                case "UserAlreadyExistsException":
+                    return Errors.ERR_USER_ALREADY_EXISTS;
 
                 //expense
                 case "ExpenseNotFoundException":
@@ -52,6 +58,8 @@ namespace Common.Utilities
                 //group
                 case "GroupNotFoundException":
                     return Errors.ERR_GROUP_NOT_FOUND;
+                case "GroupAlreadyExistsException":
+                    return Errors.ERR_GROUP_ALREADY_EXISTS;
 
                 default:
                     return Errors.ERR_UNKNOWN;
@@ -121,5 +129,7 @@ namespace Common.Utilities
                 Errors = errors ?? new List<string>() { }
             };
         }
+
+        
     }
 }

@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[11.7.1, )"
             },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.1.1, )"
+            },
             "Microsoft.AspNetCore.Authentication": {
               "target": "Package",
               "version": "[2.2.0, )"

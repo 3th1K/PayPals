@@ -1,12 +1,7 @@
 ﻿using FluentValidation;
-using LanguageExt.Common;
 using MediatR;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace UserService.Api.Validations
+namespace Common.Validations
 {
     public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
     {
@@ -29,5 +24,4 @@ namespace UserService.Api.Validations
             return await next();
         }
     }
-
 }

@@ -13,6 +13,6 @@ namespace UserService.Api.Interfaces
         public Task<User> GetUserByUsernameOrEmail(string username, string email);
         public Task<UserResponse> CreateUser(User user);
         public Task<UserResponse> UpdateUser(UserUpdateRequest user);
-        public Task<User> DeleteUser(int id);
+        public Task<User?> DeleteUser(int id);
     }
 }

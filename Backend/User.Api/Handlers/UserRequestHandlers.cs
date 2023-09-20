@@ -23,7 +23,7 @@ namespace UserService.Api.Handlers
             var existingUser = await _userRepository.GetUserByUsernameOrEmail(user.Username, user.Email);
             if (existingUser != null)
             {
-                throw new UserAlreadyExistsException();
+                throw new UserAlreadyExistsException("User already exists with the provided username or email");
             }
 
             var addedUser = await _userRepository.CreateUser(user);

@@ -133,6 +133,24 @@ namespace Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User already exists with this username or email.
+        /// </summary>
+        internal static string _10004_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("10004_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide an username or email that is not registered yet.
+        /// </summary>
+        internal static string _10004_SOLUTION {
+            get {
+                return ResourceManager.GetString("10004_SOLUTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot Validate Request.
         /// </summary>
         internal static string _101_DESCRIPTION {
@@ -169,6 +187,24 @@ namespace Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Group already exists with this name.
+        /// </summary>
+        internal static string _20002_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("20002_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide an group name that is not yet taken.
+        /// </summary>
+        internal static string _20002_SOLUTION {
+            get {
+                return ResourceManager.GetString("20002_SOLUTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expense is not found or expense is not yet created.
         /// </summary>
         internal static string _30001_DESCRIPTION {
@@ -196,6 +232,15 @@ namespace Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 20002:Already Exists.
+        /// </summary>
+        internal static string ERR_GROUP_ALREADY_EXISTS {
+            get {
+                return ResourceManager.GetString("ERR_GROUP_ALREADY_EXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 20001:Not Found.
         /// </summary>
         internal static string ERR_GROUP_NOT_FOUND {
@@ -210,6 +255,15 @@ namespace Common {
         internal static string ERR_UNKNOWN {
             get {
                 return ResourceManager.GetString("ERR_UNKNOWN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 10004:Already Exists.
+        /// </summary>
+        internal static string ERR_USER_ALREADY_EXISTS {
+            get {
+                return ResourceManager.GetString("ERR_USER_ALREADY_EXISTS", resourceCulture);
             }
         }
         
