@@ -1,10 +1,14 @@
 ﻿using Common.Exceptions;
 using Common.Interfaces;
+using Common.Utilities;
 using FluentValidation;
+using GroupService.Api.Models;
 using GroupService.Api.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
+using System.Security.Claims;
 
 namespace GroupService.Api.Controllers
 {
@@ -15,15 +19,39 @@ namespace GroupService.Api.Controllers
         private readonly IMediator _mediator;
         private readonly ILogger<GroupsController> _logger;
         private IErrorBuilder _errorBuilder;
+        private IExceptionHandler _exceptionHandler;
         public GroupsController(
             IMediator mediator, 
             ILogger<GroupsController> logger, 
-            IErrorBuilder errorBuilder)
+            IErrorBuilder errorBuilder,
+            IExceptionHandler exceptionHandler)
         {
             _mediator = mediator;
             _logger = logger;
             _errorBuilder = errorBuilder;
+            _exceptionHandler = exceptionHandler;
         }
+
+        [HttpPost]
+        [Route("create")]
+        [Authorize]
+        public async Task<IActionResult> Create([FromBody] GroupRequest request)
+        {
+            var authenticatedUserId = User.FindFirst("userId")?.Value;
+            var authenticatedUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            if (authenticatedUserRole != "Admin" && authenticatedUserId != request.CreatorId.ToString())
+            {
+                var error = _errorBuilder.BuildError(Errors.ERR_USER_FORBIDDEN);
+                return new ObjectResult(error) { StatusCode = 403 };
+            }
+            return await _exceptionHandler.HandleException<Exception>(async () =>
+            {
+                var data = await _mediator.Send(request);
+                return Ok(data);
+            });
+
+        }
+
 
         [HttpGet]
         [Route("{id}")]
@@ -71,10 +99,10 @@ namespace GroupService.Api.Controllers
                 var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
                 return BadRequest(error);
             }
-            catch (UserNotAuthorizedException ex)
+            catch (UserForbiddenException ex)
             {
                 var error = _errorBuilder.BuildError(ex, ex.Message);
-                return Unauthorized(error);
+                return new ObjectResult(error) { StatusCode = 403 };
             }
             catch (GroupNotFoundException ex)
             {

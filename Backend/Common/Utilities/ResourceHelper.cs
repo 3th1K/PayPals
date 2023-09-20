@@ -26,7 +26,7 @@ namespace Common.Utilities
         {
             try
             {
-                var value = _resourceManager.GetString(key.ToString()).Split(":");
+                var value = _resourceManager.GetString(key.ToString())!.Split(":");
                 var resourceInfo = new ResourceInfo
                 {
                     Name = key.ToString(),

@@ -43,7 +43,7 @@ namespace UserService.Api.Repositories
             return _mapper.Map<UserResponse>(userInDb);
         }
 
-        public async Task<User> DeleteUser(int id)
+        public async Task<User?> DeleteUser(int id)
         {
             var user = await _context.Users.SingleOrDefaultAsync(x => x.UserId == id);
             if (user != null) 

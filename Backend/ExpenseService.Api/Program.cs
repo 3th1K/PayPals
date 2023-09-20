@@ -1,5 +1,6 @@
 using Common.Interfaces;
 using Common.Utilities;
+using Common.Validations;
 using ExpenseService.Api.Interfaces;
 using ExpenseService.Api.Models;
 using ExpenseService.Api.Queries;
@@ -34,9 +35,10 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Sc
 
 builder.Services.AddMediatR(c =>
     c.RegisterServicesFromAssemblyContaining<Program>()
-    .AddBehavior<IPipelineBehavior<ExpenseRequest, ExpenseResponse>, ValidationBehavior<ExpenseRequest, ExpenseResponse>>()
-    .AddBehavior<IPipelineBehavior<GetExpenseDetailsByIdQuery, Expense>, ValidationBehavior<GetExpenseDetailsByIdQuery, Expense>>()
+    //.AddBehavior<IPipelineBehavior<ExpenseRequest, ExpenseResponse>, ValidationBehavior<ExpenseRequest, ExpenseResponse>>()
+    //.AddBehavior<IPipelineBehavior<GetExpenseDetailsByIdQuery, Expense>, ValidationBehavior<GetExpenseDetailsByIdQuery, Expense>>()
 );
+builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 
 builder.Services.AddHttpContextAccessor();

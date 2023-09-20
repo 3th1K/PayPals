@@ -25,7 +25,7 @@ namespace GroupService.Api.Handlers
                 !await _groupRepository.CheckUserExistenceInGroup(request.Id, int.Parse(authenticatedUserId!))
             )
             {
-                throw new UserNotAuthorizedException();
+                throw new UserForbiddenException("User is not allowed to access this content");
             }
 
             try
@@ -35,7 +35,7 @@ namespace GroupService.Api.Handlers
             }
             catch (GroupNotFoundException ex) 
             {
-                throw;
+                throw ex;
             }
             catch (Exception)
             {

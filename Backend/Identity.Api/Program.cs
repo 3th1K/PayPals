@@ -1,5 +1,6 @@
 using Common.Interfaces;
 using Common.Utilities;
+using Common.Validations;
 using Data.Models;
 using FluentValidation;
 using Identity.Api.Commands;
@@ -34,8 +35,9 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Sc
 
 builder.Services.AddMediatR(c =>
     c.RegisterServicesFromAssemblyContaining<Program>()
-    .AddBehavior<IPipelineBehavior<LoginRequestCommand, string>, ValidationBehavior<LoginRequestCommand, string>>()
+    //.AddBehavior<IPipelineBehavior<LoginRequestCommand, string>, ValidationBehavior<LoginRequestCommand, string>>()
 );
+builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 builder.Services.AddScoped<IIdentityRepository, IdentityRepository>();
 builder.Services.AddScoped<IErrorBuilder, ErrorBuilder>();
