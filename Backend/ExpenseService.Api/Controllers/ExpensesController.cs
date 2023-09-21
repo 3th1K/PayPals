@@ -15,12 +15,12 @@ namespace ExpenseService.Api.Controllers
     {
         private readonly ILogger<ExpensesController> _logger;
         private readonly IMediator _mediator;
-        private IErrorBuilder _errorBuilder;
-        public ExpensesController(ILogger<ExpensesController> logger, IMediator mediator, IErrorBuilder errorBuilder)
+        private IExceptionHandler _exceptionHandler;
+        public ExpensesController(ILogger<ExpensesController> logger, IMediator mediator, IExceptionHandler exceptionHandler)
         {
             _logger = logger;
             _mediator = mediator;
-            _errorBuilder = errorBuilder;
+            _exceptionHandler = exceptionHandler;
         }
 
         [HttpPost]
@@ -28,28 +28,10 @@ namespace ExpenseService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> Create([FromBody] ExpenseRequest expenseRequest)
         {
-            try
-            {
+            return await _exceptionHandler.HandleException<Exception>(async () => {
                 var data = await _mediator.Send(expenseRequest);
                 return Ok(data);
-            }
-            catch (ValidationException ex)
-            {
-                var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
-                var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
-                return BadRequest(error);
-            }
-            catch (UserForbiddenException ex)
-            {
-                var error = _errorBuilder.BuildError(ex, ex.Message);
-                return new ObjectResult(error) { StatusCode = 403 };
-            }
-            catch (Exception ex)
-            {
-                var error = _errorBuilder.BuildError(ex, ex.Message);
-                return new ObjectResult(error) { StatusCode = 500 };
-            }
-
+            });
         }
 
         [HttpGet]
@@ -57,33 +39,10 @@ namespace ExpenseService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> GetDetails(int id) 
         {
-            try
-            {
+            return await _exceptionHandler.HandleException<Exception>(async () => {
                 var data = await _mediator.Send(new GetExpenseDetailsByIdQuery(id));
                 return Ok(data);
-            }
-            catch (ValidationException ex)
-            {
-                var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
-                var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
-                return BadRequest(error);
-            }
-            catch (ExpenseNotFoundException ex)
-            {
-                var error = _errorBuilder.BuildError(ex, ex.Message);
-                return NotFound(error);
-            }
-            catch (UserForbiddenException ex)
-            {
-                var error = _errorBuilder.BuildError(ex, ex.Message);
-                return new ObjectResult(error) { StatusCode = 403 };
-            }
-            catch (Exception ex)
-            {
-                var error = _errorBuilder.BuildError(ex, ex.Message);
-                return new ObjectResult(error) { StatusCode = 500 };
-            }
-
+            });
         }
     }
 }
