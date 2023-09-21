@@ -15,43 +15,26 @@ namespace Identity.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly ILogger<IdentityController> _logger;
-        private IErrorBuilder _errorBuilder;
-        public IdentityController(IMediator mediator, ILogger<IdentityController> logger, IErrorBuilder errorBuilder)
+        private IExceptionHandler _exceptionHandler;
+        public IdentityController(
+            IMediator mediator, 
+            ILogger<IdentityController> logger, 
+            IExceptionHandler exceptionHandler
+            )
         {
             _mediator = mediator;
             _logger = logger;  
-            _errorBuilder = errorBuilder;
+            _exceptionHandler = exceptionHandler;
         }
 
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestCommand request)
         {
-            try
-            {
+            return await _exceptionHandler.HandleException<Exception>(async () => {
                 var token = await _mediator.Send(request);
                 return Ok(token);
-            }
-            catch (ValidationException ex)
-            {
-                var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
-                var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
-                return BadRequest(error);
-            }
-            catch (UserNotFoundException ex)
-            {
-                var error = _errorBuilder.BuildError(ex, ex.Message);
-                return NotFound(error);
-            }
-            catch (UserNotAuthorizedException ex)
-            {
-                var error = _errorBuilder.BuildError(ex, ex.Message);
-                return Unauthorized(error);
-            }
-            catch (Exception ex) {
-                var error = _errorBuilder.BuildError(ex, ex.Message);
-                return new ObjectResult(error) { StatusCode = 500 };
-            }
+            });
         }
         [HttpGet]
         [Route("healthcheck")]

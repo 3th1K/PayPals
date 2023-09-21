@@ -18,18 +18,24 @@ namespace GroupService.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly ILogger<GroupsController> _logger;
-        private IErrorBuilder _errorBuilder;
         private IExceptionHandler _exceptionHandler;
+
+
         public GroupsController(
             IMediator mediator, 
             ILogger<GroupsController> logger, 
-            IErrorBuilder errorBuilder,
             IExceptionHandler exceptionHandler)
         {
             _mediator = mediator;
             _logger = logger;
-            _errorBuilder = errorBuilder;
             _exceptionHandler = exceptionHandler;
+        }
+
+        private (string? UserId, string? UserRole) GetAuthenticatedUser()
+        {
+            var userId = User.FindFirst("userId")?.Value;
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+            return (userId, userRole);
         }
 
         [HttpPost]
@@ -37,21 +43,18 @@ namespace GroupService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> Create([FromBody] GroupRequest request)
         {
-            var authenticatedUserId = User.FindFirst("userId")?.Value;
-            var authenticatedUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
-            if (authenticatedUserRole != "Admin" && authenticatedUserId != request.CreatorId.ToString())
-            {
-                var error = _errorBuilder.BuildError(Errors.ERR_USER_FORBIDDEN);
-                return new ObjectResult(error) { StatusCode = 403 };
-            }
             return await _exceptionHandler.HandleException<Exception>(async () =>
             {
+                var (authenticatedUserId, authenticatedUserRole) = GetAuthenticatedUser();
+                if (authenticatedUserRole != "Admin" && authenticatedUserId != request.CreatorId.ToString()) 
+                {
+                    throw new UserForbiddenException("User is not allowed to create this group");
+                }
                 var data = await _mediator.Send(request);
                 return Ok(data);
             });
 
         }
-
 
         [HttpGet]
         [Route("{id}")]
@@ -59,28 +62,11 @@ namespace GroupService.Api.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             
-            try
+            return await _exceptionHandler.HandleException<Exception>(async () =>
             {
                 var data = await _mediator.Send(new GetGroupByIdQuery(id));
                 return Ok(data);
-            }
-            catch (ValidationException ex)
-            {
-                var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
-                var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
-                return BadRequest(error);
-            }
-            catch (UserNotAuthorizedException ex)
-            {
-                var error = _errorBuilder.BuildError(ex, ex.Message);
-                return Unauthorized(error);
-            }
-            catch (GroupNotFoundException ex)
-            {
-                var error = _errorBuilder.BuildError(ex, ex.Message);
-                return NotFound(error);
-            }
-
+            });
         }
 
         [HttpGet]
@@ -88,28 +74,12 @@ namespace GroupService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> GetExpensesById(int id)
         {
-            try
+            return await _exceptionHandler.HandleException<Exception>(async () =>
             {
                 var data = await _mediator.Send(new GetGroupExpensesByIdQuery(id));
                 return Ok(data);
-            }
-            catch (ValidationException ex)
-            {
-                var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
-                var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
-                return BadRequest(error);
-            }
-            catch (UserForbiddenException ex)
-            {
-                var error = _errorBuilder.BuildError(ex, ex.Message);
-                return new ObjectResult(error) { StatusCode = 403 };
-            }
-            catch (GroupNotFoundException ex)
-            {
-                var error = _errorBuilder.BuildError(ex, ex.Message);
-                return NotFound(error);
-            }
-
+            });
+            
         }
 
 

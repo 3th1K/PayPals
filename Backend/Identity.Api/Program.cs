@@ -40,7 +40,7 @@ builder.Services.AddMediatR(c =>
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 builder.Services.AddScoped<IIdentityRepository, IdentityRepository>();
-builder.Services.AddScoped<IErrorBuilder, ErrorBuilder>();
+builder.Services.AddScoped<IExceptionHandler, ExceptionHandler>();
 
 var app = builder.Build();
 app.UseCors("MyPolicy");

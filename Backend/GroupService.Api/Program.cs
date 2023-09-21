@@ -42,7 +42,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddScoped<IGroupRepository, GroupRepository>();
-builder.Services.AddScoped<IErrorBuilder, ErrorBuilder>();
+//builder.Services.AddScoped<IErrorBuilder, ErrorBuilder>();
 builder.Services.AddScoped<IExceptionHandler, ExceptionHandler>();
 
 var app = builder.Build();

@@ -55,7 +55,7 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 //Regester repos
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IErrorBuilder, ErrorBuilder>();
+builder.Services.AddScoped<IExceptionHandler, ExceptionHandler>();
 
 
 var app = builder.Build();
