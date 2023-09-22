@@ -26,7 +26,8 @@ namespace Common.Utilities
         {
             try
             {
-                var value = _resourceManager.GetString(key.ToString())!.Split(":");
+                var valueCheck = _resourceManager.GetString(key.ToString()) ?? throw new KeyNotFoundException();
+                var value = valueCheck.Split(":");
                 var resourceInfo = new ResourceInfo
                 {
                     Name = key.ToString(),
@@ -36,6 +37,15 @@ namespace Common.Utilities
                     ValueSolution = _resourceManager.GetString($"{value[0]}_SOLUTION") ?? string.Empty,
                 };
                 return resourceInfo;
+            }
+            catch (KeyNotFoundException) {
+                return new ResourceInfo
+                {
+                    Name = $"Unrecognised Error : [ {key} ]",
+                    ValueMessage = $"Resource Key Missing: [ {key} ]",
+                    ValueDescription = $"Unable to resolve error description of [ {key} ]",
+                    ValueSolution = $"Internal Server Error, Please Look For Error Resource Key Matching [ {key} ]"
+                };
             }
             catch (MissingManifestResourceException)
             {

@@ -5,7 +5,7 @@ namespace UserService.Api.Interfaces
 {
     public interface IUserRepository
     {
-        public Task<IEnumerable<UserResponse>> GetAllUsers();
+        public Task<List<UserResponse>> GetAllUsers();
         public Task<IEnumerable<User>> GetAllUsersDetails();
         public Task<UserResponse> GetUserById(int id);
         public Task<List<Group>> GetUserGroups(int id);

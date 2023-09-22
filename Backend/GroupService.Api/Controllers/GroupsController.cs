@@ -38,6 +38,17 @@ namespace GroupService.Api.Controllers
             return (userId, userRole);
         }
 
+        [HttpGet]
+        [Route("allgroups")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetAll() {
+            return await _exceptionHandler.HandleException<Exception>(async () =>
+            {
+                var data = await _mediator.Send(new GetAllGroupsQuery());
+                return Ok(data);
+            });
+        }
+
         [HttpPost]
         [Route("create")]
         [Authorize]
@@ -54,6 +65,16 @@ namespace GroupService.Api.Controllers
                 return Ok(data);
             });
 
+        }
+
+        [HttpPut]
+        [Route("update")]
+        [Authorize]
+        public async Task<IActionResult> Update([FromBody] GroupUpdateRequest request) {
+            return await _exceptionHandler.HandleException<Exception>(async () => {
+                var data = await _mediator.Send(request);
+                return Ok(data);
+            });
         }
 
         [HttpGet]
@@ -82,6 +103,25 @@ namespace GroupService.Api.Controllers
             
         }
 
+        [HttpDelete]
+        [Route("delete/{id}")]
+        [Authorize]
+        public async Task<IActionResult> Delete(int id)
+        {
+            return await _exceptionHandler.HandleException<Exception>(async () => {
+                var data = await _mediator.Send(new DeleteGroupQuery(id));
+                return Ok(data);
+            });
+        }
 
+        [HttpPut]
+        [Route("{id}/member")]
+        [Authorize]
+        public async Task<IActionResult> AddMember(int id, [FromBody] GroupMember groupMember) {
+            return await _exceptionHandler.HandleException<Exception>(async ()=> {
+                var data = await _mediator.Send(new AddMemberQuery(id, groupMember.UserId));
+                return Ok(data);
+            });
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace GroupService.Api.Validations
     {
         public GroupRequestValidator()
         {
-            RuleFor(g => g.GroupName).MaximumLength(20).WithMessage("Group Name Cannon Exceed 20 characters");
+            RuleFor(g => g.GroupName).MaximumLength(20).WithMessage("Group Name Cannot Exceed 20 characters");
         }
     }
 }

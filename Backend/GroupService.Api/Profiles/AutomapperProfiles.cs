@@ -12,6 +12,7 @@ namespace GroupService.Api.Profiles
             CreateMap<Group, GroupResponse>();
             CreateMap<GroupRequest, GroupResponse>();
             CreateMap<GroupRequest, Group>();
+            CreateMap<GroupUpdateRequest, Group>();
             CreateMap<UserResponse, User>();
             CreateMap<GroupResponse, Group>();
             CreateMap<Expense, ExpenseResponse>();

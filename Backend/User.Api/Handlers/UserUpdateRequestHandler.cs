@@ -17,8 +17,8 @@ namespace UserService.Api.Handlers
         }
         public async Task<UserResponse> Handle(UserUpdateRequest request, CancellationToken cancellationToken)
         {
-            var addedUser = await _userRepository.UpdateUser(request) ?? throw new UserNotFoundException("Cannot Update The User, User Not Present In Db");
-            return addedUser;
+            var updatedUser = await _userRepository.UpdateUser(request) ?? throw new UserNotFoundException("Cannot Update The User, User Not Present In Db");
+            return updatedUser;
         }
     }
 }

@@ -40,12 +40,6 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Sc
 
 builder.Services.AddMediatR(c => 
     c.RegisterServicesFromAssemblyContaining<Program>()
-    //.AddBehavior<IPipelineBehavior<UserRequest, UserResponse>, ValidationBehavior<UserRequest, UserResponse>>()
-    //.AddBehavior<IPipelineBehavior<UserUpdateRequest, UserResponse>, ValidationBehavior<UserUpdateRequest, UserResponse>>()
-    //.AddBehavior<IPipelineBehavior<GetUserByIdQuery, UserResponse>, ValidationBehavior<GetUserByIdQuery, UserResponse>>()
-    //.AddBehavior<IPipelineBehavior<GetUserGroupsQuery, List<Group>>, ValidationBehavior<GetUserGroupsQuery, List<Group>>>()
-    //.AddBehavior<IPipelineBehavior<GetUserDetailsByIdQuery, User>, ValidationBehavior<GetUserDetailsByIdQuery, User>>()
-    //.AddBehavior<IPipelineBehavior<DeleteUserQuery, User>, ValidationBehavior<DeleteUserQuery, User>>()
 );
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
