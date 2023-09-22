@@ -54,7 +54,7 @@ namespace UserService.Api.Repositories
             return user;
         }
 
-        public async Task<IEnumerable<UserResponse>> GetAllUsers()
+        public async Task<List<UserResponse>> GetAllUsers()
         {
             var users = await _context.Users.ToListAsync();
             var userResponses = _mapper.Map<List<UserResponse>>(users);

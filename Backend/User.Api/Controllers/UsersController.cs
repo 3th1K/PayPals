@@ -29,8 +29,6 @@ namespace UserService.Api.Controllers
             _mediator = mediator;
             _logger = logger;
             _exceptionHandler = exceptionHandler;
-            authenticatedUserId = User.FindFirst("userId")?.Value;
-            authenticatedUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
         }
 
         private (string? UserId, string? UserRole) GetAuthenticatedUser()

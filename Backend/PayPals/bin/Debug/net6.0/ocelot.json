@@ -131,6 +131,19 @@
       ]
     },
     {
+      //Get all groups
+      "UpstreamPathTemplate": "/groups",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Groups/allgroups",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5180
+        }
+      ]
+    },
+    {
       //Get single group
       "UpstreamPathTemplate": "/groups/{id}",
       "UpstreamHttpMethod": [ "Get" ],
@@ -157,10 +170,49 @@
       ]
     },
     {
+      //Update group
+      "UpstreamPathTemplate": "/groups/update",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamPathTemplate": "/api/Groups/update",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5180
+        }
+      ]
+    },
+    {
+      //Delete group
+      "UpstreamPathTemplate": "/groups/delete/{id}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamPathTemplate": "/api/Groups/delete/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5180
+        }
+      ]
+    },
+    {
       //Get group expenses
       "UpstreamPathTemplate": "/groups/{id}/expenses",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/Groups/{id}/expenses",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5180
+        }
+      ]
+    },
+    {
+      //Add member in group
+      "UpstreamPathTemplate": "/groups/{id}/member",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamPathTemplate": "/api/Groups/{id}/member",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {

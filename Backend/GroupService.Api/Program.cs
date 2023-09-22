@@ -32,8 +32,6 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Sc
 
 builder.Services.AddMediatR(c =>
     c.RegisterServicesFromAssemblyContaining<Program>()
-    //.AddBehavior<IPipelineBehavior<GetGroupByIdQuery, GroupResponse>, ValidationBehavior<GetGroupByIdQuery, GroupResponse>>()
-    //.AddBehavior<IPipelineBehavior<GroupRequest, GroupResponse>, ValidationBehavior<GroupRequest, GroupResponse>>()
 );
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
@@ -42,7 +40,6 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddScoped<IGroupRepository, GroupRepository>();
-//builder.Services.AddScoped<IErrorBuilder, ErrorBuilder>();
 builder.Services.AddScoped<IExceptionHandler, ExceptionHandler>();
 
 var app = builder.Build();
