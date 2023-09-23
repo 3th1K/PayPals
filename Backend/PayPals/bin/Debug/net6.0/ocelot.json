@@ -222,6 +222,19 @@
       ]
     },
     {
+      //Delete member from group
+      "UpstreamPathTemplate": "/groups/{id}/member",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamPathTemplate": "/api/Groups/{id}/member",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5180
+        }
+      ]
+    },
+    {
       //get expense by id
       "UpstreamPathTemplate": "/expenses/{id}",
       "UpstreamHttpMethod": [ "Get" ],

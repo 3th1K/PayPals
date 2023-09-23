@@ -18,7 +18,7 @@ namespace GroupService.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly ILogger<GroupsController> _logger;
-        private IExceptionHandler _exceptionHandler;
+        private readonly IExceptionHandler _exceptionHandler;
 
 
         public GroupsController(
@@ -33,6 +33,7 @@ namespace GroupService.Api.Controllers
 
         private (string? UserId, string? UserRole) GetAuthenticatedUser()
         {
+            _logger.LogDebug("Getting Authenticated User");
             var userId = User.FindFirst("userId")?.Value;
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
             return (userId, userRole);
@@ -120,6 +121,17 @@ namespace GroupService.Api.Controllers
         public async Task<IActionResult> AddMember(int id, [FromBody] GroupMember groupMember) {
             return await _exceptionHandler.HandleException<Exception>(async ()=> {
                 var data = await _mediator.Send(new AddMemberQuery(id, groupMember.UserId));
+                return Ok(data);
+            });
+        }
+
+        [HttpDelete]
+        [Route("{id}/member")]
+        [Authorize]
+        public async Task<IActionResult> DeleteMember(int id, [FromBody] GroupMember groupMember)
+        {
+            return await _exceptionHandler.HandleException<Exception>(async () => {
+                var data = await _mediator.Send(new DeleteMemberQuery(id, groupMember.UserId));
                 return Ok(data);
             });
         }

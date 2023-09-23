@@ -107,8 +107,31 @@ namespace GroupService.Api.Repositories
                     throw new UserNotFoundException("Provided user does not exists");
                 }
                 var user = await _context.Users.SingleOrDefaultAsync(u => u.UserId == userId);
-                group.Users.Add(user);
-                await _context.SaveChangesAsync(); 
+                if (user != null)
+                {
+                    group.Users.Add(user);
+                    await _context.SaveChangesAsync();
+                }                
+            }
+            return _mapper.Map<GroupResponse>(group);
+        }
+
+        public async Task<GroupResponse> DeleteMemberFromGroup(int groupId, int userId)
+        {
+            var group = await _context.Groups.Include(g => g.Users).SingleOrDefaultAsync(g => g.GroupId == groupId);
+            if (group != null)
+            {
+                if (!await CheckUserExistenceInGroup(group.GroupId, userId))
+                {
+                    throw new UserNotFoundException("Provided user does not exists in the group");
+                }
+                var user = await _context.Users.SingleOrDefaultAsync(u => u.UserId == userId);
+                if (user != null)
+                {
+                    group.Users.Remove(user);
+                    await _context.SaveChangesAsync();
+                }
+                
             }
             return _mapper.Map<GroupResponse>(group);
         }
