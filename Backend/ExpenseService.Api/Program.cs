@@ -1,17 +1,12 @@
 using Common.Interfaces;
 using Common.Utilities;
 using Common.Validations;
+using Data.Models;
 using ExpenseService.Api.Interfaces;
-using ExpenseService.Api.Models;
-using ExpenseService.Api.Queries;
 using ExpenseService.Api.Repositories;
-using ExpenseService.Api.Validations;
 using FluentValidation;
 using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,8 +30,6 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Sc
 
 builder.Services.AddMediatR(c =>
     c.RegisterServicesFromAssemblyContaining<Program>()
-    //.AddBehavior<IPipelineBehavior<ExpenseRequest, ExpenseResponse>, ValidationBehavior<ExpenseRequest, ExpenseResponse>>()
-    //.AddBehavior<IPipelineBehavior<GetExpenseDetailsByIdQuery, Expense>, ValidationBehavior<GetExpenseDetailsByIdQuery, Expense>>()
 );
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 

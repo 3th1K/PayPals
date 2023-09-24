@@ -17,8 +17,8 @@ namespace UserService.Api.Handlers
         }
         public async Task<List<Group>> Handle(GetUserGroupsQuery request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetUserById(request.Id!) ?? throw new UserNotFoundException("This User is not a valid User");
-            var groups = await _userRepository.GetUserGroups(user.UserId);
+            _ = await _userRepository.GetUserById(request.Id!) ?? throw new UserNotFoundException("This User is not a valid User");
+            var groups = await _userRepository.GetUserGroups(request.Id);
             return groups;
         }
     }

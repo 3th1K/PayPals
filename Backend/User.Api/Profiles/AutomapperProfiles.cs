@@ -12,6 +12,8 @@ namespace UserService.Api.Profiles
             CreateMap<UserRequest,User>();
             CreateMap<UserUpdateRequest, User>();
             CreateMap<User, UserRequest>();
+            CreateMap<Expense, ExpenseResponse>();
+            CreateMap<Group, GroupResponse>();
         }
     }
 }

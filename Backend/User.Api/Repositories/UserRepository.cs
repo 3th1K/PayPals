@@ -104,5 +104,18 @@ namespace UserService.Api.Repositories
             var user = await _context.Users.SingleOrDefaultAsync(x => x.UserId == id);
             return user!;
         }
+
+        public async Task<List<ExpenseResponse>> GetUserExpenses(int id)
+        {
+            _logger.LogDebug("Getting User Expenses");
+            var userExpenses = await _context.Expenses
+                
+                .Include(e => e.Users)
+                .Include(e => e.Group)
+                .Where(e => e.Users
+                    .Any(u => u.UserId == id))
+                .ToListAsync();
+            return _mapper.Map<List<ExpenseResponse>>(userExpenses);
+        }
     }
 }
