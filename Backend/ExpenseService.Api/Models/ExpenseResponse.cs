@@ -1,4 +1,6 @@
-﻿namespace ExpenseService.Api.Models
+﻿using Data.Models;
+
+namespace ExpenseService.Api.Models
 {
     public class ExpenseResponse
     {

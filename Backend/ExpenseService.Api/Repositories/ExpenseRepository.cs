@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Data.Models;
 using ExpenseService.Api.Interfaces;
 using ExpenseService.Api.Models;
 using LanguageExt;

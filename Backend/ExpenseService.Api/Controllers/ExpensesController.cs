@@ -15,7 +15,7 @@ namespace ExpenseService.Api.Controllers
     {
         private readonly ILogger<ExpensesController> _logger;
         private readonly IMediator _mediator;
-        private IExceptionHandler _exceptionHandler;
+        private readonly  IExceptionHandler _exceptionHandler;
         public ExpensesController(ILogger<ExpensesController> logger, IMediator mediator, IExceptionHandler exceptionHandler)
         {
             _logger = logger;
@@ -28,6 +28,7 @@ namespace ExpenseService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> Create([FromBody] ExpenseRequest expenseRequest)
         {
+            _logger.LogInformation("Creating new Expense");
             return await _exceptionHandler.HandleException<Exception>(async () => {
                 var data = await _mediator.Send(expenseRequest);
                 return Ok(data);

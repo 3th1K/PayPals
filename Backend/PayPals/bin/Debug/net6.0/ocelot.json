@@ -79,6 +79,19 @@
       ]
     },
     {
+      //Get user expenses
+      "UpstreamPathTemplate": "/users/{id}/expenses",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Users/{id}/expenses",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5025
+        }
+      ]
+    },
+    {
       //Get single user details
       "UpstreamPathTemplate": "/users/details/{id}",
       "UpstreamHttpMethod": [ "Get" ],

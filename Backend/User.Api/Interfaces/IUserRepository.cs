@@ -9,6 +9,7 @@ namespace UserService.Api.Interfaces
         public Task<IEnumerable<User>> GetAllUsersDetails();
         public Task<UserResponse> GetUserById(int id);
         public Task<List<Group>> GetUserGroups(int id);
+        public Task<List<ExpenseResponse>> GetUserExpenses(int id);
         public Task<User> GetUserDetailsById(int id);
         public Task<User> GetUserByUsernameOrEmail(string username, string email);
         public Task<UserResponse> CreateUser(User user);

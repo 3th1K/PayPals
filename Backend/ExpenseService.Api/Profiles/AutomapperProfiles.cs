@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Data.Models;
 using ExpenseService.Api.Models;
 
 namespace ExpenseService.Api.Profiles

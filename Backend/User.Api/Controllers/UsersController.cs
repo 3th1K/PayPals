@@ -19,7 +19,7 @@ namespace UserService.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly ILogger<UsersController> _logger;
-        private IExceptionHandler _exceptionHandler;
+        private readonly IExceptionHandler _exceptionHandler;
         
         public UsersController(
             IMediator mediator, 
@@ -33,6 +33,7 @@ namespace UserService.Api.Controllers
 
         private (string? UserId, string? UserRole) GetAuthenticatedUser()
         {
+            _logger.LogDebug("Getting Authenticated User");
             var userId = User.FindFirst("userId")?.Value;
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
             return (userId, userRole);
@@ -84,6 +85,7 @@ namespace UserService.Api.Controllers
         
         [HttpGet]
         [Route("{id}/groups")]
+        [Authorize]
         public async Task<IActionResult> GetUserGroups(int id)
         {
             return await _exceptionHandler.HandleException<Exception>(async () =>
@@ -94,6 +96,23 @@ namespace UserService.Api.Controllers
                     throw new UserForbiddenException("User is not allowed to access this content");
                 }
                 var data = await _mediator.Send(new GetUserGroupsQuery(id));
+                return Ok(data);
+            });
+        }
+
+        [HttpGet]
+        [Route("{id}/expenses")]
+        [Authorize]
+        public async Task<IActionResult> GetUserExpenses(int id)
+        {
+            return await _exceptionHandler.HandleException<Exception>(async () =>
+            {
+                var (authenticatedUserId, authenticatedUserRole) = GetAuthenticatedUser();
+                if (authenticatedUserRole != "Admin" && authenticatedUserId != id.ToString())
+                {
+                    throw new UserForbiddenException("User is not allowed to access this content");
+                }
+                var data = await _mediator.Send(new GetUserExpensesQuery(id));
                 return Ok(data);
             });
         }

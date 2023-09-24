@@ -28,7 +28,7 @@ namespace GroupService.Api.Repositories
         public async Task<List<ExpenseResponse>> GetGroupExpensesById(int id)
         {
             var group = await _context.Groups.SingleOrDefaultAsync(g => g.GroupId == id) ?? throw new GroupNotFoundException();
-            var expenses = _context.Expenses.Include(g => g.Users).Where(e => e.GroupId == group.GroupId).ToList();
+            var expenses = await _context.Expenses.Include(g => g.Users).Where(e => e.GroupId == group.GroupId).ToListAsync();
             var expensesResponse = _mapper.Map<List<ExpenseResponse>>(expenses);
             return expensesResponse;
         }
