@@ -3,10 +3,8 @@ using Common.Utilities;
 using Common.Validations;
 using Data.Models;
 using FluentValidation;
-using Identity.Api.Commands;
 using Identity.Api.Interfaces;
 using Identity.Api.Repositories;
-using Identity.Api.Validations;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,7 +29,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Scoped);
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 builder.Services.AddMediatR(c =>
     c.RegisterServicesFromAssemblyContaining<Program>()

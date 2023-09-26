@@ -5,9 +5,5 @@ namespace GroupService.Api.Validations
 {
     public class DeleteGroupQueryValidator : AbstractValidator<DeleteGroupQuery>
     {
-        public DeleteGroupQueryValidator()
-        {
-            
-        }
     }
 }

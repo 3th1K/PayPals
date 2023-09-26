@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Data.Models;
 
@@ -25,9 +26,11 @@ public partial class Expense
 
     public virtual ICollection<ExpenseApproval> ExpenseApprovals { get; set; } = new List<ExpenseApproval>();
 
-    public virtual Group Group { get; set; } = null!;
+    [JsonIgnore]
+    public Group Group { get; set; } = null!;
 
-    public virtual User Payer { get; set; } = null!;
+    [JsonIgnore]
+    public User Payer { get; set; } = null!;
 
     public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using LanguageExt.Common;
 
 namespace UserService.Api.Models
 {

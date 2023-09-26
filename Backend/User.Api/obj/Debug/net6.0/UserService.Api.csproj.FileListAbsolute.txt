@@ -197,3 +197,6 @@ D:\MyProjects\PayPals\Backend\User.Api\obj\Debug\net6.0\refint\UserService.Api.d
 D:\MyProjects\PayPals\Backend\User.Api\obj\Debug\net6.0\UserService.Api.pdb
 D:\MyProjects\PayPals\Backend\User.Api\obj\Debug\net6.0\UserService.Api.genruntimeconfig.cache
 D:\MyProjects\PayPals\Backend\User.Api\obj\Debug\net6.0\ref\UserService.Api.dll
+D:\MyProjects\PayPals\Backend\User.Api\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\MyProjects\PayPals\Backend\User.Api\bin\Debug\net6.0\Castle.Core.dll
+D:\MyProjects\PayPals\Backend\User.Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sjXPwkvVi1y8WD9Q5O1B/3/Q/jH5f4ZseUan3SxaCMP2/DAdFnUC32L5bAILmjwD32CrzeKS+MHSOAVDRECjtg==",
+  "dgSpecHash": "KeT8XZ97MejLbHun+Zwx8ZYgArXErJi0PSBe9SNvpp6IufzkixCcilAYTVJePbZlIbftsd7mAyIPDr9Bgb0TdQ==",
   "success": true,
   "projectFilePath": "D:\\MyProjects\\PayPals\\Backend\\Identity.Api\\Identity.Api.csproj",
   "expectedPackageFiles": [
@@ -72,6 +72,7 @@
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",

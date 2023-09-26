@@ -32,8 +32,6 @@ namespace GroupService.Api.Handlers
             {
                 throw ex;
             }
-            catch (Exception) { throw; }
-            
         }
     }
 }

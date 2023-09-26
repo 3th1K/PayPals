@@ -1,5 +1,4 @@
-﻿using LanguageExt.Common;
-using MediatR;
+﻿using MediatR;
 using UserService.Api.Models;
 
 namespace UserService.Api.Queries

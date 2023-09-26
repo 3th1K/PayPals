@@ -24,9 +24,9 @@ namespace ExpenseService.Api.Models
 
         public virtual ICollection<ExpenseApproval> ExpenseApprovals { get; set; } = new List<ExpenseApproval>();
 
-        public virtual GroupResponse Group { get; set; } = null!;
+        //public virtual GroupResponse Group { get; set; } = null!;
 
-        public virtual UserResponse Payer { get; set; } = null!;
+       // public virtual UserResponse Payer { get; set; } = null!;
 
         public virtual ICollection<UserResponse> Users { get; set; } = new List<UserResponse>();
 

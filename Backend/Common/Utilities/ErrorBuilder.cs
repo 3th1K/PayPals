@@ -1,7 +1,4 @@
-﻿using Common.Exceptions;
-using Common.Interfaces;
-using FluentValidation;
-using Microsoft.AspNetCore.Mvc;
+﻿using Common.Interfaces;
 
 namespace Common.Utilities
 {
@@ -27,12 +24,37 @@ namespace Common.Utilities
     }
     public class ErrorBuilder : IErrorBuilder
     {
-        private IResourceAccessor _accessor;
+        private readonly IResourceAccessor _accessor;
         public ErrorBuilder()
         {
             _accessor = new ResourceAccessor();
         }
 
+        private Error? GetInnerExceptions(Exception? ex)
+        {
+            Error? error = null;
+
+            if (ex != null)
+            {
+                string? errDetails = null;
+                foreach (var er in ex.Data.Keys)
+                {
+                    errDetails += $"[ {er} : {ex.Data[er]} ] ";
+                }
+                error = new Error()
+                {
+                    ErrorCode = ex.GetType().Name,
+                    Code = ex.HResult,
+                    ErrorMessage = ex.Message,
+                    ErrorDescription = ex.StackTrace ?? "No Description Available",
+                    ErrorSolution = ex.HelpLink ?? "Please Debug Through Code",
+                    ErrorDetails = errDetails ?? "No Details Available",
+                    Errors = null,
+                    InnerErrors = GetInnerExceptions(ex.InnerException)
+                };
+            }
+            return error;
+        }
         private Errors GetErrorByException(Exception exception) {
 
             switch (exception.GetType().Name)
@@ -77,7 +99,8 @@ namespace Common.Utilities
                 ErrorMessage = resourceInfo.ValueMessage,
                 ErrorDescription = resourceInfo.ValueDescription,
                 ErrorSolution = resourceInfo.ValueSolution,
-                Errors = errors ?? new List<string>() { }
+                Errors = errors,
+                InnerErrors = GetInnerExceptions(exception.InnerException)
             };
             
         }
@@ -95,7 +118,8 @@ namespace Common.Utilities
                 ErrorDescription = resourceInfo.ValueDescription,
                 ErrorSolution = resourceInfo.ValueSolution,
                 ErrorDetails = details,
-                Errors = errors ?? new List<string>() { }
+                Errors = errors,
+                InnerErrors = GetInnerExceptions(exception.InnerException)
             };
         }
 
@@ -110,7 +134,7 @@ namespace Common.Utilities
                 ErrorMessage = resourceInfo.ValueMessage,
                 ErrorDescription = resourceInfo.ValueDescription,
                 ErrorSolution = resourceInfo.ValueSolution,
-                Errors = errors ?? new List<string>() { }
+                Errors = errors
             };
         }
 
@@ -126,7 +150,7 @@ namespace Common.Utilities
                 ErrorDescription = resourceInfo.ValueDescription,
                 ErrorSolution = resourceInfo.ValueSolution,
                 ErrorDetails = details,
-                Errors = errors ?? new List<string>() { }
+                Errors = errors
             };
         }
 

@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using UserService.Api.Models;
 using UserService.Api.Queries;
 
 namespace UserService.Api.Validations

@@ -1,14 +1,11 @@
-﻿using Common.Exceptions;
+﻿using System.Security.Claims;
+using Common.Exceptions;
 using Common.Interfaces;
-using Common.Utilities;
-using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 using UserService.Api.Models;
 using UserService.Api.Queries;
-
 
 namespace UserService.Api.Controllers
 {
@@ -66,7 +63,7 @@ namespace UserService.Api.Controllers
         }
 
         [HttpGet]
-        [Route("{id}")]
+        [Route("{id:int}")]
         [Authorize]
         public async Task<IActionResult> GetById(int id)
         {
@@ -84,7 +81,7 @@ namespace UserService.Api.Controllers
 
         
         [HttpGet]
-        [Route("{id}/groups")]
+        [Route("{id:int}/groups")]
         [Authorize]
         public async Task<IActionResult> GetUserGroups(int id)
         {

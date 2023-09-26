@@ -5,9 +5,5 @@ namespace UserService.Api.Validations
 {
     public class GetAllUsersQueryValidator : AbstractValidator<GetAllUsersQuery>
     {
-        public GetAllUsersQueryValidator()
-        {
-            
-        }
     }
 }

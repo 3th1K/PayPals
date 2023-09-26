@@ -1,20 +1,13 @@
+using Common;
 using Common.Interfaces;
 using Common.Utilities;
 using Common.Validations;
-using Data;
 using Data.Models;
 using FluentValidation;
-using LanguageExt.Common;
 using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using UserService.Api.Interfaces;
-using UserService.Api.Models;
-using UserService.Api.Queries;
 using UserService.Api.Repositories;
-using UserService.Api.Validations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,10 +26,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
+    //options.UseLazyLoadingProxies();
     options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Scoped);
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 builder.Services.AddMediatR(c => 
     c.RegisterServicesFromAssemblyContaining<Program>()

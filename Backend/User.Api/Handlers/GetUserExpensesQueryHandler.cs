@@ -1,6 +1,5 @@
 ﻿using Common.Exceptions;
 using MediatR;
-using Microsoft.EntityFrameworkCore.Query.Internal;
 using UserService.Api.Interfaces;
 using UserService.Api.Models;
 using UserService.Api.Queries;
@@ -18,7 +17,7 @@ namespace UserService.Api.Handlers
         }
         public async Task<List<ExpenseResponse>> Handle(GetUserExpensesQuery request, CancellationToken cancellationToken)
         {
-            _ = await _userRepository.GetUserById(request.Id!) ?? throw new UserNotFoundException("This User is not a valid User");
+            _ = await _userRepository.GetUserById(request.Id) ?? throw new UserNotFoundException("This User is not a valid User");
             var expenses = await _userRepository.GetUserExpenses(request.Id);
             return expenses;
         }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Common.Utilities
+﻿namespace Common.Utilities
 {
     public class Error
     {
@@ -14,6 +8,8 @@ namespace Common.Utilities
         public string ErrorDescription { get; set; } = string.Empty;
         public string ErrorSolution { get; set; } = string.Empty;
         public string ErrorDetails { get; set; } = string.Empty;
-        public List<string> Errors { get; set; } = new List<string>();
+        public List<string>? Errors { get; set; } = new();
+
+        public Error? InnerErrors { get; set; } = null;
     }
 }

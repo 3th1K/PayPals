@@ -25,12 +25,12 @@ namespace Identity.Api.Commands
             catch (UserNotFoundException ex)
             {
                 _logger.LogError("Cannon Find User In Database");
-                throw ex;
+                throw;
             }
             catch (UserNotAuthorizedException ex)
             {
                 _logger.LogError("Provided Password Is Incorrect");
-                throw ex;
+                throw;
             }
             catch (Exception ex) {
                 _logger.LogError($"Exception Encountered {ex.Message}");

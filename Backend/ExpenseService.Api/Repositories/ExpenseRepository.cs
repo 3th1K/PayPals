@@ -2,9 +2,7 @@
 using Data.Models;
 using ExpenseService.Api.Interfaces;
 using ExpenseService.Api.Models;
-using LanguageExt;
 using Microsoft.EntityFrameworkCore;
-using System.Threading;
 
 namespace ExpenseService.Api.Repositories
 {
@@ -17,6 +15,15 @@ namespace ExpenseService.Api.Repositories
             _context = context;
             _mapper = mapper;            
         }
+
+        public async Task<List<ExpenseResponse>> GetAll()
+        {
+            var expenses = await _context.Expenses
+                .Include(expense => expense.Users)
+                .ToListAsync();
+            return _mapper.Map<List<ExpenseResponse>>(expenses);
+        }
+
         public async Task<ExpenseResponse> CreateExpense(ExpenseRequest request)
         {
 
@@ -43,6 +50,20 @@ namespace ExpenseService.Api.Repositories
 
             return _mapper.Map<ExpenseResponse>(addedExpense);
         }
+
+        public async Task<ExpenseResponse> DeleteExpense(int id)
+        {
+            var expense = await _context.Expenses
+                .Include(e=>e.Users)
+                .SingleOrDefaultAsync(e => e.ExpenseId == id);
+            if (expense != null)
+            {
+                _context.Expenses.Remove(expense);
+                await _context.SaveChangesAsync();
+            }
+            return _mapper.Map<ExpenseResponse>(expense);
+        }
+
 
         public async Task<ExpenseResponse> GetExpenseDetails(int id) 
         {

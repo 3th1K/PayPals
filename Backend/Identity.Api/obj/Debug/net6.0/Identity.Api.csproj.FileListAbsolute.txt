@@ -283,3 +283,4 @@ D:\MyProjects\PayPals\Backend\Identity.Api\obj\Debug\net6.0\refint\Identity.Api.
 D:\MyProjects\PayPals\Backend\Identity.Api\obj\Debug\net6.0\Identity.Api.pdb
 D:\MyProjects\PayPals\Backend\Identity.Api\obj\Debug\net6.0\Identity.Api.genruntimeconfig.cache
 D:\MyProjects\PayPals\Backend\Identity.Api\obj\Debug\net6.0\ref\Identity.Api.dll
+D:\MyProjects\PayPals\Backend\Identity.Api\bin\Debug\net6.0\Newtonsoft.Json.dll

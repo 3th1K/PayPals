@@ -85,3 +85,4 @@ D:\MyProjects\PayPals\Backend\Data\obj\Debug\net6.0\refint\Data.dll
 D:\MyProjects\PayPals\Backend\Data\obj\Debug\net6.0\Data.pdb
 D:\MyProjects\PayPals\Backend\Data\obj\Debug\net6.0\Data.genruntimeconfig.cache
 D:\MyProjects\PayPals\Backend\Data\obj\Debug\net6.0\ref\Data.dll
+D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Newtonsoft.Json.dll

@@ -1,14 +1,11 @@
-﻿using Common.Exceptions;
+﻿using System.Security.Claims;
+using Common.Exceptions;
 using Common.Interfaces;
-using Common.Utilities;
-using FluentValidation;
 using GroupService.Api.Models;
 using GroupService.Api.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client;
-using System.Security.Claims;
 
 namespace GroupService.Api.Controllers
 {

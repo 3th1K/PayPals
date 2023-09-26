@@ -1,9 +1,9 @@
-﻿using AutoMapper;
+﻿using System.Security.Claims;
+using AutoMapper;
 using Common.Exceptions;
 using ExpenseService.Api.Interfaces;
 using ExpenseService.Api.Models;
 using MediatR;
-using System.Security.Claims;
 
 namespace ExpenseService.Api.Handlers
 {

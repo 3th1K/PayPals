@@ -248,6 +248,19 @@
       ]
     },
     {
+      //Get all expenses
+      "UpstreamPathTemplate": "/expenses",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Expenses/allexpenses",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5111
+        }
+      ]
+    },
+    {
       //get expense by id
       "UpstreamPathTemplate": "/expenses/{id}",
       "UpstreamHttpMethod": [ "Get" ],
@@ -265,6 +278,19 @@
       "UpstreamPathTemplate": "/expenses/create",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/Expenses/create",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5111
+        }
+      ]
+    },
+    {
+      //Delete expense
+      "UpstreamPathTemplate": "/expenses/delete/{id}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamPathTemplate": "/api/Expenses/delete/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {

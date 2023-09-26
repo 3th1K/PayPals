@@ -101,3 +101,4 @@ D:\MyProjects\PayPals\Backend\ExpenseService.Api\bin\Debug\net6.0\Common.dll
 D:\MyProjects\PayPals\Backend\ExpenseService.Api\bin\Debug\net6.0\Data.dll
 D:\MyProjects\PayPals\Backend\ExpenseService.Api\bin\Debug\net6.0\Common.pdb
 D:\MyProjects\PayPals\Backend\ExpenseService.Api\bin\Debug\net6.0\Data.pdb
+D:\MyProjects\PayPals\Backend\ExpenseService.Api\bin\Debug\net6.0\Newtonsoft.Json.dll
