@@ -14,7 +14,7 @@ namespace UserService.Api.Validations
                     .NotEmpty().WithMessage($"{property.Name} should not be empty");    
             }
             RuleFor(x => x.Username).Length(5, 50).WithMessage("Username should be of length 5 - 50");
-            RuleFor(x => x.Password).MinimumLength(8).WithMessage("Password Should be mimimum length of 8 characters");
+            RuleFor(x => x.Password).MinimumLength(8).WithMessage("Password Should be minimum length of 8 characters");
         }
     }
 }

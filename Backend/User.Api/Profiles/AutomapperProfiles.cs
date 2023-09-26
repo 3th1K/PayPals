@@ -9,6 +9,9 @@ namespace UserService.Api.Profiles
         public AutomapperProfiles()
         {
             CreateMap<User, UserResponse>();
+            CreateMap<User, UserDetailsResponse>();
+            CreateMap<Expense, UserDetailsExpenseResponse>();
+            CreateMap<Group, UserDetailsGroupResponse>();
             CreateMap<UserRequest,User>();
             CreateMap<UserUpdateRequest, User>();
             CreateMap<User, UserRequest>();

@@ -1,15 +1,14 @@
+using Common;
 using Common.Interfaces;
 using Common.Utilities;
 using Common.Validations;
 using Data.Models;
 using FluentValidation;
 using GroupService.Api.Interfaces;
-using GroupService.Api.Models;
-using GroupService.Api.Queries;
 using GroupService.Api.Repositories;
-using GroupService.Api.Validations;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -28,7 +27,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Scoped);
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 builder.Services.AddMediatR(c =>
     c.RegisterServicesFromAssemblyContaining<Program>()

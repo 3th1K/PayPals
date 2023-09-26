@@ -1,9 +1,9 @@
-﻿using Common.Exceptions;
+﻿using System.Security.Claims;
+using Common.Exceptions;
 using ExpenseService.Api.Interfaces;
 using ExpenseService.Api.Models;
 using ExpenseService.Api.Queries;
 using MediatR;
-using System.Security.Claims;
 
 namespace ExpenseService.Api.Handlers
 {

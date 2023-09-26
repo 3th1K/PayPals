@@ -1,5 +1,4 @@
 ﻿using Common.Exceptions;
-using LanguageExt.Common;
 using MediatR;
 using UserService.Api.Interfaces;
 using UserService.Api.Models;
@@ -16,7 +15,7 @@ namespace UserService.Api.Handlers
         }
         public async Task<UserResponse> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetUserById(request.Id!) ?? throw new UserNotFoundException("User Is Not Present In Database");
+            var user = await _userRepository.GetUserById(request.Id) ?? throw new UserNotFoundException("User Is Not Present In Database");
             return user;
         }
     }

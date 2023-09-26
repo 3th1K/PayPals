@@ -1,11 +1,6 @@
-﻿using Common.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
+using Common.Interfaces;
 
 namespace Common.Utilities
 {
@@ -20,7 +15,8 @@ namespace Common.Utilities
 
     public class ResourceAccessor : IResourceAccessor
     {
-        private static readonly ResourceManager _resourceManager = new ResourceManager("Common.Resource", Assembly.GetExecutingAssembly());
+        private static ResourceManager _resourceManager =
+            new ResourceManager("Common.Resource", Assembly.GetExecutingAssembly());
 
         public ResourceInfo GetResourceInfo(Errors key)
         {

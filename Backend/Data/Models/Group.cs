@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Data.Models;
 
@@ -13,9 +14,12 @@ public partial class Group
 
     public int TotalExpenses { get; set; }
 
-    public virtual User Creator { get; set; } = null!;
+    [JsonIgnore]
+    public User Creator { get; set; } = null!;
 
-    public virtual ICollection<Expense> Expenses { get; set; } = new List<Expense>();
+    //[JsonIgnore]
+    public ICollection<Expense> Expenses { get; set; } = new List<Expense>();
 
-    public virtual ICollection<User> Users { get; set; } = new List<User>();
+    //[JsonIgnore]
+    public ICollection<User> Users { get; set; } = new List<User>();
 }

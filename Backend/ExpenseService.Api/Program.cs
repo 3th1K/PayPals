@@ -1,3 +1,4 @@
+using Common;
 using Common.Interfaces;
 using Common.Utilities;
 using Common.Validations;
@@ -26,7 +27,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddValidatorsFromAssemblyContaining<Program>(ServiceLifetime.Scoped);
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 builder.Services.AddMediatR(c =>
     c.RegisterServicesFromAssemblyContaining<Program>()
@@ -39,7 +40,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
-builder.Services.AddScoped<IErrorBuilder, ErrorBuilder>();
+builder.Services.AddScoped<IExceptionHandler, ExceptionHandler>();
 
 var app = builder.Build();
 

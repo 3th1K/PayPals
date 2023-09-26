@@ -69,11 +69,11 @@ public partial class ApplicationDbContext : DbContext
                     "ExpenseUser",
                     r => r.HasOne<User>().WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("FK__ExpenseUs__UserI__35BCFE0A"),
                     l => l.HasOne<Expense>().WithMany()
                         .HasForeignKey("ExpenseId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("FK__ExpenseUs__Expen__34C8D9D1"),
                     j =>
                     {

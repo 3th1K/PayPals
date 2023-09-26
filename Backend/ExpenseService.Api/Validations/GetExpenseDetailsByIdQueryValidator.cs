@@ -1,5 +1,4 @@
-﻿using ExpenseService.Api.Models;
-using ExpenseService.Api.Queries;
+﻿using ExpenseService.Api.Queries;
 using FluentValidation;
 
 namespace ExpenseService.Api.Validations

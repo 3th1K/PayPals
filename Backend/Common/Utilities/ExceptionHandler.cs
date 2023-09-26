@@ -7,13 +7,14 @@ namespace Common.Utilities
 {
     public class ExceptionHandler : IExceptionHandler
     {
-        private IErrorBuilder _errorBuilder;
+        private readonly IErrorBuilder _errorBuilder;
         public ExceptionHandler()
         {
 
             _errorBuilder = new ErrorBuilder();
 
         }
+
         public async Task<IActionResult> HandleException<TException>(Func<Task<IActionResult>> action) where TException : Exception
         {
             try

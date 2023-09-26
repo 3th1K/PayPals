@@ -1,8 +1,8 @@
-﻿using Common.Exceptions;
+﻿using System.Security.Claims;
+using Common.Exceptions;
 using GroupService.Api.Interfaces;
 using GroupService.Api.Models;
 using MediatR;
-using System.Security.Claims;
 
 namespace GroupService.Api.Handlers
 {
@@ -35,8 +35,6 @@ namespace GroupService.Api.Handlers
                         return updatedGroup;
                     }
                     catch (UserNotFoundException ex) { throw ex; }
-                    catch (Exception) { throw; }
-
                 }
                 throw new UserForbiddenException("User is not allowed to access this content");
             }
@@ -46,7 +44,6 @@ namespace GroupService.Api.Handlers
                 return updatedGroup;
             }
             catch (UserNotFoundException ex) { throw ex; }
-            catch (Exception) { throw; }
         }
     }
 }

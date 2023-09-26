@@ -1,5 +1,4 @@
-﻿using AutoMapper.Configuration.Conventions;
-using GroupService.Api.Models;
+﻿using GroupService.Api.Models;
 using MediatR;
 
 namespace GroupService.Api.Queries

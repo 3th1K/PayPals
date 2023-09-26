@@ -1,11 +1,7 @@
-﻿using Common.Exceptions;
-using Common.Interfaces;
-using Common.Utilities;
-using FluentValidation;
+﻿using Common.Interfaces;
 using Identity.Api.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-
 
 namespace Identity.Api.Controllers
 {
@@ -15,7 +11,7 @@ namespace Identity.Api.Controllers
     {
         private readonly IMediator _mediator;
         private readonly ILogger<IdentityController> _logger;
-        private IExceptionHandler _exceptionHandler;
+        private readonly IExceptionHandler _exceptionHandler;
         public IdentityController(
             IMediator mediator, 
             ILogger<IdentityController> logger, 

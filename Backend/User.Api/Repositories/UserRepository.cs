@@ -1,9 +1,5 @@
 ﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Data;
 using Data.Models;
-using LanguageExt;
-using LanguageExt.Common;
 using Microsoft.EntityFrameworkCore;
 using UserService.Api.Interfaces;
 using UserService.Api.Models;
@@ -96,13 +92,19 @@ namespace UserService.Api.Repositories
                                        // Other properties as needed
                                    })
                                    .ToListAsync();
-            return userGroups ?? new List<Group>() { };
+            return userGroups;
         }
 
-        public async Task<User> GetUserDetailsById(int id)
+        public async Task<UserDetailsResponse> GetUserDetailsById(int id)
         {
-            var user = await _context.Users.SingleOrDefaultAsync(x => x.UserId == id);
-            return user!;
+            var user = await _context.Users
+                //.Include(user => user.Approvals)
+                //.Include(user => user.ExpenseApprovals)
+                .Include(user => user.Expenses)
+                .Include(user => user.Groups)
+                //.Include(u => u.Groups)
+                .SingleOrDefaultAsync(x => x.UserId == id);
+            return _mapper.Map<UserDetailsResponse>(user);
         }
 
         public async Task<List<ExpenseResponse>> GetUserExpenses(int id)

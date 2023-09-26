@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupService.Api", "..\Grou
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseService.Api", "..\ExpenseService.Api\ExpenseService.Api.csproj", "{6F7A8D9D-B63F-4537-A2F9-2A2F10EE1F9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "..\Data\Data.csproj", "{35DE2B6D-0E04-4262-ADBF-BA78748E86D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "..\Data\Data.csproj", "{35DE2B6D-0E04-4262-ADBF-BA78748E86D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\Common\Common.csproj", "{8CC4B415-96C6-48DB-BBB9-D41C690BA360}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "..\Common\Common.csproj", "{8CC4B415-96C6-48DB-BBB9-D41C690BA360}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

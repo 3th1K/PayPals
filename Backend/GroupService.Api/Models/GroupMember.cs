@@ -1,8 +1,6 @@
-﻿using Data.Models;
+﻿namespace GroupService.Api.Models;
 
-namespace GroupService.Api.Models;
-
-public partial class GroupMember
+public class GroupMember
 {
     //public int GroupId { get; set; } = 0;
     public int UserId { get; set; }

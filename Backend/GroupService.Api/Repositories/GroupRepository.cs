@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
+using Common.Exceptions;
+using Data.Models;
 using GroupService.Api.Interfaces;
 using GroupService.Api.Models;
 using Microsoft.EntityFrameworkCore;
-using Common.Exceptions;
-using Data.Models;
-using Microsoft.Identity.Client;
 
 namespace GroupService.Api.Repositories
 {

@@ -1,4 +1,6 @@
-﻿public class UserAlreadyExistsException : Exception
+﻿namespace Common.Exceptions;
+
+public class UserAlreadyExistsException : Exception
 {
     public UserAlreadyExistsException()
     {
