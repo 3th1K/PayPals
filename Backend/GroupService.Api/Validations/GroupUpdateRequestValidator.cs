@@ -1,4 +1,4 @@
-﻿using Data.DTOs.GroupDTOs;
+﻿using Common.DTOs.GroupDTOs;
 using FluentValidation;
 
 namespace GroupService.Api.Validations

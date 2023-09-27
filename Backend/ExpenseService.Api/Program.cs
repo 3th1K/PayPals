@@ -1,11 +1,10 @@
 using Common;
 using Common.Interfaces;
+using Common.Profiles;
 using Common.Utilities;
 using Common.Validations;
-using Data.Models;
-using Data.Profiles;
-using ExpenseService.Api.Interfaces;
-using ExpenseService.Api.Repositories;
+using Data;
+using Data.Repositories;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +41,7 @@ builder.Services.AddAutoMapper(typeof(AutomapperProfiles).Assembly);
 
 builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 builder.Services.AddScoped<IExceptionHandler, ExceptionHandler>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 

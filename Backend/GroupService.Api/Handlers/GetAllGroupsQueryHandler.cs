@@ -1,5 +1,5 @@
-﻿using Data.DTOs.GroupDTOs;
-using GroupService.Api.Interfaces;
+﻿using Common.DTOs.GroupDTOs;
+using Common.Interfaces;
 using GroupService.Api.Queries;
 using MediatR;
 

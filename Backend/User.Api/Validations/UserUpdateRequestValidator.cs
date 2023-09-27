@@ -1,4 +1,4 @@
-﻿using Data.DTOs.UserDTOs;
+﻿using Common.DTOs.UserDTOs;
 using FluentValidation;
 
 namespace UserService.Api.Validations

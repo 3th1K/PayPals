@@ -1,14 +1,13 @@
 using Common;
 using Common.Interfaces;
+using Common.Profiles;
 using Common.Utilities;
 using Common.Validations;
-using Data.Models;
-using Data.Profiles;
+using Data;
+using Data.Repositories;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using UserService.Api.Interfaces;
-using UserService.Api.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

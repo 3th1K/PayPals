@@ -1,4 +1,4 @@
-﻿using Data.DTOs.GroupDTOs;
+﻿using Common.DTOs.GroupDTOs;
 using MediatR;
 
 namespace GroupService.Api.Queries

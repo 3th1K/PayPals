@@ -4,6 +4,6 @@ namespace Common.Interfaces
 {
     public interface IResourceAccessor
     {
-        public ResourceInfo GetResourceInfo(Errors key);
+        public ResourceInfo GetResourceInfo(ErrorType key);
     }
 }

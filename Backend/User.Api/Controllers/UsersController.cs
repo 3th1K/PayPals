@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
+using Common.DTOs.UserDTOs;
 using Common.Exceptions;
 using Common.Interfaces;
-using Data.DTOs.UserDTOs;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

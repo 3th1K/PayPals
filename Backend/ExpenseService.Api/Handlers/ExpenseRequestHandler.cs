@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
+using Common.DTOs.ExpenseDTOs;
 using Common.Exceptions;
-using Data.DTOs.ExpenseDTOs;
-using ExpenseService.Api.Interfaces;
+using Common.Interfaces;
 using MediatR;
 
 namespace ExpenseService.Api.Handlers

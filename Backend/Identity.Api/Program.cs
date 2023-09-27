@@ -1,7 +1,7 @@
 using Common.Interfaces;
 using Common.Utilities;
 using Common.Validations;
-using Data.Models;
+using Data;
 using FluentValidation;
 using Identity.Api.Interfaces;
 using Identity.Api.Repositories;

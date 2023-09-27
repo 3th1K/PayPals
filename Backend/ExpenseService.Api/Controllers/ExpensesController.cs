@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
+using Common.DTOs.ExpenseDTOs;
 using Common.Exceptions;
 using Common.Interfaces;
-using Data.DTOs.ExpenseDTOs;
 using ExpenseService.Api.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

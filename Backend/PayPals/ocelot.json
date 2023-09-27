@@ -311,6 +311,19 @@
           "Port": 5111
         }
       ]
+    },
+    {
+      //Submit expense approval
+      "UpstreamPathTemplate": "/expenses/{id}/approvals/submit",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/Expenses/{id}/approvals/submit",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5111
+        }
+      ]
     }
   ],
   "GlobalConfiguration": {

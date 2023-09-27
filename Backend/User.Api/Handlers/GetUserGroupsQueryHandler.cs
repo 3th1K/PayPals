@@ -1,7 +1,7 @@
 ﻿using Common.Exceptions;
-using Data.Models;
+using Common.Interfaces;
+using Common.Models;
 using MediatR;
-using UserService.Api.Interfaces;
 using UserService.Api.Queries;
 
 namespace UserService.Api.Handlers

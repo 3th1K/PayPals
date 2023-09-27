@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using Common.DTOs.GroupDTOs;
 using Common.Exceptions;
-using Data.DTOs.GroupDTOs;
-using Data.Models;
-using GroupService.Api.Interfaces;
+using Common.Interfaces;
+using Common.Models;
 using MediatR;
 
 namespace GroupService.Api.Handlers

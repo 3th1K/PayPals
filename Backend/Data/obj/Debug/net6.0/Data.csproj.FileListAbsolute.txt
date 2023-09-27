@@ -89,3 +89,8 @@ D:\MyProjects\PayPals\Backend\Data\obj\Debug\net6.0\ref\Data.dll
 D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\AutoMapper.dll
 D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\MediatR.Contracts.dll
+D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\FluentValidation.dll
+D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\MediatR.dll
+D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Common.dll
+D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Common.pdb
