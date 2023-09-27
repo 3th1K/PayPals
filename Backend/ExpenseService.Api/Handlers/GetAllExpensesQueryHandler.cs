@@ -1,6 +1,5 @@
-﻿
-using ExpenseService.Api.Interfaces;
-using ExpenseService.Api.Models;
+﻿using Common.DTOs.ExpenseDTOs;
+using Common.Interfaces;
 using ExpenseService.Api.Queries;
 using MediatR;
 

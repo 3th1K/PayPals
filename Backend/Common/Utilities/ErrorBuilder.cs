@@ -2,26 +2,6 @@
 
 namespace Common.Utilities
 {
-    public enum Errors
-    {
-        //general
-        ERR_UNKNOWN = 100,
-        ERR_VALIDATION_FAILED = 101,
-
-        //user
-        ERR_USER_NOT_AUTHORIZED = 10001,
-        ERR_USER_NOT_FOUND = 10002,
-        ERR_USER_FORBIDDEN = 10003,
-        ERR_USER_ALREADY_EXISTS = 10004,
-        
-
-        //group
-        ERR_GROUP_NOT_FOUND = 20001,
-        ERR_GROUP_ALREADY_EXISTS = 20002,
-
-        //expense
-        ERR_EXPENSE_NOT_FOUND = 30001,
-    }
     public class ErrorBuilder : IErrorBuilder
     {
         private readonly IResourceAccessor _accessor;
@@ -43,8 +23,9 @@ namespace Common.Utilities
                 }
                 error = new Error()
                 {
-                    ErrorCode = ex.GetType().Name,
-                    Code = ex.HResult,
+                    ErrorType = ex.GetType().Name,
+                    ErrorCode = ex.HResult,
+                    StatusCode = 500,
                     ErrorMessage = ex.Message,
                     ErrorDescription = ex.StackTrace ?? "No Description Available",
                     ErrorSolution = ex.HelpLink ?? "Please Debug Through Code",
@@ -55,36 +36,40 @@ namespace Common.Utilities
             }
             return error;
         }
-        private Errors GetErrorByException(Exception exception) {
+        private ErrorType GetErrorByException(Exception exception) {
 
             switch (exception.GetType().Name)
             {
                 //general
                 case "ValidationException":
-                    return Errors.ERR_VALIDATION_FAILED;
+                    return ErrorType.ErrValidationFailed;
 
                 //user
                 case "UserNotFoundException":
-                    return Errors.ERR_USER_NOT_FOUND;
+                    return ErrorType.ErrUserNotFound;
                 case "UserNotAuthorizedException":
-                    return Errors.ERR_USER_NOT_AUTHORIZED;
+                    return ErrorType.ErrUserNotAuthorized;
                 case "UserForbiddenException":
-                    return Errors.ERR_USER_FORBIDDEN;
+                    return ErrorType.ErrUserForbidden;
                 case "UserAlreadyExistsException":
-                    return Errors.ERR_USER_ALREADY_EXISTS;
+                    return ErrorType.ErrUserAlreadyExists;
 
                 //expense
                 case "ExpenseNotFoundException":
-                    return Errors.ERR_EXPENSE_NOT_FOUND;
+                    return ErrorType.ErrExpenseNotFound;
 
                 //group
                 case "GroupNotFoundException":
-                    return Errors.ERR_GROUP_NOT_FOUND;
+                    return ErrorType.ErrGroupNotFound;
                 case "GroupAlreadyExistsException":
-                    return Errors.ERR_GROUP_ALREADY_EXISTS;
+                    return ErrorType.ErrGroupAlreadyExists;
+
+                //approval
+                case "ApprovalAlreadyExistsException":
+                    return ErrorType.ErrApprovalAlreadyExists;
 
                 default:
-                    return Errors.ERR_UNKNOWN;
+                    return ErrorType.ErrUnknown;
             }
         }
         public Error BuildError(Exception exception, List<string>? errors = null)
@@ -94,8 +79,9 @@ namespace Common.Utilities
             
             return new Error
             {
-                ErrorCode = resourceInfo.Name,
-                Code = resourceInfo.ValueCode,
+                ErrorType = resourceInfo.Name,
+                ErrorCode = resourceInfo.ValueCode,
+                StatusCode = 500,
                 ErrorMessage = resourceInfo.ValueMessage,
                 ErrorDescription = resourceInfo.ValueDescription,
                 ErrorSolution = resourceInfo.ValueSolution,
@@ -112,8 +98,9 @@ namespace Common.Utilities
 
             return new Error
             {
-                ErrorCode = resourceInfo.Name,
-                Code = resourceInfo.ValueCode,
+                ErrorType = resourceInfo.Name,
+                ErrorCode = resourceInfo.ValueCode,
+                StatusCode = 500,
                 ErrorMessage = resourceInfo.ValueMessage,
                 ErrorDescription = resourceInfo.ValueDescription,
                 ErrorSolution = resourceInfo.ValueSolution,
@@ -123,14 +110,15 @@ namespace Common.Utilities
             };
         }
 
-        public Error BuildError(Errors error, List<string>? errors = null)
+        public Error BuildError(ErrorType error, List<string>? errors = null)
         {
             var resourceInfo = _accessor.GetResourceInfo(error);
-
+            var statusCode = Error.GetHttpStatusCode(error);
             return new Error
             {
-                ErrorCode = resourceInfo.Name,
-                Code = resourceInfo.ValueCode,
+                ErrorType = resourceInfo.Name,
+                ErrorCode = resourceInfo.ValueCode,
+                StatusCode = statusCode,
                 ErrorMessage = resourceInfo.ValueMessage,
                 ErrorDescription = resourceInfo.ValueDescription,
                 ErrorSolution = resourceInfo.ValueSolution,
@@ -138,14 +126,15 @@ namespace Common.Utilities
             };
         }
 
-        public Error BuildError(Errors error, string details, List<string>? errors = null)
+        public Error BuildError(ErrorType error, string details, List<string>? errors = null)
         {
             var resourceInfo = _accessor.GetResourceInfo(error);
-
+            var statusCode = Error.GetHttpStatusCode(error);
             return new Error
             {
-                ErrorCode = resourceInfo.Name,
-                Code = resourceInfo.ValueCode,
+                ErrorType = resourceInfo.Name,
+                ErrorCode = resourceInfo.ValueCode,
+                StatusCode = statusCode,
                 ErrorMessage = resourceInfo.ValueMessage,
                 ErrorDescription = resourceInfo.ValueDescription,
                 ErrorSolution = resourceInfo.ValueSolution,

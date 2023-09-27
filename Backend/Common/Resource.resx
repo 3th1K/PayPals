@@ -171,31 +171,40 @@
   <data name="30001_SOLUTION" xml:space="preserve">
     <value>Please create a new expense or enter an existing expense</value>
   </data>
-  <data name="ERR_EXPENSE_NOT_FOUND" xml:space="preserve">
+  <data name="40001_DESCRIPTION" xml:space="preserve">
+    <value>Approval already exists for the expense</value>
+  </data>
+  <data name="40001_SOLUTION" xml:space="preserve">
+    <value>Please create a new approval</value>
+  </data>
+  <data name="ErrApprovalAlreadyExists" xml:space="preserve">
+    <value>40001:Already Exists</value>
+  </data>
+  <data name="ErrExpenseNotFound" xml:space="preserve">
     <value>30001:Not Found</value>
   </data>
-  <data name="ERR_GROUP_ALREADY_EXISTS" xml:space="preserve">
+  <data name="ErrGroupAlreadyExists" xml:space="preserve">
     <value>20002:Already Exists</value>
   </data>
-  <data name="ERR_GROUP_NOT_FOUND" xml:space="preserve">
+  <data name="ErrGroupNotFound" xml:space="preserve">
     <value>20001:Not Found</value>
   </data>
-  <data name="ERR_UNKNOWN" xml:space="preserve">
+  <data name="ErrUnknown" xml:space="preserve">
     <value>100:Unknown Error</value>
   </data>
-  <data name="ERR_USER_ALREADY_EXISTS" xml:space="preserve">
+  <data name="ErrUserAlreadyExists" xml:space="preserve">
     <value>10004:Already Exists</value>
   </data>
-  <data name="ERR_USER_FORBIDDEN" xml:space="preserve">
+  <data name="ErrUserForbidden" xml:space="preserve">
     <value>10003:User Forbidden</value>
   </data>
-  <data name="ERR_USER_NOT_AUTHORIZED" xml:space="preserve">
+  <data name="ErrUserNotAuthorized" xml:space="preserve">
     <value>10001:Authentication Error</value>
   </data>
-  <data name="ERR_USER_NOT_FOUND" xml:space="preserve">
+  <data name="ErrUserNotFound" xml:space="preserve">
     <value>10002:Not Found</value>
   </data>
-  <data name="ERR_VALIDATION_FAILED" xml:space="preserve">
+  <data name="ErrValidationFailed" xml:space="preserve">
     <value>101:Validation Failed</value>
   </data>
 </root>

@@ -1,11 +1,11 @@
 using Common;
 using Common.Interfaces;
+using Common.Profiles;
 using Common.Utilities;
 using Common.Validations;
-using Data.Models;
+using Data;
+using Data.Repositories;
 using FluentValidation;
-using GroupService.Api.Interfaces;
-using GroupService.Api.Repositories;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,7 +36,7 @@ builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavi
 
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddAutoMapper(typeof(AutomapperProfiles).Assembly);
 
 builder.Services.AddScoped<IGroupRepository, GroupRepository>();
 builder.Services.AddScoped<IExceptionHandler, ExceptionHandler>();

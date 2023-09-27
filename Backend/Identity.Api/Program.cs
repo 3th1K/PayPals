@@ -1,7 +1,7 @@
 using Common.Interfaces;
 using Common.Utilities;
 using Common.Validations;
-using Data.Models;
+using Data;
 using FluentValidation;
 using Identity.Api.Interfaces;
 using Identity.Api.Repositories;
@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
     options.AddPolicy("MyPolicy",
-        builder => {
-            builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        corsPolicyBuilder => {
+            corsPolicyBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
         }
     )
 );

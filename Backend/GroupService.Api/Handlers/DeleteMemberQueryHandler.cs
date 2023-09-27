@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
+using Common.DTOs.GroupDTOs;
 using Common.Exceptions;
-using GroupService.Api.Interfaces;
-using GroupService.Api.Models;
+using Common.Interfaces;
 using GroupService.Api.Queries;
 using MediatR;
 
@@ -36,7 +36,7 @@ namespace GroupService.Api.Handlers
             }
             catch (UserNotFoundException ex)
             {
-                throw ex;
+                throw;
             }
         }
     }

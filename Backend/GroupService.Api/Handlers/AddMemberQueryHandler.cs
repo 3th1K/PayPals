@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
+using Common.DTOs.GroupDTOs;
 using Common.Exceptions;
-using GroupService.Api.Interfaces;
-using GroupService.Api.Models;
+using Common.Interfaces;
 using GroupService.Api.Queries;
 using MediatR;
 
@@ -25,7 +25,7 @@ namespace GroupService.Api.Handlers
             var authenticatedUserRole = _contextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Role);
 
             if (authenticatedUserRole != "Admin" && authenticatedUserId != group.CreatorId.ToString()) {
-                throw new UserForbiddenException("User dont have rights to add users in this group");
+                throw new UserForbiddenException("User do not have rights to add users in this group");
             }
 
             try
@@ -35,7 +35,7 @@ namespace GroupService.Api.Handlers
             }
             catch (UserNotFoundException ex)
             {
-                throw ex;
+                throw;
             }
         }
     }

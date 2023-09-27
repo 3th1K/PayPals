@@ -19,6 +19,7 @@ namespace Common.Validations
             {
                 throw new ValidationException(validationResult.Errors);
                 //return new Result<TResponse>(new ValidationException(validationResult.Errors));
+                //return new ApiResult<TResponse>(Errors.ErrValidationException, validationResult.Errors.Select(error => error.ErrorMessage).ToList())
             }
 
             return await next();

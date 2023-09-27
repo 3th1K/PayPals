@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
+using Common.DTOs.ExpenseDTOs;
 using Common.Exceptions;
-using ExpenseService.Api.Interfaces;
-using ExpenseService.Api.Models;
+using Common.Interfaces;
 using ExpenseService.Api.Queries;
 using MediatR;
 

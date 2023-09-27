@@ -1,4 +1,4 @@
-﻿using Data.Models;
+﻿using Common.Models;
 using MediatR;
 
 namespace UserService.Api.Queries

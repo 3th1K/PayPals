@@ -68,6 +68,13 @@ namespace Common.Utilities
                 var error = _errorBuilder.BuildError(ex, ex.Message);
                 return new ObjectResult(error) { StatusCode = 404 };
             }
+
+            //approval exceptions
+            catch (ApprovalAlreadyExistsException ex)
+            {
+                var error = _errorBuilder.BuildError(ex, ex.Message);
+                return new ObjectResult(error) { StatusCode = 409 };
+            }
             catch (Exception ex)
             {
                 var error = _errorBuilder.BuildError(ex, ex.Message);

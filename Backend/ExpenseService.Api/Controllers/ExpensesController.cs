@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
+using Common.DTOs.ExpenseDTOs;
 using Common.Exceptions;
 using Common.Interfaces;
-using ExpenseService.Api.Models;
 using ExpenseService.Api.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -57,6 +57,18 @@ namespace ExpenseService.Api.Controllers
             });
         }
 
+        [HttpPut]
+        [Route("update")]
+        [Authorize]
+        public async Task<IActionResult> Update([FromBody] ExpenseUpdateRequest expenseUpdateRequest)
+        {
+            return await _exceptionHandler.HandleException<Exception>(async () =>
+            {
+                var data = await _mediator.Send(expenseUpdateRequest);
+                return Ok(data);
+            });
+        }
+
         [HttpGet]
         [Route("{id:int}")]
         [Authorize]
@@ -80,6 +92,18 @@ namespace ExpenseService.Api.Controllers
                     throw new UserForbiddenException("User is not allowed to access this content");
                 }
                 var data = await _mediator.Send(new DeleteExpenseByIdQuery(id));
+                return Ok(data);
+            });
+        }
+
+        [HttpPost]
+        [Route("{id:int}/approvals/submit")]
+        public async Task<IActionResult> SubmitApproval([FromRoute]int id, [FromBody] ExpenseApprovalRequest request)
+        {
+            return await _exceptionHandler.HandleException<Exception>(async () =>
+            {
+                request.ExpenseId = id;
+                var data = await _mediator.Send(request);
                 return Ok(data);
             });
         }

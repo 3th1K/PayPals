@@ -1,13 +1,13 @@
 using Common;
 using Common.Interfaces;
+using Common.Profiles;
 using Common.Utilities;
 using Common.Validations;
-using Data.Models;
+using Data;
+using Data.Repositories;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using UserService.Api.Interfaces;
-using UserService.Api.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,7 +38,7 @@ builder.Services.AddMediatR(c =>
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddAutoMapper(typeof(AutomapperProfiles).Assembly);
 
 
 //Regester repos

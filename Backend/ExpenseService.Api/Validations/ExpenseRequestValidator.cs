@@ -1,4 +1,4 @@
-﻿using ExpenseService.Api.Models;
+﻿using Common.DTOs.ExpenseDTOs;
 using FluentValidation;
 
 namespace ExpenseService.Api.Validations

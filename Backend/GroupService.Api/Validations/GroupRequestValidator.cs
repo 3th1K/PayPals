@@ -1,5 +1,5 @@
-﻿using FluentValidation;
-using GroupService.Api.Models;
+﻿using Common.DTOs.GroupDTOs;
+using FluentValidation;
 
 namespace GroupService.Api.Validations
 {

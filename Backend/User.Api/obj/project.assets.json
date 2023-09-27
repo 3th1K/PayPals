@@ -2074,6 +2074,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "AutoMapper": "12.0.1",
           "FluentValidation": "11.7.1",
           "MediatR": "12.1.1",
           "Microsoft.AspNetCore.Authentication": "2.2.0",
@@ -2093,6 +2094,10 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "AutoMapper": "12.0.1",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
+          "Common": "1.0.0",
+          "MediatR.Contracts": "2.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.11",
           "Newtonsoft.Json": "13.0.1",
           "Swashbuckle.AspNetCore": "6.5.0"

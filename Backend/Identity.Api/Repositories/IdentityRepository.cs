@@ -2,7 +2,8 @@
 using System.Security.Claims;
 using System.Text;
 using Common.Exceptions;
-using Data.Models;
+using Common.Models;
+using Data;
 using Identity.Api.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
