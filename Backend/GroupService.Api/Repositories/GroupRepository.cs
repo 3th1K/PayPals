@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using Common.Exceptions;
+using Data.DTOs.ExpenseDTOs;
+using Data.DTOs.GroupDTOs;
 using Data.Models;
 using GroupService.Api.Interfaces;
-using GroupService.Api.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GroupService.Api.Repositories

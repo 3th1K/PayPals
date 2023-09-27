@@ -1,7 +1,7 @@
 ﻿using Common.Exceptions;
+using Data.DTOs.ExpenseDTOs;
 using MediatR;
 using UserService.Api.Interfaces;
-using UserService.Api.Models;
 using UserService.Api.Queries;
 
 namespace UserService.Api.Handlers

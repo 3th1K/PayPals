@@ -5,9 +5,5 @@ namespace ExpenseService.Api.Validations
 {
     public class GetAllExpensesQueryValidator : AbstractValidator<GetAllExpensesQuery>
     {
-        public GetAllExpensesQueryValidator()
-        {
-            
-        }
     }
 }

@@ -1,6 +1,5 @@
-﻿
+﻿using Data.DTOs.UserDTOs;
 using MediatR;
-using UserService.Api.Models;
 
 namespace UserService.Api.Queries
 {

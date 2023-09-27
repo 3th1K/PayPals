@@ -3,6 +3,7 @@ using Common.Interfaces;
 using Common.Utilities;
 using Common.Validations;
 using Data.Models;
+using Data.Profiles;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -38,7 +39,7 @@ builder.Services.AddMediatR(c =>
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddAutoMapper(typeof(AutomapperProfiles).Assembly);
 
 
 //Regester repos

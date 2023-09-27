@@ -287,6 +287,19 @@
       ]
     },
     {
+      //Update expense
+      "UpstreamPathTemplate": "/expenses/update",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamPathTemplate": "/api/Expenses/update",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5111
+        }
+      ]
+    },
+    {
       //Delete expense
       "UpstreamPathTemplate": "/expenses/delete/{id}",
       "UpstreamHttpMethod": [ "Delete" ],

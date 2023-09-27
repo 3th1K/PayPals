@@ -1,7 +1,7 @@
-﻿using Data.Models;
+﻿using Data.DTOs.UserDTOs;
 using MediatR;
 
 namespace UserService.Api.Queries
 {
-    public record GetAllUsersDetailsQuery : IRequest<IEnumerable<User>>;
+    public record GetAllUsersDetailsQuery : IRequest<IEnumerable<UserDetailsResponse>>;
 }

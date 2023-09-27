@@ -3,6 +3,7 @@ using Common.Interfaces;
 using Common.Utilities;
 using Common.Validations;
 using Data.Models;
+using Data.Profiles;
 using ExpenseService.Api.Interfaces;
 using ExpenseService.Api.Repositories;
 using FluentValidation;
@@ -37,7 +38,7 @@ builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavi
 
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddAutoMapper(typeof(AutomapperProfiles).Assembly);
 
 builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 builder.Services.AddScoped<IExceptionHandler, ExceptionHandler>();

@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Common.Exceptions;
+using Data.DTOs.ExpenseDTOs;
 using GroupService.Api.Interfaces;
-using GroupService.Api.Models;
 using GroupService.Api.Queries;
 using MediatR;
 
@@ -35,7 +35,7 @@ namespace GroupService.Api.Handlers
             }
             catch (GroupNotFoundException ex) 
             {
-                throw ex;
+                throw;
             }
         }
     }

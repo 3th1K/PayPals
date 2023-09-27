@@ -37,6 +37,7 @@ D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Microsoft.OpenApi.dll
 D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
 D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Mono.TextTemplating.dll
+D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Newtonsoft.Json.dll
 D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -85,4 +86,6 @@ D:\MyProjects\PayPals\Backend\Data\obj\Debug\net6.0\refint\Data.dll
 D:\MyProjects\PayPals\Backend\Data\obj\Debug\net6.0\Data.pdb
 D:\MyProjects\PayPals\Backend\Data\obj\Debug\net6.0\Data.genruntimeconfig.cache
 D:\MyProjects\PayPals\Backend\Data\obj\Debug\net6.0\ref\Data.dll
-D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\AutoMapper.dll
+D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\MediatR.Contracts.dll

@@ -1,5 +1,5 @@
-﻿using MediatR;
-using UserService.Api.Models;
+﻿using Data.DTOs.ExpenseDTOs;
+using MediatR;
 
 namespace UserService.Api.Queries
 {

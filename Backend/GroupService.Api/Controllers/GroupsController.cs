@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Common.Exceptions;
 using Common.Interfaces;
-using GroupService.Api.Models;
+using Data.DTOs.GroupDTOs;
 using GroupService.Api.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

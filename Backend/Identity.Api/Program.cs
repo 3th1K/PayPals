@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
     options.AddPolicy("MyPolicy",
-        builder => {
-            builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        corsPolicyBuilder => {
+            corsPolicyBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
         }
     )
 );

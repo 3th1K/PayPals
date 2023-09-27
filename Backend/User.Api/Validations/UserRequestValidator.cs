@@ -1,5 +1,5 @@
-﻿using FluentValidation;
-using UserService.Api.Models;
+﻿using Data.DTOs.UserDTOs;
+using FluentValidation;
 
 namespace UserService.Api.Validations
 {

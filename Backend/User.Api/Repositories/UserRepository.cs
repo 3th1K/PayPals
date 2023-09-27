@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
+using Data.DTOs.ExpenseDTOs;
+using Data.DTOs.UserDTOs;
 using Data.Models;
 using Microsoft.EntityFrameworkCore;
 using UserService.Api.Interfaces;
-using UserService.Api.Models;
 
 namespace UserService.Api.Repositories
 {
@@ -56,10 +57,13 @@ namespace UserService.Api.Repositories
             var userResponses = _mapper.Map<List<UserResponse>>(users);
             return userResponses;
         }
-        public async Task<IEnumerable<User>> GetAllUsersDetails()
+        public async Task<IEnumerable<UserDetailsResponse>> GetAllUsersDetails()
         {
-            var users = await _context.Users.ToListAsync();
-            return users;
+            var users = await _context.Users
+                .Include(user => user.Expenses)
+                .Include(user => user.Groups)
+                .ToListAsync();
+            return _mapper.Map<List<UserDetailsResponse>>(users);
         }
 
         public async Task<UserResponse> GetUserById(int id)

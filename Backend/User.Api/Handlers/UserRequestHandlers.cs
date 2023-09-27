@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Common.Exceptions;
+using Data.DTOs.UserDTOs;
 using Data.Models;
 using MediatR;
 using UserService.Api.Interfaces;
-using UserService.Api.Models;
 
 namespace UserService.Api.Handlers
 {

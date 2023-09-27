@@ -1,5 +1,4 @@
-﻿using Data.Models;
-using ExpenseService.Api.Models;
+﻿using Data.DTOs.ExpenseDTOs;
 
 namespace ExpenseService.Api.Interfaces
 {
@@ -7,7 +6,10 @@ namespace ExpenseService.Api.Interfaces
     {
         public Task<List<ExpenseResponse>> GetAll();
         public Task<ExpenseResponse> CreateExpense(ExpenseRequest request);
+        public Task<ExpenseResponse> UpdateExpense(ExpenseUpdateRequest request);
         public Task<ExpenseResponse> DeleteExpense(int id);
         public Task<ExpenseResponse> GetExpenseDetails(int id);
+        public Task<ExpenseResponse> SubmitExpenseApproval(ExpenseApprovalRequest request);
+        public Task<ExpenseApprovalResponse> GetExpenseApprovals(int id);
     }
 }

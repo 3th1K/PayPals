@@ -1,12 +1,13 @@
-﻿using Data.Models;
-using UserService.Api.Models;
+﻿using Data.DTOs.ExpenseDTOs;
+using Data.DTOs.UserDTOs;
+using Data.Models;
 
 namespace UserService.Api.Interfaces
 {
     public interface IUserRepository
     {
         public Task<List<UserResponse>> GetAllUsers();
-        public Task<IEnumerable<User>> GetAllUsersDetails();
+        public Task<IEnumerable<UserDetailsResponse>> GetAllUsersDetails();
         public Task<UserResponse> GetUserById(int id);
         public Task<List<Group>> GetUserGroups(int id);
         public Task<List<ExpenseResponse>> GetUserExpenses(int id);

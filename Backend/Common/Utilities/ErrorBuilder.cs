@@ -5,22 +5,25 @@ namespace Common.Utilities
     public enum Errors
     {
         //general
-        ERR_UNKNOWN = 100,
-        ERR_VALIDATION_FAILED = 101,
+        ErrUnknown = 100,
+        ErrValidationFailed = 101,
 
         //user
-        ERR_USER_NOT_AUTHORIZED = 10001,
-        ERR_USER_NOT_FOUND = 10002,
-        ERR_USER_FORBIDDEN = 10003,
-        ERR_USER_ALREADY_EXISTS = 10004,
+        ErrUserNotAuthorized = 10001,
+        ErrUserNotFound = 10002,
+        ErrUserForbidden = 10003,
+        ErrUserAlreadyExists = 10004,
         
 
         //group
-        ERR_GROUP_NOT_FOUND = 20001,
-        ERR_GROUP_ALREADY_EXISTS = 20002,
+        ErrGroupNotFound = 20001,
+        ErrGroupAlreadyExists = 20002,
 
         //expense
-        ERR_EXPENSE_NOT_FOUND = 30001,
+        ErrExpenseNotFound = 30001,
+
+        //approval
+        ErrApprovalAlreadyExists = 40001
     }
     public class ErrorBuilder : IErrorBuilder
     {
@@ -61,30 +64,34 @@ namespace Common.Utilities
             {
                 //general
                 case "ValidationException":
-                    return Errors.ERR_VALIDATION_FAILED;
+                    return Errors.ErrValidationFailed;
 
                 //user
                 case "UserNotFoundException":
-                    return Errors.ERR_USER_NOT_FOUND;
+                    return Errors.ErrUserNotFound;
                 case "UserNotAuthorizedException":
-                    return Errors.ERR_USER_NOT_AUTHORIZED;
+                    return Errors.ErrUserNotAuthorized;
                 case "UserForbiddenException":
-                    return Errors.ERR_USER_FORBIDDEN;
+                    return Errors.ErrUserForbidden;
                 case "UserAlreadyExistsException":
-                    return Errors.ERR_USER_ALREADY_EXISTS;
+                    return Errors.ErrUserAlreadyExists;
 
                 //expense
                 case "ExpenseNotFoundException":
-                    return Errors.ERR_EXPENSE_NOT_FOUND;
+                    return Errors.ErrExpenseNotFound;
 
                 //group
                 case "GroupNotFoundException":
-                    return Errors.ERR_GROUP_NOT_FOUND;
+                    return Errors.ErrGroupNotFound;
                 case "GroupAlreadyExistsException":
-                    return Errors.ERR_GROUP_ALREADY_EXISTS;
+                    return Errors.ErrGroupAlreadyExists;
+
+                //approval
+                case "ApprovalAlreadyExists":
+                    return Errors.ErrApprovalAlreadyExists;
 
                 default:
-                    return Errors.ERR_UNKNOWN;
+                    return Errors.ErrUnknown;
             }
         }
         public Error BuildError(Exception exception, List<string>? errors = null)

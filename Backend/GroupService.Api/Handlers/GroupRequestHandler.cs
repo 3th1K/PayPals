@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Common.Exceptions;
+using Data.DTOs.GroupDTOs;
 using Data.Models;
 using GroupService.Api.Interfaces;
-using GroupService.Api.Models;
 using MediatR;
 
 namespace GroupService.Api.Handlers
@@ -30,7 +30,7 @@ namespace GroupService.Api.Handlers
             }
             catch (UserNotFoundException ex)
             {
-                throw ex;
+                throw;
             }
         }
     }

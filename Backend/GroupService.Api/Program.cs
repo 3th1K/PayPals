@@ -3,6 +3,7 @@ using Common.Interfaces;
 using Common.Utilities;
 using Common.Validations;
 using Data.Models;
+using Data.Profiles;
 using FluentValidation;
 using GroupService.Api.Interfaces;
 using GroupService.Api.Repositories;
@@ -36,7 +37,7 @@ builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavi
 
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddAutoMapper(typeof(AutomapperProfiles).Assembly);
 
 builder.Services.AddScoped<IGroupRepository, GroupRepository>();
 builder.Services.AddScoped<IExceptionHandler, ExceptionHandler>();

@@ -8,15 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.CodeDom.Compiler;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Resources;
-using System.Runtime.CompilerServices;
-
 namespace Common {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -24,27 +19,27 @@ namespace Common {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
-    [DebuggerNonUserCode()]
-    [CompilerGenerated()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resource {
         
-        private static ResourceManager resourceMan;
+        private static global::System.Resources.ResourceManager resourceMan;
         
-        private static CultureInfo resourceCulture;
+        private static global::System.Globalization.CultureInfo resourceCulture;
         
-        [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resource() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static ResourceManager ResourceManager {
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
-                if (ReferenceEquals(resourceMan, null)) {
-                    ResourceManager temp = new ResourceManager("Common.Resource", typeof(Resource).Assembly);
+                if (object.ReferenceEquals(resourceMan, null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Common.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -55,8 +50,8 @@ namespace Common {
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static CultureInfo Culture {
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -228,83 +223,110 @@ namespace Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approval already exists for the expense.
+        /// </summary>
+        internal static string _40001_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("40001_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please create a new approval.
+        /// </summary>
+        internal static string _40001_SOLUTION {
+            get {
+                return ResourceManager.GetString("40001_SOLUTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 40001:Already Exists.
+        /// </summary>
+        internal static string ErrApprovalAlreadyExists {
+            get {
+                return ResourceManager.GetString("ErrApprovalAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 30001:Not Found.
         /// </summary>
-        internal static string ERR_EXPENSE_NOT_FOUND {
+        internal static string ErrExpenseNotFound {
             get {
-                return ResourceManager.GetString("ERR_EXPENSE_NOT_FOUND", resourceCulture);
+                return ResourceManager.GetString("ErrExpenseNotFound", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 20002:Already Exists.
         /// </summary>
-        internal static string ERR_GROUP_ALREADY_EXISTS {
+        internal static string ErrGroupAlreadyExists {
             get {
-                return ResourceManager.GetString("ERR_GROUP_ALREADY_EXISTS", resourceCulture);
+                return ResourceManager.GetString("ErrGroupAlreadyExists", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 20001:Not Found.
         /// </summary>
-        internal static string ERR_GROUP_NOT_FOUND {
+        internal static string ErrGroupNotFound {
             get {
-                return ResourceManager.GetString("ERR_GROUP_NOT_FOUND", resourceCulture);
+                return ResourceManager.GetString("ErrGroupNotFound", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 100:Unknown Error.
         /// </summary>
-        internal static string ERR_UNKNOWN {
+        internal static string ErrUnknown {
             get {
-                return ResourceManager.GetString("ERR_UNKNOWN", resourceCulture);
+                return ResourceManager.GetString("ErrUnknown", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 10004:Already Exists.
         /// </summary>
-        internal static string ERR_USER_ALREADY_EXISTS {
+        internal static string ErrUserAlreadyExists {
             get {
-                return ResourceManager.GetString("ERR_USER_ALREADY_EXISTS", resourceCulture);
+                return ResourceManager.GetString("ErrUserAlreadyExists", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 10003:User Forbidden.
         /// </summary>
-        internal static string ERR_USER_FORBIDDEN {
+        internal static string ErrUserForbidden {
             get {
-                return ResourceManager.GetString("ERR_USER_FORBIDDEN", resourceCulture);
+                return ResourceManager.GetString("ErrUserForbidden", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 10001:Authentication Error.
         /// </summary>
-        internal static string ERR_USER_NOT_AUTHORIZED {
+        internal static string ErrUserNotAuthorized {
             get {
-                return ResourceManager.GetString("ERR_USER_NOT_AUTHORIZED", resourceCulture);
+                return ResourceManager.GetString("ErrUserNotAuthorized", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 10002:Not Found.
         /// </summary>
-        internal static string ERR_USER_NOT_FOUND {
+        internal static string ErrUserNotFound {
             get {
-                return ResourceManager.GetString("ERR_USER_NOT_FOUND", resourceCulture);
+                return ResourceManager.GetString("ErrUserNotFound", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to 101:Validation Failed.
         /// </summary>
-        internal static string ERR_VALIDATION_FAILED {
+        internal static string ErrValidationFailed {
             get {
-                return ResourceManager.GetString("ERR_VALIDATION_FAILED", resourceCulture);
+                return ResourceManager.GetString("ErrValidationFailed", resourceCulture);
             }
         }
     }

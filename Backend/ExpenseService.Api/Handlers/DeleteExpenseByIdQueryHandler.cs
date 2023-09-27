@@ -1,6 +1,6 @@
 ﻿using Common.Exceptions;
+using Data.DTOs.ExpenseDTOs;
 using ExpenseService.Api.Interfaces;
-using ExpenseService.Api.Models;
 using ExpenseService.Api.Queries;
 using MediatR;
 

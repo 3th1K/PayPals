@@ -1,5 +1,6 @@
-﻿using Data.Models;
-using GroupService.Api.Models;
+﻿using Data.DTOs.ExpenseDTOs;
+using Data.DTOs.GroupDTOs;
+using Data.Models;
 
 namespace GroupService.Api.Interfaces
 {

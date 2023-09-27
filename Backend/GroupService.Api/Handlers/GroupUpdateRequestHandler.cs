@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Common.Exceptions;
+using Data.DTOs.GroupDTOs;
 using GroupService.Api.Interfaces;
-using GroupService.Api.Models;
 using MediatR;
 
 namespace GroupService.Api.Handlers
@@ -34,7 +34,7 @@ namespace GroupService.Api.Handlers
                         var updatedGroup = await _groupRepository.UpdateGroup(request) ?? throw new GroupNotFoundException("Cannot Update The Group, Group Not Present In Db");
                         return updatedGroup;
                     }
-                    catch (UserNotFoundException ex) { throw ex; }
+                    catch (UserNotFoundException ex) { throw; }
                 }
                 throw new UserForbiddenException("User is not allowed to access this content");
             }
@@ -43,7 +43,7 @@ namespace GroupService.Api.Handlers
                 var updatedGroup = await _groupRepository.UpdateGroup(request) ?? throw new GroupNotFoundException("Cannot Update The Group, Group Not Present In Db");
                 return updatedGroup;
             }
-            catch (UserNotFoundException ex) { throw ex; }
+            catch (UserNotFoundException ex) { throw; }
         }
     }
 }

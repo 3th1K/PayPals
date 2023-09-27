@@ -1,4 +1,4 @@
-﻿using ExpenseService.Api.Models;
+﻿using Data.DTOs.ExpenseDTOs;
 using MediatR;
 
 namespace ExpenseService.Api.Queries

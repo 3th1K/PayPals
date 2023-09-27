@@ -1,10 +1,10 @@
 ﻿using System.Security.Claims;
 using Common.Exceptions;
 using Common.Interfaces;
+using Data.DTOs.UserDTOs;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using UserService.Api.Models;
 using UserService.Api.Queries;
 
 namespace UserService.Api.Controllers
@@ -148,8 +148,10 @@ namespace UserService.Api.Controllers
                 return Ok(data);
             });
         }
+
         [HttpPut]
         [Route("update")]
+        [Authorize]
         public async Task<IActionResult> Update([FromBody] UserUpdateRequest request) 
         {
             return await _exceptionHandler.HandleException<Exception>(async () => {

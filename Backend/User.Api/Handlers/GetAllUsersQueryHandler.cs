@@ -1,6 +1,6 @@
-﻿using MediatR;
+﻿using Data.DTOs.UserDTOs;
+using MediatR;
 using UserService.Api.Interfaces;
-using UserService.Api.Models;
 using UserService.Api.Queries;
 
 namespace UserService.Api.Handlers

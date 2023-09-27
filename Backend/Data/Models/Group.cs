@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Data.Models;
 
@@ -17,9 +15,7 @@ public partial class Group
     [JsonIgnore]
     public User Creator { get; set; } = null!;
 
-    //[JsonIgnore]
-    public ICollection<Expense> Expenses { get; set; } = new List<Expense>();
+    public virtual ICollection<Expense> Expenses { get; set; } = new List<Expense>();
 
-    //[JsonIgnore]
-    public ICollection<User> Users { get; set; } = new List<User>();
+    public virtual ICollection<User> Users { get; set; } = new List<User>();
 }
