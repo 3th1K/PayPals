@@ -41,12 +41,14 @@ namespace UserService.Api.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAll()
         {
-            return await _exceptionHandler.HandleException<Exception>(async () =>
-            {
-                var users = await _mediator.Send(new GetAllUsersQuery());
-                return Ok(users);
-            });
-            
+            //return await _exceptionHandler.HandleException<Exception>(async () =>
+            //{
+            //    var users = await _mediator.Send(new GetAllUsersQuery());
+            //    return Ok(users);
+            //});
+            var data = await _mediator.Send(new GetAllUsersQuery());
+            return data.Result;
+
         }
 
         [HttpGet]
@@ -143,10 +145,8 @@ namespace UserService.Api.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () => {
-                var data = await _mediator.Send(new DeleteUserQuery(id));
-                return Ok(data);
-            });
+            var data = await _mediator.Send(new DeleteUserQuery(id));
+            return data.Result;
         }
 
         [HttpPut]

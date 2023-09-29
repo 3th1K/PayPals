@@ -1,3 +1,6 @@
+using Common.Interfaces;
+using Common.Utilities;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,7 +16,7 @@ builder.Services.AddSwaggerGen();
 //});
 
 var app = builder.Build();
-
+builder.Services.AddScoped<IExceptionHandler, ExceptionHandler>();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

@@ -75,13 +75,14 @@ namespace Common.Utilities
         public Error BuildError(Exception exception, List<string>? errors = null)
         {
             var error = GetErrorByException(exception);
+            var statusCode = Error.GetHttpStatusCode(error);
             var resourceInfo = _accessor.GetResourceInfo(error);
             
             return new Error
             {
                 ErrorType = resourceInfo.Name,
                 ErrorCode = resourceInfo.ValueCode,
-                StatusCode = 500,
+                StatusCode = statusCode,
                 ErrorMessage = resourceInfo.ValueMessage,
                 ErrorDescription = resourceInfo.ValueDescription,
                 ErrorSolution = resourceInfo.ValueSolution,
@@ -95,12 +96,13 @@ namespace Common.Utilities
         {
             var error = GetErrorByException(exception);
             var resourceInfo = _accessor.GetResourceInfo(error);
+            var statusCode = Error.GetHttpStatusCode(error);
 
             return new Error
             {
                 ErrorType = resourceInfo.Name,
                 ErrorCode = resourceInfo.ValueCode,
-                StatusCode = 500,
+                StatusCode = statusCode,
                 ErrorMessage = resourceInfo.ValueMessage,
                 ErrorDescription = resourceInfo.ValueDescription,
                 ErrorSolution = resourceInfo.ValueSolution,

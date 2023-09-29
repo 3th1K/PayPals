@@ -94,3 +94,4 @@ D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\MediatR.dll
 D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Common.dll
 D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\Common.pdb
+D:\MyProjects\PayPals\Backend\Data\bin\Debug\net6.0\LanguageExt.Core.dll

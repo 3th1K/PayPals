@@ -1,3 +1,4 @@
+using Azure;
 using Common.Interfaces;
 using Common.Utilities;
 using Common.Validations;
@@ -33,7 +34,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 builder.Services.AddMediatR(c =>
     c.RegisterServicesFromAssemblyContaining<Program>()
-    //.AddBehavior<IPipelineBehavior<LoginRequestCommand, string>, ValidationBehavior<LoginRequestCommand, string>>()
+//.AddBehavior<IPipelineBehavior<LoginRequestCommand, string>, ValidationBehavior<LoginRequestCommand, string>>()
 );
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
