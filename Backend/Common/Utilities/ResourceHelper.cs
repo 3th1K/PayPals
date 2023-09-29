@@ -18,7 +18,7 @@ namespace Common.Utilities
         private static ResourceManager _resourceManager =
             new ResourceManager("Common.Resource", Assembly.GetExecutingAssembly());
 
-        public ResourceInfo GetResourceInfo(Errors key)
+        public ResourceInfo GetResourceInfo(ErrorType key)
         {
             try
             {

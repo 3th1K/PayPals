@@ -27,10 +27,12 @@ namespace Identity.Api.Controllers
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestCommand request)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () => {
-                var token = await _mediator.Send(request);
-                return Ok(token);
-            });
+            //return await _exceptionHandler.HandleException<Exception>(async () => {
+            //    var token = await _mediator.Send(request);
+            //    return Ok(token);
+            //});
+            var token = await _mediator.Send(request);
+            return token.Result;
         }
         [HttpGet]
         [Route("healthcheck")]

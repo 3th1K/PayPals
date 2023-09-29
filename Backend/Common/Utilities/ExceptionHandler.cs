@@ -15,7 +15,7 @@ namespace Common.Utilities
 
         }
 
-        public async Task<IActionResult> HandleException<TException>(Func<Task<IActionResult>> action) where TException : Exception
+        public async Task<T> HandleException<T>(Func<Task<T>> action) where T : notnull
         {
             try
             {
@@ -25,7 +25,8 @@ namespace Common.Utilities
             {
                 var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
                 var error = _errorBuilder.BuildError(ex, ex.Message, validationErrors);
-                return new ObjectResult(error) { StatusCode = 400 };
+                return new ObjectResult(error) { StatusCode = error.StatusCode };
+
             }
 
             //User exceptions
@@ -81,5 +82,10 @@ namespace Common.Utilities
                 return new ObjectResult(error) { StatusCode = 500 };
             }
         }
+
+        
+
+
+
     }
 }

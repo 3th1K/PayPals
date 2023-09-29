@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Common.DTOs.ExpenseDTOs;
 using Common.DTOs.UserDTOs;
+using Common.Exceptions;
 using Common.Interfaces;
 using Common.Models;
 using Microsoft.EntityFrameworkCore;

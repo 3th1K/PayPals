@@ -13,8 +13,6 @@ namespace Identity.Api.Validations
         }
         private bool BeAValidUsername(string username)
         {
-            // Here, you can write custom logic to check if the username is not an integer.
-            // You can use int.TryParse() to check if the string can be parsed as an integer.
 
             if (int.TryParse(username, out _))
             {
