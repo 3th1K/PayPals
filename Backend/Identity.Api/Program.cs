@@ -1,4 +1,3 @@
-using Azure;
 using Common.Interfaces;
 using Common.Utilities;
 using Common.Validations;

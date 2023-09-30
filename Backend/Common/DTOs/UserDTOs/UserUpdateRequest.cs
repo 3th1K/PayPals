@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using Common.Utilities;
+using MediatR;
 
 namespace Common.DTOs.UserDTOs
 {
-    public class UserUpdateRequest : IRequest<UserResponse>
+    public class UserUpdateRequest : IRequest<ApiResult<UserResponse>>
     {
         public int UserId { get; set; }
 

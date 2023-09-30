@@ -2,12 +2,13 @@
 using Common.DTOs.ExpenseDTOs;
 using Common.Exceptions;
 using Common.Interfaces;
+using Common.Utilities;
 using GroupService.Api.Queries;
 using MediatR;
 
 namespace GroupService.Api.Handlers
 {
-    public class GetGroupExpensesByIdQueryHandler : IRequestHandler<GetGroupExpensesByIdQuery, List<ExpenseResponse>>
+    public class GetGroupExpensesByIdQueryHandler : IRequestHandler<GetGroupExpensesByIdQuery, ApiResult<List<ExpenseResponse>>>
     {
         private readonly IGroupRepository _groupRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -16,7 +17,7 @@ namespace GroupService.Api.Handlers
             _groupRepository = groupRepository;
             _httpContextAccessor = httpContextAccessor;
         }
-        public async Task<List<ExpenseResponse>> Handle(GetGroupExpensesByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ApiResult<List<ExpenseResponse>>> Handle(GetGroupExpensesByIdQuery request, CancellationToken cancellationToken)
         {
             var authenticatedUserId = _httpContextAccessor.HttpContext?.User.FindFirstValue("userId");
             var authenticatedUserRole = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Role);
@@ -25,18 +26,16 @@ namespace GroupService.Api.Handlers
                 !await _groupRepository.CheckUserExistenceInGroup(request.Id, int.Parse(authenticatedUserId!))
             )
             {
-                throw new UserForbiddenException("User is not allowed to access this content");
+                return ApiResult<List<ExpenseResponse>>.Failure(ErrorType.ErrUserForbidden, "User is not allowed to access this content");
             }
 
-            try
+            var group = _groupRepository.GetGroupById(request.Id);
+            if (group == null)
             {
-                var expenses = await _groupRepository.GetGroupExpensesById(request.Id);
-                return expenses;
+                return ApiResult<List<ExpenseResponse>>.Failure(ErrorType.ErrGroupNotFound, "Group not found, provided group id is invalid");
             }
-            catch (GroupNotFoundException ex) 
-            {
-                throw;
-            }
+            var expenses = await _groupRepository.GetGroupExpensesById(request.Id);
+            return ApiResult<List<ExpenseResponse>>.Success(expenses);
         }
     }
 }

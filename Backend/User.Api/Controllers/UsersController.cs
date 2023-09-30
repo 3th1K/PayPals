@@ -2,6 +2,7 @@
 using Common.DTOs.UserDTOs;
 using Common.Exceptions;
 using Common.Interfaces;
+using Common.Utilities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -41,14 +42,8 @@ namespace UserService.Api.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAll()
         {
-            //return await _exceptionHandler.HandleException<Exception>(async () =>
-            //{
-            //    var users = await _mediator.Send(new GetAllUsersQuery());
-            //    return Ok(users);
-            //});
             var data = await _mediator.Send(new GetAllUsersQuery());
             return data.Result;
-
         }
 
         [HttpGet]
@@ -56,12 +51,18 @@ namespace UserService.Api.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllDetails()
         {
-            return await _exceptionHandler.HandleException<Exception>(async () =>
+            try
             {
                 var users = await _mediator.Send(new GetAllUsersDetailsQuery());
                 return Ok(users);
-            });
+            }
+            catch (ApiException ex)
+            {
+                return ex.Result;
+            }
+
             
+
         }
 
         [HttpGet]
@@ -69,34 +70,30 @@ namespace UserService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> GetById(int id)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () =>
+            var (authenticatedUserId, authenticatedUserRole) = GetAuthenticatedUser();
+            if (authenticatedUserRole != "Admin" && authenticatedUserId != id.ToString())
             {
-                var (authenticatedUserId, authenticatedUserRole) = GetAuthenticatedUser();
-                if (authenticatedUserRole != "Admin" && authenticatedUserId != id.ToString())
-                {
-                    throw new UserForbiddenException("User is not allowed to access this content");
-                }
-                var data = await _mediator.Send(new GetUserByIdQuery(id));
-                return Ok(data);
-            });
+                return ApiResult<Error>
+                    .Failure(ErrorType.ErrUserForbidden, "User is not allowed to access this content").Result;
+            }
+            var data = await _mediator.Send(new GetUserByIdQuery(id));
+            return data.Result;
         }
 
-        
+
         [HttpGet]
         [Route("{id:int}/groups")]
         [Authorize]
         public async Task<IActionResult> GetUserGroups(int id)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () =>
+            var (authenticatedUserId, authenticatedUserRole) = GetAuthenticatedUser();
+            if (authenticatedUserRole != "Admin" && authenticatedUserId != id.ToString())
             {
-                var (authenticatedUserId, authenticatedUserRole) = GetAuthenticatedUser();
-                if (authenticatedUserRole != "Admin" && authenticatedUserId != id.ToString())
-                {
-                    throw new UserForbiddenException("User is not allowed to access this content");
-                }
-                var data = await _mediator.Send(new GetUserGroupsQuery(id));
-                return Ok(data);
-            });
+                return ApiResult<Error>
+                    .Failure(ErrorType.ErrUserForbidden, "User is not allowed to access this content").Result;
+            }
+            var data = await _mediator.Send(new GetUserGroupsQuery(id));
+            return data.Result;
         }
 
         [HttpGet]
@@ -104,16 +101,14 @@ namespace UserService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> GetUserExpenses(int id)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () =>
+            var (authenticatedUserId, authenticatedUserRole) = GetAuthenticatedUser();
+            if (authenticatedUserRole != "Admin" && authenticatedUserId != id.ToString())
             {
-                var (authenticatedUserId, authenticatedUserRole) = GetAuthenticatedUser();
-                if (authenticatedUserRole != "Admin" && authenticatedUserId != id.ToString())
-                {
-                    throw new UserForbiddenException("User is not allowed to access this content");
-                }
-                var data = await _mediator.Send(new GetUserExpensesQuery(id));
-                return Ok(data);
-            });
+                return ApiResult<Error>.Failure(ErrorType.ErrUserForbidden, "User do not have access to this content").Result;
+            }
+            var data = await _mediator.Send(new GetUserExpensesQuery(id));
+            return data.Result;
+
         }
 
         [HttpGet]
@@ -121,11 +116,8 @@ namespace UserService.Api.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetDetailsById(int id)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () =>
-            {
-                var data = await _mediator.Send(new GetUserDetailsByIdQuery(id));
-                return Ok(data);
-            });
+            var data = await _mediator.Send(new GetUserDetailsByIdQuery(id));
+            return data.Result;
         }
 
         [HttpPost]
@@ -133,11 +125,8 @@ namespace UserService.Api.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Create([FromBody] UserRequest request)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () => {
-                var data = await _mediator.Send(request);
-                return Ok(data);
-            });
-
+            var data = await _mediator.Send(request);
+            return data.Result;
         }
 
         [HttpDelete]
@@ -152,17 +141,16 @@ namespace UserService.Api.Controllers
         [HttpPut]
         [Route("update")]
         [Authorize]
-        public async Task<IActionResult> Update([FromBody] UserUpdateRequest request) 
+        public async Task<IActionResult> Update([FromBody] UserUpdateRequest request)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () => {
-                var (authenticatedUserId, authenticatedUserRole) = GetAuthenticatedUser();
-                if (authenticatedUserRole != "Admin" && authenticatedUserId != request.UserId.ToString())
-                {
-                    throw new UserForbiddenException("User is not allowed to access this content");
-                }
-                var data = await _mediator.Send(request);
-                return Ok(data);
-            });
+            var (authenticatedUserId, authenticatedUserRole) = GetAuthenticatedUser();
+            if (authenticatedUserRole != "Admin" && authenticatedUserId != request.UserId.ToString())
+            {
+                return ApiResult<Error>
+                    .Failure(ErrorType.ErrUserForbidden, "User is not allowed to access this content").Result;
+            }
+            var data = await _mediator.Send(request);
+            return data.Result;
         }
     }
 }

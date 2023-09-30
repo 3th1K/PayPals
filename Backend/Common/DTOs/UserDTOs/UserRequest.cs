@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using Common.Utilities;
+using MediatR;
 
 namespace Common.DTOs.UserDTOs
 {
-    public class UserRequest : IRequest<UserResponse>
+    public class UserRequest : IRequest<ApiResult<UserResponse>>
     {
         public string Username { get; set; } = null!;
 

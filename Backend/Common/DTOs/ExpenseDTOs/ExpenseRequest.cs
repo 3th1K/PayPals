@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using Common.Utilities;
+using MediatR;
 
 namespace Common.DTOs.ExpenseDTOs
 {
-    public class ExpenseRequest : IRequest<ExpenseResponse>
+    public class ExpenseRequest : IRequest<ApiResult<ExpenseResponse>>
     {
         public int GroupId { get; set; }
 

@@ -1,41 +1,29 @@
 ﻿using System.Reflection;
+using Common.Exceptions;
 using Common.Interfaces;
 using Common.Utilities;
 using FluentValidation;
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Common.Validations
 {
     public class TypeInformation
     {
-        public Type Type { get; set; }
-        public Type[] GenericArguments { get; set; }
+        public Type? Type { get; set; }
+        public Type[]? GenericArguments { get; set; }
     }
 
 
     public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
     {
         private readonly IValidator<TRequest> _validators;
-        private readonly IExceptionHandler _exceptionHandler;   
+        private readonly IExceptionHandler _exceptionHandler;
 
         public ValidationBehavior(IValidator<TRequest> validators, IExceptionHandler exceptionHandler)
         {
             _validators = validators;
             _exceptionHandler = exceptionHandler;
         }
-
-        //public async Task<string> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
-        //{
-        //    var validationResult = await _validators.ValidateAsync(request, cancellationToken);
-        //    if (!validationResult.IsValid)
-        //    {
-        //        var validationErrors = validationResult.Errors.Select(error => error.ErrorMessage).ToList();
-        //        throw new ValidationException(validationErrors.ToString());
-        //    }
-
-        //    return "await next()";
-        //}
 
         public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
@@ -50,18 +38,6 @@ namespace Common.Validations
                     var validationErrors = validationResult.Errors.Select(error => error.ErrorMessage).ToList();
                     object r1 = InvokeMethod(instance, "Failure", new object[] { ErrorType.ErrValidationFailed, "Request Validation Failed", validationErrors });
                     return (TResponse)r1;
-                    //return ApiResult<TResponse>.Failure(ErrorType.ErrValidationFailed, "Request Validation Failed", validationErrors);
-                    //if (info != null)
-                    //{
-                    //    object instance = CreateGenericInstance(info.Type, info.GenericArguments);
-                    //    if (instance.GetType().Name.Contains("ApiResult"))
-                    //    {
-                    //        object r1 = InvokeMethod(instance, "Failure", new object[] { ErrorType.ErrValidationFailed, "Request Validation Failed", validationErrors });
-                    //        return (TResponse)r1;
-                    //    }
-
-                    //}
-
                 }
 
                 try
@@ -73,7 +49,6 @@ namespace Common.Validations
                     var validationErrors = ex.Errors.Select(error => error.ErrorMessage).ToList();
                     object r1 = InvokeMethod(instance, "Failure", new object[] { ErrorType.ErrValidationFailed, "Request Validation Failed", validationErrors });
                     return (TResponse)r1;
-
                 }
                 catch (Exception ex)
                 {
@@ -89,12 +64,16 @@ namespace Common.Validations
                     var validationErrors = validationResult.Errors.Select(error => error.ErrorMessage).ToList();
                     throw new ValidationException(validationErrors.ToString());
                 }
-                return await _exceptionHandler.HandleException<Exception>(async () => {
+                var x = await _exceptionHandler.HandleException<TResponse>(async () => {
                     return await next();
                 });
-                
-            }
+                if (!x.Success)
+                {
+                    throw new ApiException(x.ErrorObject);
+                }
+                return x.Result;
 
+            }
         }
 
         public static TypeInformation? GetClassAndGenericArguments<TResponse>()

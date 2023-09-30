@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using Common.Utilities;
+using MediatR;
 
 namespace Common.DTOs.ExpenseDTOs
 {
-    public class ExpenseUpdateRequest : IRequest<ExpenseResponse>
+    public class ExpenseUpdateRequest : IRequest<ApiResult<ExpenseResponse>>
     {
         public int ExpenseId { get; set; }
 
