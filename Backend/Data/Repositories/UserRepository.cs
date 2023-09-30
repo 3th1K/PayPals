@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Common.DTOs.ExpenseDTOs;
 using Common.DTOs.UserDTOs;
-using Common.Exceptions;
 using Common.Interfaces;
 using Common.Models;
 using Microsoft.EntityFrameworkCore;
@@ -60,6 +59,7 @@ namespace Data.Repositories
         }
         public async Task<IEnumerable<UserDetailsResponse>> GetAllUsersDetails()
         {
+            throw new NotImplementedException();
             var users = await _context.Users
                 .Include(user => user.Expenses)
                 .Include(user => user.Groups)
@@ -116,7 +116,7 @@ namespace Data.Repositories
         {
             _logger.LogDebug("Getting User Expenses");
             var userExpenses = await _context.Expenses
-                
+                .Include(e => e.ExpenseApprovals)
                 .Include(e => e.Users)
                 .Include(e => e.Group)
                 .Where(e => e.Users

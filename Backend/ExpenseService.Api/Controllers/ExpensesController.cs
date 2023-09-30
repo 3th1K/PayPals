@@ -2,6 +2,7 @@
 using Common.DTOs.ExpenseDTOs;
 using Common.Exceptions;
 using Common.Interfaces;
+using Common.Utilities;
 using ExpenseService.Api.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -38,11 +39,8 @@ namespace ExpenseService.Api.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAll()
         {
-            return await _exceptionHandler.HandleException<Exception>(async () =>
-            {
-                var data = await _mediator.Send(new GetAllExpensesQuery());
-                return Ok(data);
-            });
+            var data = await _mediator.Send(new GetAllExpensesQuery());
+            return data.Result;
         }
 
         [HttpPost]
@@ -51,10 +49,8 @@ namespace ExpenseService.Api.Controllers
         public async Task<IActionResult> Create([FromBody] ExpenseRequest expenseRequest)
         {
             _logger.LogInformation("Creating new Expense");
-            return await _exceptionHandler.HandleException<Exception>(async () => {
-                var data = await _mediator.Send(expenseRequest);
-                return Ok(data);
-            });
+            var data = await _mediator.Send(expenseRequest);
+            return data.Result;
         }
 
         [HttpPut]
@@ -62,11 +58,8 @@ namespace ExpenseService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> Update([FromBody] ExpenseUpdateRequest expenseUpdateRequest)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () =>
-            {
-                var data = await _mediator.Send(expenseUpdateRequest);
-                return Ok(data);
-            });
+            var data = await _mediator.Send(expenseUpdateRequest);
+            return data.Result;
         }
 
         [HttpGet]
@@ -74,10 +67,8 @@ namespace ExpenseService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> GetDetails(int id) 
         {
-            return await _exceptionHandler.HandleException<Exception>(async () => {
-                var data = await _mediator.Send(new GetExpenseDetailsByIdQuery(id));
-                return Ok(data);
-            });
+            var data = await _mediator.Send(new GetExpenseDetailsByIdQuery(id));
+            return data.Result;
         }
 
         [HttpDelete]
@@ -85,27 +76,23 @@ namespace ExpenseService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () => {
-                var (authenticatedUserId, authenticatedUserRole) = GetAuthenticatedUser();
-                if (authenticatedUserRole != "Admin" && authenticatedUserId != id.ToString())
-                {
-                    throw new UserForbiddenException("User is not allowed to access this content");
-                }
-                var data = await _mediator.Send(new DeleteExpenseByIdQuery(id));
-                return Ok(data);
-            });
+            var (authenticatedUserId, authenticatedUserRole) = GetAuthenticatedUser();
+            if (authenticatedUserRole != "Admin" && authenticatedUserId != id.ToString())
+            {
+                return ApiResult<Error>.Failure(ErrorType.ErrUserForbidden,
+                    "User is not allowed to access this content").Result;
+            }
+            var data = await _mediator.Send(new DeleteExpenseByIdQuery(id));
+            return data.Result;
         }
 
         [HttpPost]
         [Route("{id:int}/approvals/submit")]
         public async Task<IActionResult> SubmitApproval([FromRoute]int id, [FromBody] ExpenseApprovalRequest request)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () =>
-            {
-                request.ExpenseId = id;
-                var data = await _mediator.Send(request);
-                return Ok(data);
-            });
+            request.ExpenseId = id;
+            var data = await _mediator.Send(request);
+            return data.Result;
         }
 
     }

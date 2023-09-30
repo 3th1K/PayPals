@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Common.Utilities;
 
 namespace Common.Interfaces
 {
     public interface IExceptionHandler
     {
-        Task<IActionResult> HandleException<TException>(Func<Task<IActionResult>> action) where TException : Exception;
+        Task<ExecutionResult<T>> HandleException<T>(Func<Task<T>> action) where T : notnull;
     }
 }

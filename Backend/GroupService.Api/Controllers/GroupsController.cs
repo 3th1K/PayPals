@@ -2,6 +2,7 @@
 using Common.DTOs.GroupDTOs;
 using Common.Exceptions;
 using Common.Interfaces;
+using Common.Utilities;
 using GroupService.Api.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -40,11 +41,8 @@ namespace GroupService.Api.Controllers
         [Route("allgroups")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAll() {
-            return await _exceptionHandler.HandleException<Exception>(async () =>
-            {
-                var data = await _mediator.Send(new GetAllGroupsQuery());
-                return Ok(data);
-            });
+            var data = await _mediator.Send(new GetAllGroupsQuery());
+            return data.Result;
         }
 
         [HttpPost]
@@ -52,16 +50,13 @@ namespace GroupService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> Create([FromBody] GroupRequest request)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () =>
+            var (authenticatedUserId, authenticatedUserRole) = GetAuthenticatedUser();
+            if (authenticatedUserRole != "Admin" && authenticatedUserId != request.CreatorId.ToString())
             {
-                var (authenticatedUserId, authenticatedUserRole) = GetAuthenticatedUser();
-                if (authenticatedUserRole != "Admin" && authenticatedUserId != request.CreatorId.ToString()) 
-                {
-                    throw new UserForbiddenException("User is not allowed to create this group");
-                }
-                var data = await _mediator.Send(request);
-                return Ok(data);
-            });
+                return ApiResult<Error>.Failure(ErrorType.ErrUserForbidden, "User is not allowed to create this group").Result;
+            }
+            var data = await _mediator.Send(request);
+            return data.Result;
 
         }
 
@@ -69,10 +64,8 @@ namespace GroupService.Api.Controllers
         [Route("update")]
         [Authorize]
         public async Task<IActionResult> Update([FromBody] GroupUpdateRequest request) {
-            return await _exceptionHandler.HandleException<Exception>(async () => {
-                var data = await _mediator.Send(request);
-                return Ok(data);
-            });
+            var data = await _mediator.Send(request);
+            return data.Result;
         }
 
         [HttpGet]
@@ -80,12 +73,8 @@ namespace GroupService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> GetById(int id)
         {
-            
-            return await _exceptionHandler.HandleException<Exception>(async () =>
-            {
-                var data = await _mediator.Send(new GetGroupByIdQuery(id));
-                return Ok(data);
-            });
+            var data = await _mediator.Send(new GetGroupByIdQuery(id));
+            return data.Result;
         }
 
         [HttpGet]
@@ -93,12 +82,9 @@ namespace GroupService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> GetExpensesById(int id)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () =>
-            {
-                var data = await _mediator.Send(new GetGroupExpensesByIdQuery(id));
-                return Ok(data);
-            });
-            
+            var data = await _mediator.Send(new GetGroupExpensesByIdQuery(id));
+            return data.Result;
+
         }
 
         [HttpDelete]
@@ -106,20 +92,16 @@ namespace GroupService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () => {
-                var data = await _mediator.Send(new DeleteGroupQuery(id));
-                return Ok(data);
-            });
+            var data = await _mediator.Send(new DeleteGroupQuery(id));
+            return data.Result;
         }
 
         [HttpPut]
         [Route("{id}/member")]
         [Authorize]
         public async Task<IActionResult> AddMember(int id, [FromBody] GroupMember groupMember) {
-            return await _exceptionHandler.HandleException<Exception>(async ()=> {
-                var data = await _mediator.Send(new AddMemberQuery(id, groupMember.UserId));
-                return Ok(data);
-            });
+            var data = await _mediator.Send(new AddMemberQuery(id, groupMember.UserId));
+            return data.Result;
         }
 
         [HttpDelete]
@@ -127,10 +109,8 @@ namespace GroupService.Api.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteMember(int id, [FromBody] GroupMember groupMember)
         {
-            return await _exceptionHandler.HandleException<Exception>(async () => {
-                var data = await _mediator.Send(new DeleteMemberQuery(id, groupMember.UserId));
-                return Ok(data);
-            });
+            var data = await _mediator.Send(new DeleteMemberQuery(id, groupMember.UserId));
+            return data.Result;
         }
     }
 }

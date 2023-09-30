@@ -1,5 +1,4 @@
-﻿using Common.Exceptions;
-using Common.Interfaces;
+﻿using Common.Interfaces;
 using Common.Models;
 using Common.Utilities;
 using MediatR;
