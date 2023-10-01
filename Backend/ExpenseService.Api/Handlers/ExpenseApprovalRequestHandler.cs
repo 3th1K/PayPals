@@ -31,6 +31,13 @@ namespace ExpenseService.Api.Handlers
                     "User in the approve request is not a valid user");
             }
 
+            var expenseUsers = expense.Users.FirstOrDefault(users => users.UserId == request.UserId);
+            if (expenseUsers == null)
+            {
+                return ApiResult<ExpenseResponse>.Failure(ErrorType.ErrUserForbidden,
+                    "Provided user is not included in the expense");
+            }
+
             var existingApproval = expense.ExpenseApprovals.FirstOrDefault(ea => ea.UserId == request.UserId);
             if (existingApproval != null)
             {

@@ -102,11 +102,9 @@ namespace Data.Repositories
         public async Task<ExpenseResponse> SubmitExpenseApproval(ExpenseApprovalRequest request)
         {
             var expense = await _context.Expenses
+                .Include(e => e.Payer)
                 .Include(expense => expense.ExpenseApprovals)
                 .FirstOrDefaultAsync(expense => expense.ExpenseId == request.ExpenseId);
-            // assuming expense is present
-            //var existingApproval = expense.ExpenseApprovals.FirstOrDefault(ea => ea.UserId == request.UserId);
-            // assuming this is new approval, not already present
             var addedExpenseApproval = _mapper.Map<ExpenseApproval>(request);
             expense.ExpenseApprovals.Add(addedExpenseApproval);
             expense.ApprovalsReceived = expense.ExpenseApprovals.Count;
