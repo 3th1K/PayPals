@@ -59,7 +59,6 @@ namespace Data.Repositories
         }
         public async Task<IEnumerable<UserDetailsResponse>> GetAllUsersDetails()
         {
-            throw new NotImplementedException();
             var users = await _context.Users
                 .Include(user => user.Expenses)
                 .Include(user => user.Groups)

@@ -4,7 +4,7 @@ import { CheckToken, GetToken } from '../TokenHandler';
 const log = CreateLogger("Interceptor");
 
 const axiosInstance = axios.create({
-  baseURL: 'http://192.168.0.106:5000',
+  baseURL: 'http://192.168.0.105:5000',
   timeout: 10000
 });
 
