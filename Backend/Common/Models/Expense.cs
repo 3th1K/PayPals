@@ -1,4 +1,6 @@
-﻿namespace Common.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Common.Models;
 
 public partial class Expense
 {
@@ -12,9 +14,9 @@ public partial class Expense
 
     public decimal Amount { get; set; }
 
-    public int? ApprovalsReceived { get; set; }
+    public int ApprovalsReceived { get; set; }
 
-    public int TotalMembers { get; set; }
+    public int TotalMembers => Users.Count;
 
     public string Description { get; set; } = null!;
 
