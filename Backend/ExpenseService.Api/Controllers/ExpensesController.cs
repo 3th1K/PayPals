@@ -95,5 +95,13 @@ namespace ExpenseService.Api.Controllers
             return data.Result;
         }
 
+        [HttpGet]
+        [Route("{id:int}/status")]
+        public async Task<IActionResult> GetStatus(int id)
+        {
+            var data = await _mediator.Send(new GetExpenseStatusByIdQuery(id));
+            return data.Result;
+        }
+
     }
 }

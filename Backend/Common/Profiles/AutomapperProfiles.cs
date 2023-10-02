@@ -29,7 +29,8 @@ namespace Common.Profiles
 
             CreateMap<ExpenseRequest, Expense>()
                 //.ForMember(dest => dest.Users, opt => opt.MapFrom(src => src.UserIds.Select(id => new User { UserId = id })))
-                .ForMember(expense => expense.TotalMembers, opt => opt.MapFrom(src => src.UserIds.Count))
+                .ForMember(expense => expense.TotalMembers, 
+                    opt => opt.MapFrom(src => src.UserIds.Count))
                 .ForMember(expense => expense.Users, opt => opt.Ignore());
             CreateMap<ExpenseUpdateRequest, Expense>();
             CreateMap<Expense, ExpenseResponse>();

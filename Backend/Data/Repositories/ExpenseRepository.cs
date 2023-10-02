@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Common.DTOs.ExpenseDTOs;
+using Common.Exceptions;
 using Common.Interfaces;
 using Common.Models;
 using Microsoft.EntityFrameworkCore;
@@ -119,6 +120,43 @@ namespace Data.Repositories
                 .FirstOrDefaultAsync(expense => expense.ExpenseId == id);
             var expenseApprovals = expense.ExpenseApprovals.ToList();
             return _mapper.Map<ExpenseApprovalResponse>(expenseApprovals);
+        }
+
+        public async Task<ExpenseStatusResponse> GetExpenseStatus(int id)
+        {
+            var expense = await _context.Expenses
+                .Include(expense => expense.ExpenseApprovals)
+                .SingleOrDefaultAsync(expense => expense.ExpenseId == id);
+            if (expense == null)
+            {
+                throw new ExpenseNotFoundException();
+            }
+
+            var status = ExpenseStatus.Active;
+            var approvalsReceived = expense.ApprovalsReceived;
+            var totalMembers = expense.TotalMembers;
+            var totalNumberOfApproved = expense.ExpenseApprovals.Count(ea => ea.IsApproved);
+            if (approvalsReceived < totalMembers)
+            {
+                status = ExpenseStatus.Active;
+            }
+            else if (totalNumberOfApproved == totalMembers)
+            {
+                status = ExpenseStatus.Approved;
+            }
+            else if (approvalsReceived == totalMembers && totalNumberOfApproved < totalMembers)
+            {
+                status = ExpenseStatus.Rejected;
+            }
+
+            return new ExpenseStatusResponse
+            {
+                ExpenseId = expense.ExpenseId,
+                TotalMembers = totalMembers,
+                ApprovalReceived = approvalsReceived,
+                ExpenseApprovals = _mapper.Map<List<ExpenseApprovalResponse>>(expense.ExpenseApprovals.ToList()),
+                Status = status
+            };
         }
     }
 }

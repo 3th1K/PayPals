@@ -324,6 +324,19 @@
           "Port": 5111
         }
       ]
+    },
+    {
+      //get expense status
+      "UpstreamPathTemplate": "/expenses/{id}/status",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Expenses/{id}/status",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5111
+        }
+      ]
     }
   ],
   "GlobalConfiguration": {
