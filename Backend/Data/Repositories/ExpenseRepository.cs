@@ -158,5 +158,41 @@ namespace Data.Repositories
                 Status = status
             };
         }
+
+        public async Task<ExpenseResponse> AddParticipant(int expenseId, int userId)
+        {
+            var expense = await _context.Expenses
+                              .Include(expense => expense.Users)
+                              .SingleOrDefaultAsync(expense => expense.ExpenseId == expenseId)
+                          ??throw new ExpenseNotFoundException("Expense Not Found in Database");
+            var user = await _context.Users.SingleOrDefaultAsync(user => user.UserId == userId)
+                       ??throw new UserNotFoundException("User not found in the database");
+            var isUserAlreadyInExpense = expense.Users.Any(u => u.UserId == userId);
+            if (isUserAlreadyInExpense)
+            {
+                throw new UserAlreadyExistsException("User already exists in this expense");
+            }
+            expense.Users.Add(user);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<ExpenseResponse>(expense);
+        }
+
+        public async Task<ExpenseResponse> DeleteParticipant(int expenseId, int userId)
+        {
+            var expense = await _context.Expenses
+                              .Include(expense => expense.Users)
+                              .SingleOrDefaultAsync(expense => expense.ExpenseId == expenseId)
+                          ?? throw new ExpenseNotFoundException("Expense Not Found in Database");
+            var user = await _context.Users.SingleOrDefaultAsync(user => user.UserId == userId)
+                       ?? throw new UserNotFoundException("User not found in the database");
+            var isUserAlreadyInExpense = expense.Users.Any(u => u.UserId == userId);
+            if (!isUserAlreadyInExpense)
+            {
+                throw new UserNotFoundException("User does not exists in this expense");
+            }
+            expense.Users.Remove(user);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<ExpenseResponse>(expense);
+        }
     }
 }

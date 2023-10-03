@@ -12,5 +12,8 @@ namespace Common.Interfaces
         public Task<ExpenseResponse> SubmitExpenseApproval(ExpenseApprovalRequest request);
         public Task<ExpenseApprovalResponse> GetExpenseApprovals(int id);
         public Task<ExpenseStatusResponse> GetExpenseStatus(int id);
+        public Task<ExpenseResponse> AddParticipant(int expenseId, int userId);
+
+        public Task<ExpenseResponse> DeleteParticipant(int expenseId, int userId);
     }
 }
