@@ -22,7 +22,11 @@ namespace GroupService.Api.Handlers
 
         public async Task<ApiResult<GroupResponse>> Handle(AddMemberQuery request, CancellationToken cancellationToken)
         {
-            var group = await _groupRepository.GetGroupById(request.GroupId)??throw new GroupNotFoundException("Group is not present");
+            var group = await _groupRepository.GetGroupById(request.GroupId);
+            if (group == null)
+            {
+                return ApiResult<GroupResponse>.Failure(ErrorType.ErrGroupNotFound, "Provided Group is invalid");
+            }
 
             var authenticatedUserId = _contextAccessor.HttpContext?.User.FindFirstValue("userId");
             var authenticatedUserRole = _contextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Role);

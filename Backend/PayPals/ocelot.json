@@ -337,6 +337,32 @@
           "Port": 5111
         }
       ]
+    },
+    {
+      //Add participant in expense
+      "UpstreamPathTemplate": "/expenses/{id}/participant",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/Expenses/{id}/participant",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5111
+        }
+      ]
+    },
+    {
+      //delete participan from expense
+      "UpstreamPathTemplate": "/expenses/{id}/participant",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamPathTemplate": "/api/Expenses/{id}/participant",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5111
+        }
+      ]
     }
   ],
   "GlobalConfiguration": {

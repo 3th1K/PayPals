@@ -88,6 +88,7 @@ namespace ExpenseService.Api.Controllers
 
         [HttpPost]
         [Route("{id:int}/approvals/submit")]
+        [Authorize]
         public async Task<IActionResult> SubmitApproval([FromRoute]int id, [FromBody] ExpenseApprovalRequest request)
         {
             request.ExpenseId = id;
@@ -97,9 +98,28 @@ namespace ExpenseService.Api.Controllers
 
         [HttpGet]
         [Route("{id:int}/status")]
+        [Authorize]
         public async Task<IActionResult> GetStatus(int id)
         {
             var data = await _mediator.Send(new GetExpenseStatusByIdQuery(id));
+            return data.Result;
+        }
+
+        [HttpPost]
+        [Route("{id:int}/participant")]
+        [Authorize]
+        public async Task<IActionResult> AddParticipant([FromRoute] int id, [FromBody] ExpenseParticipant request)
+        {
+            var data = await _mediator.Send(new AddExpenseParticipantQuery(id, request.UserId));
+            return data.Result;
+        }
+
+        [HttpDelete]
+        [Route("{id:int}/participant")]
+        [Authorize]
+        public async Task<IActionResult> DeleteParticipant([FromRoute] int id, [FromBody] ExpenseParticipant request)
+        {
+            var data = await _mediator.Send(new DeleteExpenseParticipantQuery(id, request.UserId));
             return data.Result;
         }
 
