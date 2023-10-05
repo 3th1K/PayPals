@@ -1,0 +1,3 @@
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Release\net7.0-android\publish\com.companyname.paypals.ui-Signed.aab
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Release\net7.0-android\publish\com.companyname.paypals.ui.aab
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Release\net7.0-android\publish\com.companyname.paypals.ui-Signed.apk

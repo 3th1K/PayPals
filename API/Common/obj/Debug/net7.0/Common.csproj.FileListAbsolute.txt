@@ -12,3 +12,17 @@ D:\MyProjects\PayPals\Backend\Common\obj\Debug\net7.0\Common.dll
 D:\MyProjects\PayPals\Backend\Common\obj\Debug\net7.0\refint\Common.dll
 D:\MyProjects\PayPals\Backend\Common\obj\Debug\net7.0\Common.pdb
 D:\MyProjects\PayPals\Backend\Common\obj\Debug\net7.0\ref\Common.dll
+D:\MyProjects\PayPals\API\Common\bin\Debug\net7.0\Common.deps.json
+D:\MyProjects\PayPals\API\Common\bin\Debug\net7.0\Common.dll
+D:\MyProjects\PayPals\API\Common\bin\Debug\net7.0\Common.pdb
+D:\MyProjects\PayPals\API\Common\obj\Debug\net7.0\Common.csproj.AssemblyReference.cache
+D:\MyProjects\PayPals\API\Common\obj\Debug\net7.0\Common.Resource.resources
+D:\MyProjects\PayPals\API\Common\obj\Debug\net7.0\Common.csproj.GenerateResource.cache
+D:\MyProjects\PayPals\API\Common\obj\Debug\net7.0\Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyProjects\PayPals\API\Common\obj\Debug\net7.0\Common.AssemblyInfoInputs.cache
+D:\MyProjects\PayPals\API\Common\obj\Debug\net7.0\Common.AssemblyInfo.cs
+D:\MyProjects\PayPals\API\Common\obj\Debug\net7.0\Common.csproj.CoreCompileInputs.cache
+D:\MyProjects\PayPals\API\Common\obj\Debug\net7.0\Common.dll
+D:\MyProjects\PayPals\API\Common\obj\Debug\net7.0\refint\Common.dll
+D:\MyProjects\PayPals\API\Common\obj\Debug\net7.0\Common.pdb
+D:\MyProjects\PayPals\API\Common\obj\Debug\net7.0\ref\Common.dll
