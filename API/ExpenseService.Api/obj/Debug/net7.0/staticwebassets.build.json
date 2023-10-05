@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "RTU/J9JWszbFy7Adp/2RTkYLKzu7w/VT0n8weqVGZug=",
+  "Hash": "xSQaB/Bcw2FqbNvtbbklERcyrYGXdW875P784czAciM=",
   "Source": "ExpenseService.Api",
   "BasePath": "_content/ExpenseService.Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "D:\\MyProjects\\PayPals\\Backend\\Data\\Data.csproj",
+      "Identity": "D:\\MyProjects\\PayPals\\API\\Data\\Data.csproj",
       "Version": 2,
       "Source": "Data",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",

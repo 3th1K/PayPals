@@ -1,0 +1,1 @@
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\PayPals.UI.csproj;x64

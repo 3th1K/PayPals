@@ -1,4 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
+using PayPals.UI.Data;
+using PayPals.UI.Interfaces;
+using PayPals.UI.Utilities;
+using System.Security.AccessControl;
+using PayPals.UI.Views;
 
 namespace PayPals.UI
 {
@@ -14,9 +19,12 @@ namespace PayPals.UI
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+            builder.Services.AddSingleton<IRestService, RestService>();
+            builder.Services.AddSingleton<ILoginService, LoginService>();
+            builder.Services.AddSingleton<LoginPage>();
 
 #if DEBUG
-		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

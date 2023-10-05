@@ -366,6 +366,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://192.168.0.104:5000"
+    "BaseUrl": "http://192.168.0.106:5000"
   }
 }

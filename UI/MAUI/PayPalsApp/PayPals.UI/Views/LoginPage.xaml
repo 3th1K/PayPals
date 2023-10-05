@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PayPals.UI.Views.LoginPage"
+             Title="Login"
+             BackgroundColor="MidnightBlue"
+             Shell.NavBarIsVisible="false">
+
+    <Grid 
+        Padding="20, 10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.4*" />
+            <RowDefinition Height=".3*" />
+            <RowDefinition Height=".3*" />
+            <RowDefinition Height=".3*" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height=".3*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Image
+            Source="logo_transparent.png"/>
+        <Entry
+            x:Name="Username"
+            TextColor="White"
+            FontSize="18"
+            TextChanged="Username_OnTextChanged"
+            VerticalOptions="Center"
+            HorizontalTextAlignment="Start"
+            Placeholder="Enter Username"
+            Grid.Row="1"/>
+        <Entry 
+            x:Name="Password"
+            TextColor="White"
+            FontSize="18"
+            VerticalOptions="Center"
+            HorizontalTextAlignment="Start"
+            Placeholder="Enter Password"
+            IsPassword="True"
+            Grid.Row="2"/>
+        <Button
+            x:Name="BtnLogin"
+            Text="Login"
+            FontSize="18"
+            BackgroundColor="LightSkyBlue"
+            TextColor="AntiqueWhite"
+            VerticalOptions="Center"
+            WidthRequest="130"
+            Grid.Row="3"
+            Clicked="BtnLogin_OnClicked"/>
+        <Label
+            HorizontalOptions="Center"
+            TextColor="GhostWhite"
+            Text="Not an user?"
+            Grid.Row="4"></Label>
+        <Button
+            x:Name="BtnRegister"
+            Text="Register"
+            FontSize="18"
+            BorderWidth="1"
+            BorderColor="DarkGoldenrod"
+            TextColor="Chocolate"
+            BackgroundColor="BlanchedAlmond"
+            VerticalOptions="Start"
+            WidthRequest="170"
+            Grid.Row="5"
+            Clicked="BtnRegister_OnClicked"/>
+    </Grid>
+        
+</ContentPage>
