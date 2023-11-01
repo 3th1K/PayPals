@@ -113,7 +113,7 @@ namespace UserService.Api.Controllers
 
         [HttpGet]
         [Route("details/{id}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetDetailsById(int id)
         {
             var data = await _mediator.Send(new GetUserDetailsByIdQuery(id));

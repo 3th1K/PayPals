@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
-using PayPals.UI.Data;
 using PayPals.UI.Interfaces;
-using PayPals.UI.Utilities;
-using System.Security.AccessControl;
+using PayPals.UI.Services;
 using PayPals.UI.Views;
 
 namespace PayPals.UI
@@ -21,7 +19,15 @@ namespace PayPals.UI
                 });
             builder.Services.AddSingleton<IRestService, RestService>();
             builder.Services.AddSingleton<ILoginService, LoginService>();
+            builder.Services.AddSingleton<IStorageService, StorageService>();
+            builder.Services.AddSingleton<IUserService, UserService>();
             builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<RegisterPage>();
+            builder.Services.AddSingleton<HomePage>();
+            builder.Services.AddSingleton<GroupsPage>();
+            builder.Services.AddSingleton<ExpensesPage>();
+            builder.Services.AddSingleton<PalsPage>();
+            builder.Services.AddSingleton<ProfilePage>();
 
 #if DEBUG
             builder.Logging.AddDebug();

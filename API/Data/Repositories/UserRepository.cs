@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Common.DTOs.ExpenseDTOs;
+using Common.DTOs.GroupDTOs;
 using Common.DTOs.UserDTOs;
 using Common.Interfaces;
 using Common.Models;
@@ -78,7 +79,7 @@ namespace Data.Repositories
             return user!;
         }
 
-        public async Task<List<Group>> GetUserGroups(int id)
+        public async Task<List<GroupResponse>> GetUserGroups(int id)
         {
             var userGroups = await _context.Groups
                                    .Where(g => g.Users.Any(u => u.UserId == id))
@@ -96,7 +97,7 @@ namespace Data.Repositories
                                        // Other properties as needed
                                    })
                                    .ToListAsync();
-            return userGroups;
+            return _mapper.Map<List<GroupResponse>>(userGroups);
         }
 
         public async Task<UserDetailsResponse> GetUserDetailsById(int id)

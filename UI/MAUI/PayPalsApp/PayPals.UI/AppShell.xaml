@@ -3,13 +3,10 @@
     x:Class="PayPals.UI.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:PayPals.UI"
     xmlns:views="clr-namespace:PayPals.UI.Views"
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate views:LoginPage}"
-        Route="LoginPage"  />
+        ContentTemplate="{DataTemplate views:LoginPage}"/>
 
 </Shell>

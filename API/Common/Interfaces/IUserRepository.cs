@@ -1,4 +1,5 @@
 ﻿using Common.DTOs.ExpenseDTOs;
+using Common.DTOs.GroupDTOs;
 using Common.DTOs.UserDTOs;
 using Common.Models;
 
@@ -9,7 +10,7 @@ namespace Common.Interfaces
         public Task<List<UserResponse>> GetAllUsers();
         public Task<IEnumerable<UserDetailsResponse>> GetAllUsersDetails();
         public Task<UserResponse> GetUserById(int id);
-        public Task<List<Group>> GetUserGroups(int id);
+        public Task<List<GroupResponse>> GetUserGroups(int id);
         public Task<List<ExpenseResponse>> GetUserExpenses(int id);
         public Task<UserDetailsResponse> GetUserDetailsById(int id);
         public Task<User> GetUserByUsernameOrEmail(string username, string email);

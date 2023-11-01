@@ -268,3 +268,10 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimu
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\PayPals.UI.genruntimeconfig.cache
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\ref\PayPals.UI.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\logo_transparent.png
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.IdentityModel.Abstractions.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.IdentityModel.Logging.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.IdentityModel.Tokens.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\System.IdentityModel.Tokens.Jwt.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\build-signature\signature
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\group_icon.png
