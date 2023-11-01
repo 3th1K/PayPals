@@ -958,6 +958,13 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\lp\
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\lp\151\jl\files.cache
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\lp\153\jl\files.cache
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\lp\155\jl\files.cache
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\resizetizer\r\drawable\logo_transparent.png
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\android\assets\Microsoft.IdentityModel.Abstractions.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\android\assets\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\android\assets\Microsoft.IdentityModel.Logging.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\android\assets\Microsoft.IdentityModel.Tokens.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\android\assets\System.IdentityModel.Tokens.Jwt.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\resizetizer\r\drawable\group_icon.png
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\android\assets\mscorlib.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\android\assets\System.Collections.Concurrent.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\android\assets\System.Data.Common.dll
@@ -971,4 +978,3 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\and
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\android\assets\System.Runtime.Extensions.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\android\assets\System.Runtime.Serialization.Formatters.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\android\assets\System.Xml.dll
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-android\resizetizer\r\drawable\logo_transparent.png

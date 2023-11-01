@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 
 namespace PayPals.UI.Interfaces
 {
@@ -14,5 +9,7 @@ namespace PayPals.UI.Interfaces
         JsonSerializerOptions SerializerOptions { get; }
         StringContent Serializer<T>(T data);
         Task<T> Deserializer<T>(HttpResponseMessage data);
+        T StorageDataDeserializer<T>(string data);
+        string StorageDataSerializer<T>(T data);
     }
 }

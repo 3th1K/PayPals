@@ -36,16 +36,18 @@
             HorizontalTextAlignment="Start"
             Placeholder="Enter Password"
             IsPassword="True"
+            TextChanged="Password_OnTextChanged"
             Grid.Row="2"/>
         <Button
             x:Name="BtnLogin"
             Text="Login"
             FontSize="18"
-            BackgroundColor="LightSkyBlue"
+            BackgroundColor="LightSlateGray"
             TextColor="AntiqueWhite"
             VerticalOptions="Center"
             WidthRequest="130"
             Grid.Row="3"
+            IsEnabled="False"
             Clicked="BtnLogin_OnClicked"/>
         <Label
             HorizontalOptions="Center"

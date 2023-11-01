@@ -44,11 +44,41 @@ build_metadata.AdditionalFiles.ManifestResourceName = PayPals.UI.Resources.Style
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[D:/MyProjects/PayPals/UI/MAUI/PayPalsApp/PayPals.UI/Views/ExpensesPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PayPals.UI.Views.ExpensesPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ExpensesPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ExpensesPage.xaml
+
+[D:/MyProjects/PayPals/UI/MAUI/PayPalsApp/PayPals.UI/Views/GroupsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PayPals.UI.Views.GroupsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\GroupsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\GroupsPage.xaml
+
+[D:/MyProjects/PayPals/UI/MAUI/PayPalsApp/PayPals.UI/Views/HomePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PayPals.UI.Views.HomePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\HomePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\HomePage.xaml
+
 [D:/MyProjects/PayPals/UI/MAUI/PayPalsApp/PayPals.UI/Views/LoginPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PayPals.UI.Views.LoginPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\LoginPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\LoginPage.xaml
+
+[D:/MyProjects/PayPals/UI/MAUI/PayPalsApp/PayPals.UI/Views/PalsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PayPals.UI.Views.PalsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PalsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PalsPage.xaml
+
+[D:/MyProjects/PayPals/UI/MAUI/PayPalsApp/PayPals.UI/Views/ProfilePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PayPals.UI.Views.ProfilePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ProfilePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ProfilePage.xaml
 
 [D:/MyProjects/PayPals/UI/MAUI/PayPalsApp/PayPals.UI/Views/RegisterPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
