@@ -6,6 +6,7 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\PayPals.UI.pdb
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\CommunityToolkit.Mvvm.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Extensions.Configuration.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Extensions.Configuration.Abstractions.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Extensions.DependencyInjection.dll
@@ -16,6 +17,10 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Extensions.Options.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Extensions.Primitives.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Graphics.Canvas.Interop.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.IdentityModel.Abstractions.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.IdentityModel.Logging.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.IdentityModel.Tokens.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Maui.Graphics.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Maui.Graphics.Win2D.WinUI.Desktop.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.InteractiveExperiences.Projection.dll
@@ -32,6 +37,7 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Windows.System.Projection.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Windows.Widgets.Projection.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.WindowsAppRuntime.Bootstrap.Net.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\System.IdentityModel.Tokens.Jwt.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Graphics.Canvas.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.WindowsAppRuntime.Bootstrap.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.CSharp.dll
@@ -295,6 +301,11 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\expenses_icon.scale-100.png
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\group_icon.scale-100.png
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logo_transparent.scale-100.png
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\pals_icon.scale-100.png
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\profile_icon.scale-100.png
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\mauiimage.stamp
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\PayPals.UI.AssemblyInfoInputs.cache
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\PayPals.UI.AssemblyInfo.cs
@@ -322,10 +333,3 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logo_transparent.scale-100.png
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.IdentityModel.Abstractions.dll
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.IdentityModel.Logging.dll
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.IdentityModel.Tokens.dll
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\System.IdentityModel.Tokens.Jwt.dll
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\group_icon.scale-100.png

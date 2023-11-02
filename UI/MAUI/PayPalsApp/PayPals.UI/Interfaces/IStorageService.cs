@@ -17,9 +17,10 @@ namespace PayPals.UI.Interfaces
         Task<int> ExtractUserIdFromToken();
 
 
-        Task SetGroupsAsync(List<GroupResponse> userGroups);
+        Task SetUserGroupsAsync(List<GroupResponse> userGroups);
+        Task<List<GroupResponse>> GetUserGroupsAsync();
 
-        Task<List<GroupResponse>> GetGroupsAsync();
+        Task RemoveAllDataAsync();
 
     }
 }

@@ -14,6 +14,7 @@ public partial class LoginPage : ContentPage
     public LoginPage(ILoginService loginService, IStorageService storageService, IUserService userService)
     {
         InitializeComponent();
+        NavigationPage.SetHasBackButton(this, false);
         _loginService = loginService;
         _storageService = storageService;
         _userService = userService;
@@ -30,15 +31,12 @@ public partial class LoginPage : ContentPage
 
     private async Task<bool> IsLoggedIn()
     {
-        try
-        {
-            _ = await _storageService.GetTokenAsync();
-            return true;
-        }
-        catch
+        var token = await _storageService.GetTokenAsync();
+        if (token == null)
         {
             return false;
         }
+        return true;
     }
 
     private async void HandleLoginErrors(Error err) 
@@ -91,6 +89,9 @@ public partial class LoginPage : ContentPage
                     //await DisplayAlert("Success", $"User : {JsonSerializer.Serialize(userDetails.SuccessResult)}","Ok");
                     await _storageService.SetUserAsync(userDetails.SuccessResult);
                     await Shell.Current.GoToAsync(nameof(HomePage));
+                    Username.Text = string.Empty;
+                    Password.Text = string.Empty;
+                    return;
                 }
                 else
                 {

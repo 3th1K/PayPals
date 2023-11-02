@@ -9,6 +9,7 @@ public partial class HomePage : ContentPage
 	public HomePage(IStorageService storageService)
     {
         _storageService = storageService;
+        NavigationPage.SetHasBackButton(this, false);
         InitializeComponent();
     }
 

@@ -29,11 +29,12 @@ namespace PayPals.UI.Services
             var token = await SecureStorage.GetAsync(TokenKey);
             if (token == null) 
             {
-                throw new Exception("Token not present");
+                return null;
             }
             if (!ValidateToken(token))
-            {
-               throw new Exception("Token Validation Failed");
+            { 
+                await RemoveTokenAsync();
+                return null;
             }
             return token;
         }
@@ -43,14 +44,15 @@ namespace PayPals.UI.Services
             var user = await SecureStorage.GetAsync(UserKey);
             if (user == null) 
             {
-                throw new Exception("User not present");
+                return null;
             }
             return _restService.StorageDataDeserializer<UserDetailsResponse>(user);
         }
 
         public Task RemoveTokenAsync()
         {
-            throw new NotImplementedException();
+            SecureStorage.Remove(TokenKey);
+            return Task.CompletedTask;
         }
 
         public Task RemoveUserAsync()
@@ -68,19 +70,11 @@ namespace PayPals.UI.Services
 
                 var userIdClaim = jwtToken.Claims.FirstOrDefault(claim => claim.Type == "userId");
 
-                if (userIdClaim != null)
-                {
-                    return int.Parse(userIdClaim.Value);
-                }
-                else
-                {
-                    // The user ID claim was not found in the token.
-                    return -1;
-                }
+                return int.Parse(userIdClaim.Value);
             }
             else
             {
-                throw new Exception("Token is not valid");
+                return -1;
             }
         }
 
@@ -138,15 +132,15 @@ namespace PayPals.UI.Services
             }
         }
 
-        public async Task SetGroupsAsync(List<GroupResponse> userGroups)
+        public async Task SetUserGroupsAsync(List<GroupResponse> userGroups)
         {
             var serializedUserGroups = _restService.StorageDataSerializer<List<GroupResponse>>(userGroups);
             await SecureStorage.SetAsync(UserGroupsKey, serializedUserGroups);
         }
 
-        public async Task<List<GroupResponse>> GetGroupsAsync()
+        public async Task<List<GroupResponse>> GetUserGroupsAsync()
         {
-            var userGroups = await SecureStorage.GetAsync(UserKey);
+            var userGroups = await SecureStorage.GetAsync(UserGroupsKey);
             if (userGroups == null)
             {
                 return null;
@@ -157,5 +151,10 @@ namespace PayPals.UI.Services
             }
         }
 
+        public Task RemoveAllDataAsync()
+        {
+            SecureStorage.RemoveAll();
+            return Task.CompletedTask;
+        }
     }
 }

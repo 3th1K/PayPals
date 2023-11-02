@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "OHFeD46jaMz755/JzdvfF0SWG/W2GjHvqYHImkrHg2LICCPJ9y0K122x81/X2Guzc2oPlQnjuF9JzHmT8FyR5w==",
+  "dgSpecHash": "8unZX6tvjMzVhnrXEMzhpR0CjZpFeTcz26eOI8XhKluHkBRfbaNfNOcRs7NawWGnfdbO2DD/rktBNL4xd605Vw==",
   "success": true,
   "projectFilePath": "D:\\MyProjects\\PayPals\\UI\\MAUI\\PayPalsApp\\PayPals.UI\\PayPals.UI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\googlegson\\2.9.1.1\\googlegson.2.9.1.1.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
