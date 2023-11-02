@@ -607,6 +607,9 @@
     <AppxPackagedFile Include="C:\Users\MEHEDI RAHAMAN\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.29\lib\net6.0\WinRT.Runtime.dll">
       <PackagePath>WinRT.Runtime.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\MEHEDI RAHAMAN\.nuget\packages\communitytoolkit.mvvm\8.2.2\lib\net6.0\CommunityToolkit.Mvvm.dll">
+      <PackagePath>CommunityToolkit.Mvvm.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MEHEDI RAHAMAN\.nuget\packages\microsoft.extensions.configuration\7.0.0\lib\net7.0\Microsoft.Extensions.Configuration.dll">
       <PackagePath>Microsoft.Extensions.Configuration.dll</PackagePath>
     </AppxPackagedFile>
@@ -892,11 +895,20 @@
     <AppxPackagedFile Include="D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
       <PackagePath>dotnet_bot.scale-400.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\expenses_icon.scale-100.png">
+      <PackagePath>expenses_icon.scale-100.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\group_icon.scale-100.png">
       <PackagePath>group_icon.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logo_transparent.scale-100.png">
       <PackagePath>logo_transparent.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\pals_icon.scale-100.png">
+      <PackagePath>pals_icon.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\profile_icon.scale-100.png">
+      <PackagePath>profile_icon.scale-100.png</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

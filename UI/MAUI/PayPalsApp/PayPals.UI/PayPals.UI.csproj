@@ -49,10 +49,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\expenses_icon.png" />
 	  <None Remove="Resources\Images\logo_transparent.png" />
+	  <None Remove="Resources\Images\pals_icon.png" />
+	  <None Remove="Resources\Images\profile_icon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
 	</ItemGroup>

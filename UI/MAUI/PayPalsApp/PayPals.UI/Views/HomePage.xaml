@@ -29,7 +29,7 @@
         <!-- Right top box: "Expenses" -->
         <Frame BorderColor="#007BFF" BackgroundColor="SteelBlue" CornerRadius="5" Margin="10" Grid.Row="0" Grid.Column="1">
             <StackLayout VerticalOptions="Center">
-                <Image Source="group_icon.png" HeightRequest="60" WidthRequest="60" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image Source="expenses_icon.png" HeightRequest="60" WidthRequest="60" HorizontalOptions="Center" VerticalOptions="Center" />
                 <Label Text="Expenses" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#333333" FontFamily="Montserrat" FontAttributes="Bold" FontSize="25"/>
             </StackLayout>
             <Frame.GestureRecognizers>
@@ -40,7 +40,7 @@
         <!-- Left bottom box: "Pals" with icon -->
         <Frame BorderColor="#007BFF" BackgroundColor="PowderBlue" CornerRadius="5" Margin="10" Grid.Row="1" Grid.Column="0">
             <StackLayout VerticalOptions="Center">
-                <Image Source="group_icon.png" HeightRequest="60" WidthRequest="60" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image Source="pals_icon.png" HeightRequest="60" WidthRequest="60" HorizontalOptions="Center" VerticalOptions="Center" />
                 <Label Text="Pals" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#333333" FontFamily="Montserrat" FontAttributes="Bold" FontSize="25"/>
             </StackLayout>
             <Frame.GestureRecognizers>
@@ -51,7 +51,7 @@
         <!-- Right bottom box: "Profile" with icon -->
         <Frame BorderColor="#007BFF" BackgroundColor="RoyalBlue" CornerRadius="5" Margin="10" Grid.Row="1" Grid.Column="1">
             <StackLayout VerticalOptions="Center">
-                <Image Source="group_icon.png" HeightRequest="60" WidthRequest="60" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image Source="profile_icon.png" HeightRequest="60" WidthRequest="60" HorizontalOptions="Center" VerticalOptions="Center" />
                 <Label Text="Profile" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#333333" FontFamily="Montserrat" FontAttributes="Bold" FontSize="25"/>
             </StackLayout>
             <Frame.GestureRecognizers>

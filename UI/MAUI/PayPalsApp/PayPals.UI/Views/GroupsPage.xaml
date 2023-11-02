@@ -2,11 +2,70 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PayPals.UI.Views.GroupsPage"
-             Title="GroupsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             xmlns:vm ="clr-namespace:PayPals.UI.ViewModels"
+             xmlns:groupDtOs="using:PayPals.UI.DTOs.GroupDTOs"
+             Shell.NavBarIsVisible="False"
+             Title="Groups"
+             x:DataType="vm:UserGroupsViewModel"
+             BackgroundColor="DarkSlateBlue">
+    
+        <CollectionView ItemsSource="{Binding UserGroups}"
+                    ItemsLayout="VerticalList"
+                    SelectionMode="Single"
+                    EmptyView="No Group">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="{x:Type groupDtOs:GroupResponse}">
+                <Frame Padding="10" 
+                       Margin="10" 
+                       BackgroundColor="MidnightBlue"
+                       HeightRequest="120">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnFrameTapped" CommandParameter="{Binding GroupId, Mode=OneTime}"/>
+                    </Frame.GestureRecognizers>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".3*"/>
+                            <RowDefinition Height=".5*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label
+                               Text="{Binding GroupName}"
+                               TextColor="White"
+                               FontSize="20"
+                               FontFamily="Monospace"
+                               FontAttributes="Bold"
+                               CharacterSpacing="1"
+                               Grid.Row="0"/>
+
+                        <Frame Grid.Row="1"
+                               Grid.ColumnSpan="2"
+                               BackgroundColor="CornflowerBlue">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <HorizontalStackLayout Grid.Column="0">
+                                    <Label Text="Total Expenses : "
+                                           FontAttributes="Italic"/>
+                                    <Label Text="{Binding TotalExpenses}"
+                                           FontAttributes="Italic"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Grid.Column="1" >
+                                    <Label Text="Group Creator : "
+                                           FontAttributes="Italic"/>
+                                    <Label Text="{Binding Creator.Username}"
+                                           FontAttributes="Italic"/>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </Frame>
+                
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>

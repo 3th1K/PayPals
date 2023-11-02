@@ -1,6 +1,7 @@
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\PayPals.UI.runtimeconfig.json
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\PayPals.UI.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\PayPals.UI.pdb
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\CommunityToolkit.Mvvm.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.Extensions.Configuration.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.Extensions.Configuration.Abstractions.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.Extensions.DependencyInjection.dll
@@ -10,7 +11,12 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimu
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.Extensions.Logging.Debug.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.Extensions.Options.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.Extensions.Primitives.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.IdentityModel.Abstractions.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.IdentityModel.Logging.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.IdentityModel.Tokens.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.Maui.Graphics.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\System.IdentityModel.Tokens.Jwt.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.CSharp.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.VisualBasic.Core.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.VisualBasic.dll
@@ -217,6 +223,7 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimu
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\libxamarin-dotnet-debug.dylib
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\libxamarin-dotnet.a
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\libxamarin-dotnet.dylib
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\build-signature\signature
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\mauiimage.inputs
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\mauifont.inputs
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\mauisplash.inputs
@@ -237,6 +244,11 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimu
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\dotnet_bot.png
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\dotnet_bot@2x.png
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\dotnet_bot@3x.png
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\expenses_icon.png
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\group_icon.png
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\logo_transparent.png
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\pals_icon.png
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\profile_icon.png
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\splash.png
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\splash@2x.png
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\splash@3x.png
@@ -267,11 +279,3 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimu
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\PayPals.UI.pdb
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\PayPals.UI.genruntimeconfig.cache
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\ref\PayPals.UI.dll
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\logo_transparent.png
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.IdentityModel.Abstractions.dll
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.IdentityModel.Logging.dll
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.IdentityModel.Tokens.dll
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\System.IdentityModel.Tokens.Jwt.dll
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\build-signature\signature
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\group_icon.png
