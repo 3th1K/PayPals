@@ -25,7 +25,7 @@ public partial class LoginPage : ContentPage
         base.OnAppearing();
         if (await IsLoggedIn())
         {
-            await Shell.Current.GoToAsync(nameof(HomePage));
+            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
         }
     }
 
@@ -88,7 +88,7 @@ public partial class LoginPage : ContentPage
                 {
                     //await DisplayAlert("Success", $"User : {JsonSerializer.Serialize(userDetails.SuccessResult)}","Ok");
                     await _storageService.SetUserAsync(userDetails.SuccessResult);
-                    await Shell.Current.GoToAsync(nameof(HomePage));
+                    await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                     Username.Text = string.Empty;
                     Password.Text = string.Empty;
                     return;

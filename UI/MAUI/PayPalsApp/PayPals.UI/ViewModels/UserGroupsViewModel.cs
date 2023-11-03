@@ -14,6 +14,10 @@ namespace PayPals.UI.ViewModels
         [ObservableProperty] 
         private ObservableCollection<GroupResponse> userGroups = new();
 
-        [ObservableProperty] private GroupResponse groupResponse;
+        [ObservableProperty] 
+        private GroupResponse groupResponse;
+
+        [ObservableProperty]
+        private bool isRefreshing = false;
     }
 }

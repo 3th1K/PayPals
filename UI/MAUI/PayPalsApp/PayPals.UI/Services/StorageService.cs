@@ -138,6 +138,18 @@ namespace PayPals.UI.Services
             await SecureStorage.SetAsync(UserGroupsKey, serializedUserGroups);
         }
 
+        public async Task AddUserGroupAsync(GroupResponse group)
+        {
+            var deserializedUserGroups = await GetUserGroupsAsync();
+            if (deserializedUserGroups == null)
+            {
+                throw new Exception();
+            }
+            deserializedUserGroups.Add(group);
+            var serializedUserGroups = _restService.StorageDataSerializer<List<GroupResponse>>(deserializedUserGroups);
+            await SecureStorage.SetAsync(UserGroupsKey, serializedUserGroups);
+        }
+
         public async Task<List<GroupResponse>> GetUserGroupsAsync()
         {
             var userGroups = await SecureStorage.GetAsync(UserGroupsKey);

@@ -7,6 +7,13 @@
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        ContentTemplate="{DataTemplate views:LoginPage}"/>
+        ContentTemplate="{DataTemplate views:LoadingPage}"/>
+    <ShellContent Route="LoginPage"
+                  FlyoutItemIsVisible="False"
+                  ContentTemplate="{DataTemplate views:LoginPage}"/>
+    <ShellContent Route="HomePage"
+                  FlyoutItemIsVisible="False"
+                  ContentTemplate="{DataTemplate views:HomePage}"/>
+
 
 </Shell>

@@ -223,7 +223,6 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimu
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\libxamarin-dotnet-debug.dylib
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\libxamarin-dotnet.a
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-ios\iossimulator-x64\libxamarin-dotnet.dylib
-D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\build-signature\signature
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\mauiimage.inputs
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\mauifont.inputs
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\mauisplash.inputs
@@ -279,3 +278,4 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimu
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\PayPals.UI.pdb
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\PayPals.UI.genruntimeconfig.cache
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\ref\PayPals.UI.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\add_group_button.png
