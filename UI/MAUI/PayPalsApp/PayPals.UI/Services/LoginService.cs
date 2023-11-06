@@ -37,6 +37,15 @@ namespace PayPals.UI.Services
                     return ApiResult<string>.Failure(deserializedData);
                 }
             }
+            catch (TaskCanceledException ex) when (ex.InnerException is TimeoutException)
+            {
+                var error = new Error()
+                {
+                    ErrorCode = 102,
+                    ErrorDescription = ex.Message
+                };
+                return ApiResult<string>.Failure(error);
+            }
             catch (Exception ex)
             {
                 //do something

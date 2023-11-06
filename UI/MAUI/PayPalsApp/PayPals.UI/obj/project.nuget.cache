@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "8unZX6tvjMzVhnrXEMzhpR0CjZpFeTcz26eOI8XhKluHkBRfbaNfNOcRs7NawWGnfdbO2DD/rktBNL4xd605Vw==",
+  "dgSpecHash": "iJQlxxxjQ19yTAIpHb1j0SbL3ZN7Gc+JVlj0khaUWGRyH1IWf/WEPiLL/Z8zoOAKqU9lxptNYxaHH6bZBJRqtw==",
   "success": true,
   "projectFilePath": "D:\\MyProjects\\PayPals\\UI\\MAUI\\PayPalsApp\\PayPals.UI\\PayPals.UI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\asyncawaitbestpractices\\6.0.4\\asyncawaitbestpractices.6.0.4.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\googlegson\\2.9.1.1\\googlegson.2.9.1.1.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
@@ -24,6 +25,7 @@
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\microsoft.maui.graphics.win2d.winui.desktop\\7.0.92\\microsoft.maui.graphics.win2d.winui.desktop.7.0.92.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\microsoft.windowsappsdk\\1.2.221209.1\\microsoft.windowsappsdk.1.2.221209.1.nupkg.sha512",
+    "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\mopups\\1.2.0\\mopups.1.2.0.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.0.3\\system.identitymodel.tokens.jwt.7.0.3.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\xamarin.android.glide\\4.13.2.2\\xamarin.android.glide.4.13.2.2.nupkg.sha512",
     "C:\\Users\\MEHEDI RAHAMAN\\.nuget\\packages\\xamarin.android.glide.annotations\\4.13.2.2\\xamarin.android.glide.annotations.4.13.2.2.nupkg.sha512",

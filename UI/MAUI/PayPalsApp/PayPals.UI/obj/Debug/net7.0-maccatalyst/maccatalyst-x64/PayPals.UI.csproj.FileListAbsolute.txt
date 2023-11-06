@@ -269,3 +269,5 @@ D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-maccatalyst
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\PayPals.UI.genruntimeconfig.cache
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\ref\PayPals.UI.dll
 D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\add_group_button.png
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-maccatalyst\maccatalyst-x64\AsyncAwaitBestPractices.dll
+D:\MyProjects\PayPals\UI\MAUI\PayPalsApp\PayPals.UI\bin\Debug\net7.0-maccatalyst\maccatalyst-x64\Mopups.dll

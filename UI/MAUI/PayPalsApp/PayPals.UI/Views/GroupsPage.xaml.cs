@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using Mopups.Services;
 using PayPals.UI.DTOs.GroupDTOs;
 using PayPals.UI.Interfaces;
 using PayPals.UI.Utilities;
@@ -66,9 +67,11 @@ public partial class GroupsPage : ContentPage
 
     private async Task FetchUserGroups()
     {
+        await MopupService.Instance.PushAsync(new LoadingPopupPage("Loading Groups"));
         var user = await _storageService.GetUserAsync();
         if (user == null)
         {
+            await MopupService.Instance.PopAsync();
             await Shell.Current.GoToAsync(nameof(LoginPage));
             return;
         }
@@ -91,6 +94,8 @@ public partial class GroupsPage : ContentPage
         {
             //do something
         }
+
+        await MopupService.Instance.PopAsync();
     }
 
 
@@ -103,6 +108,7 @@ public partial class GroupsPage : ContentPage
     }
     private async void OnFrameTapped(object sender, TappedEventArgs e)
     {
+        //await MopupService.Instance.PushAsync(new LoadingPopupPage("Loading"));
         var frame = (Frame)sender;
         await TapEffect(frame);
         frame.IsEnabled = false;
@@ -110,7 +116,7 @@ public partial class GroupsPage : ContentPage
         if (tapGestureRecognizer.CommandParameter != null)
         {
             int groupId = (int)tapGestureRecognizer.CommandParameter;
-            //var navParam = new Dictionary<string, object> { {"GroupId", groupId} };
+            //await MopupService.Instance.PopAsync();
             await Shell.Current.GoToAsync($"{nameof(GroupDetailsPage)}?GroupId={groupId}");
         }
         frame.IsEnabled = true;

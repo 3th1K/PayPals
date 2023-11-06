@@ -18,6 +18,7 @@
           "Microsoft.Maui.Graphics": "7.0.92",
           "Microsoft.Maui.Graphics.Win2D.WinUI.Desktop": "7.0.92",
           "Microsoft.WindowsAppSDK": "1.2.221209.1",
+          "Mopups": "1.2.0",
           "System.IdentityModel.Tokens.Jwt": "7.0.3",
           "runtimepack.Microsoft.NETCore.App.Runtime.win-x64": "7.0.11",
           "runtimepack.Microsoft.Maui.Core.Runtime.win": "7.0.92",
@@ -793,6 +794,14 @@
           }
         }
       },
+      "AsyncAwaitBestPractices/6.0.4": {
+        "runtime": {
+          "lib/netstandard2.1/AsyncAwaitBestPractices.dll": {
+            "assemblyVersion": "6.0.4.0",
+            "fileVersion": "6.0.4.0"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.2.2": {
         "runtime": {
           "lib/net6.0/CommunityToolkit.Mvvm.dll": {
@@ -1046,6 +1055,17 @@
           }
         }
       },
+      "Mopups/1.2.0": {
+        "dependencies": {
+          "AsyncAwaitBestPractices": "6.0.4"
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/Mopups.dll": {
+            "assemblyVersion": "1.2.0.0",
+            "fileVersion": "1.2.0.0"
+          }
+        }
+      },
       "System.IdentityModel.Tokens.Jwt/7.0.3": {
         "dependencies": {
           "Microsoft.IdentityModel.JsonWebTokens": "7.0.3",
@@ -1090,6 +1110,13 @@
       "type": "runtimepack",
       "serviceable": false,
       "sha512": ""
+    },
+    "AsyncAwaitBestPractices/6.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dO/ZfaT+5DMMnYUCmxAk2s1jEXUTDcgethroMj1kcmedO0MAu6WgvPP4gPYem/0kJASrnBcem+kr5ju3LaNdMw==",
+      "path": "asyncawaitbestpractices/6.0.4",
+      "hashPath": "asyncawaitbestpractices.6.0.4.nupkg.sha512"
     },
     "CommunityToolkit.Mvvm/8.2.2": {
       "type": "package",
@@ -1223,6 +1250,13 @@
       "sha512": "sha512-1Y8KDCmUqytdduubaQhRz6aqaP7YhVSPE/fHeqLMsK3DrV+eBThrqkM6R/8N2lu0mwkNfKSTSAhixrTR72nyWA==",
       "path": "microsoft.windowsappsdk/1.2.221209.1",
       "hashPath": "microsoft.windowsappsdk.1.2.221209.1.nupkg.sha512"
+    },
+    "Mopups/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uwHrgzs3ybp1qviuchdtC7dwYjjuLrOaVkIyVCijOE23psHBVIBLYQ3E74P/g67hluLYppk1Lx4XkDTHGdCQsA==",
+      "path": "mopups/1.2.0",
+      "hashPath": "mopups.1.2.0.nupkg.sha512"
     },
     "System.IdentityModel.Tokens.Jwt/7.0.3": {
       "type": "package",

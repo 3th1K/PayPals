@@ -607,6 +607,9 @@
     <AppxPackagedFile Include="C:\Users\MEHEDI RAHAMAN\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.29\lib\net6.0\WinRT.Runtime.dll">
       <PackagePath>WinRT.Runtime.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\MEHEDI RAHAMAN\.nuget\packages\asyncawaitbestpractices\6.0.4\lib\netstandard2.1\AsyncAwaitBestPractices.dll">
+      <PackagePath>AsyncAwaitBestPractices.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MEHEDI RAHAMAN\.nuget\packages\communitytoolkit.mvvm\8.2.2\lib\net6.0\CommunityToolkit.Mvvm.dll">
       <PackagePath>CommunityToolkit.Mvvm.dll</PackagePath>
     </AppxPackagedFile>
@@ -699,6 +702,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MEHEDI RAHAMAN\.nuget\packages\microsoft.windowsappsdk\1.2.221209.1\lib\net6.0-windows10.0.18362.0\Microsoft.WindowsAppRuntime.Bootstrap.Net.dll">
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.Net.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\MEHEDI RAHAMAN\.nuget\packages\mopups\1.2.0\lib\net7.0-windows10.0.19041\Mopups.dll">
+      <PackagePath>Mopups.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\MEHEDI RAHAMAN\.nuget\packages\system.identitymodel.tokens.jwt\7.0.3\lib\net6.0\System.IdentityModel.Tokens.Jwt.dll">
       <PackagePath>System.IdentityModel.Tokens.Jwt.dll</PackagePath>
