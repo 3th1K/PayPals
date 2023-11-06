@@ -19,7 +19,7 @@ namespace PayPals.UI.Interfaces
 
         Task SetUserGroupsAsync(List<GroupResponse> userGroups);
         Task<List<GroupResponse>> GetUserGroupsAsync();
-
+        Task AddUserGroupAsync(GroupResponse group);
         Task RemoveAllDataAsync();
 
     }

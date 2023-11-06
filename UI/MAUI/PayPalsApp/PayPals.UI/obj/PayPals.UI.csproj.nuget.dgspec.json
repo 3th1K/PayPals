@@ -94,6 +94,10 @@
               "version": "[7.0.92, )",
               "autoReferenced": true
             },
+            "Mopups": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[7.0.3, )"
@@ -220,6 +224,10 @@
               "version": "[7.0.92, )",
               "autoReferenced": true
             },
+            "Mopups": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[7.0.3, )"
@@ -290,6 +298,10 @@
               "target": "Package",
               "version": "[7.0.92, )",
               "autoReferenced": true
+            },
+            "Mopups": {
+              "target": "Package",
+              "version": "[1.2.0, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
@@ -372,6 +384,10 @@
               "target": "Package",
               "version": "[1.2.221209.1, )",
               "autoReferenced": true
+            },
+            "Mopups": {
+              "target": "Package",
+              "version": "[1.2.0, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",

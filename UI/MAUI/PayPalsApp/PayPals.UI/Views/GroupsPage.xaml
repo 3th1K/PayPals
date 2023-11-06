@@ -8,64 +8,94 @@
              Title="Groups"
              x:DataType="vm:UserGroupsViewModel"
              BackgroundColor="DarkSlateBlue">
-    
-        <CollectionView ItemsSource="{Binding UserGroups}"
-                    ItemsLayout="VerticalList"
-                    SelectionMode="Single"
-                    EmptyView="No Group">
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="{x:Type groupDtOs:GroupResponse}">
-                <Frame Padding="10" 
-                       Margin="10" 
-                       BackgroundColor="MidnightBlue"
-                       HeightRequest="120">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnFrameTapped" CommandParameter="{Binding GroupId, Mode=OneTime}"/>
-                    </Frame.GestureRecognizers>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height=".3*"/>
-                            <RowDefinition Height=".5*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label
-                               Text="{Binding GroupName}"
-                               TextColor="White"
-                               FontSize="20"
-                               FontFamily="Monospace"
-                               FontAttributes="Bold"
-                               CharacterSpacing="1"
-                               Grid.Row="0"/>
-
-                        <Frame Grid.Row="1"
-                               Grid.ColumnSpan="2"
-                               BackgroundColor="CornflowerBlue">
-                            <Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <RefreshView Grid.Row="0"
+                     x:Name="RefreshGroups"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Refreshing="RefreshGroups_OnRefreshing">
+            <CollectionView ItemsSource="{Binding UserGroups}"
+                            ItemsLayout="VerticalList"
+                            EmptyView="No Group">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type groupDtOs:GroupResponse}">
+                        <Frame Padding="10" 
+                               Margin="10" 
+                               BackgroundColor="MidnightBlue"
+                               HeightRequest="120">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnFrameTapped" CommandParameter="{Binding GroupId, Mode=OneTime}"/>
+                            </Frame.GestureRecognizers>
+                            <!--<Frame.Background>
+                                <RadialGradientBrush Center="0.5,0.5" Radius="0.5">
+                                    <GradientStop Offset="0" Color="BlanchedAlmond" />
+                                    <GradientStop Offset="0.5" Color="Black" />
+                                    <GradientStop Offset="1.0" Color="#01000000" />
+                                </RadialGradientBrush>
+                            </Frame.Background>-->
+                                <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height=".3*"/>
+                                    <RowDefinition Height=".5*"/>
+                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <HorizontalStackLayout Grid.Column="0">
-                                    <Label Text="Total Expenses : "
-                                           FontAttributes="Italic"/>
-                                    <Label Text="{Binding TotalExpenses}"
-                                           FontAttributes="Italic"/>
-                                </HorizontalStackLayout>
-                                <HorizontalStackLayout Grid.Column="1" >
-                                    <Label Text="Group Creator : "
-                                           FontAttributes="Italic"/>
-                                    <Label Text="{Binding Creator.Username}"
-                                           FontAttributes="Italic"/>
-                                </HorizontalStackLayout>
+                                <Label
+                                       Text="{Binding GroupName}"
+                                       TextColor="White"
+                                       FontSize="20"
+                                       FontFamily="Monospace"
+                                       FontAttributes="Bold"
+                                       CharacterSpacing="1"
+                                       Grid.Row="0"/>
+
+                                <Frame Grid.Row="1"
+                                       Grid.ColumnSpan="2"
+                                       BackgroundColor="CornflowerBlue">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <HorizontalStackLayout Grid.Column="0">
+                                            <Label Text="Total Expenses : "
+                                                   FontAttributes="Italic"/>
+                                            <Label Text="{Binding TotalExpenses}"
+                                                   FontAttributes="Italic"/>
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout Grid.Column="1" >
+                                            <Label Text="Group Creator : "
+                                                   FontAttributes="Italic"/>
+                                            <Label Text="{Binding Creator.Username}"
+                                                   FontAttributes="Italic"/>
+                                        </HorizontalStackLayout>
+                                    </Grid>
+                                </Frame>
                             </Grid>
                         </Frame>
-                    </Grid>
-                </Frame>
-                
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <!--<ImageButton Grid.Row="0" 
+                Source="add_group_button"
+                BorderColor="#2b3c3c" 
+                BorderWidth="1" 
+                HorizontalOptions="End" 
+                WidthRequest="160" 
+                HeightRequest="70" 
+                Margin="0,0,20,22" 
+                VerticalOptions="End"/>-->
+
+        <ImageButton Grid.Row="1"
+                     x:Name="BtnAddGroup"
+                     Source="add_group_button"
+                     HeightRequest="80"
+                     Clicked="BtnAddGroup_OnClicked"></ImageButton>
+    </Grid>
 </ContentPage>

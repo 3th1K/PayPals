@@ -1,6 +1,4 @@
-﻿using PayPals.UI.Interfaces;
-using PayPals.UI.Services;
-using PayPals.UI.Views;
+﻿using PayPals.UI.Views;
 
 namespace PayPals.UI
 {
@@ -9,6 +7,7 @@ namespace PayPals.UI
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
@@ -16,6 +15,7 @@ namespace PayPals.UI
             Routing.RegisterRoute(nameof(ExpensesPage), typeof(ExpensesPage));
             Routing.RegisterRoute(nameof(PalsPage), typeof(PalsPage));
             Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
+            Routing.RegisterRoute(nameof(GroupDetailsPage), typeof(GroupDetailsPage));
         }
     }
 }

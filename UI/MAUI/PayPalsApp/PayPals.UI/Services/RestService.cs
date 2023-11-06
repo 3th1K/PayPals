@@ -12,7 +12,7 @@ namespace PayPals.UI.Services
 
         public RestService()
         {
-            RestUrl = "http://192.168.0.105:5000";
+            RestUrl = "http://192.168.0.106:5000";
             Client = new HttpClient();
             Client.Timeout = TimeSpan.FromSeconds(15);
             SerializerOptions = new JsonSerializerOptions

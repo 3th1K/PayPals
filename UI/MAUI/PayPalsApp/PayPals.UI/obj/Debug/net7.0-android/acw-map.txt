@@ -1051,6 +1051,12 @@ com.google.gson.annotations.Until;com.google.gson.annotations.Until
 Microsoft.Maui.Graphics.Platform.PlatformGraphicsView, Microsoft.Maui.Graphics;crc643f2b18b2570eaa5a.PlatformGraphicsView
 Microsoft.Maui.Graphics.Platform.PlatformGraphicsView;crc643f2b18b2570eaa5a.PlatformGraphicsView
 microsoft.maui.graphics.platform.PlatformGraphicsView;crc643f2b18b2570eaa5a.PlatformGraphicsView
+Mopups.Platforms.Android.Renderers.PopupPageRenderer, Mopups;crc648efb837642500d81.PopupPageRenderer
+Mopups.Platforms.Android.Renderers.PopupPageRenderer;crc648efb837642500d81.PopupPageRenderer
+mopups.platforms.android.renderers.PopupPageRenderer;crc648efb837642500d81.PopupPageRenderer
+Mopups.Droid.Gestures.MopupGestureDetectorListener, Mopups;crc645f71566477e2fdd5.MopupGestureDetectorListener
+Mopups.Droid.Gestures.MopupGestureDetectorListener;crc645f71566477e2fdd5.MopupGestureDetectorListener
+mopups.droid.gestures.MopupGestureDetectorListener;crc645f71566477e2fdd5.MopupGestureDetectorListener
 Bumptech.Glide.Glide+IRequestOptionsFactory, Xamarin.Android.Glide;com.bumptech.glide.Glide$RequestOptionsFactory
 Bumptech.Glide.Glide.IRequestOptionsFactory;com.bumptech.glide.Glide$RequestOptionsFactory
 com.bumptech.glide.Glide$RequestOptionsFactory;com.bumptech.glide.Glide$RequestOptionsFactory
